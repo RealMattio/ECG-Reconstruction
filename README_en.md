@@ -70,3 +70,51 @@ If you prefer to work with unprocessed data, two sources are available:
 
 
 *  **Synchronization**: Devices were synchronized manually via a “double tap” gesture on the chest, recorded by the accelerometers of both sensors.
+
+
+## 📂 Project Structure
+
+The project is organized in a modular way to manage the four main phases: pre-processing, multimodal fusion, ECG signal generation, and performance evaluation.
+
+```text
+PPG-ECG-Generation/
+│
+├── data/                       # Local directory for data management
+│   ├── raw/                    # Original files from the SX.pkl dataset (excluded from git because they are too large)
+│   └── processed/              # Signals stored after the pre-processing phase
+│
+├── src/                        # Main source code
+│   ├── __init__.py
+│   │
+│   ├── data_loader/            # Modules for data loading and PyTorch dataset management
+│   │   ├── dalia_loader.py     # Loading of .pkl files with synchronized and labeled data
+│   │   └── transforms.py       # Normalization and data augmentation operations
+│   │
+├── preprocessing/          # Phase 1: Channel-by-channel signal processing
+│   │   ├── filters.py          # Implementation of bandpass filters and artifact removal
+│   │   └── segmentation.py     # Segmentation using sliding window (8s window, 2s shift)
+│   │
+│   ├── fusion/                 # Phase 2: Multimodal fusion architecture
+│   │   ├── attention.py        # Implementation of self and cross-attention mechanisms
+│   │   └── fusion_layers.py    # Definition of the fusion structure (early/late/hybrid)
+│   │
+│   ├── generation/             # Phase 3: Model definition and training
+│   │   ├── models/             # Generative architectures (e.g., GAN, Diffusion, or UNet)
+│   │   ├── trainer.py          # Training loop management and weight saving
+│   │   └── inference.py        # ECG generation from new PPG inputs
+│   │
+│   └── evaluation/             # Phase 4: Evaluation and testing metrics
+│       ├── metrics.py          # Calculation of RMSE, correlation, and error on HR
+│       └── ablation.py         # Script for performing ablation studies
+│
+├── notebooks/                  # Jupyter Notebooks for exploratory analysis and visualizations
+├── configs/                    # .yaml or .json files for hyperparameter management
+├── scripts/                    # Shell scripts for quickly starting training or testing
+├── tests/                      # Unit tests for validating individual modules
+├── requirements.txt            # Project dependencies
+└── README.md                   # Main documentation
+
+```
+
+### Details on Core Components
+_To be defined_

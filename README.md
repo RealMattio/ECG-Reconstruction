@@ -70,3 +70,54 @@ Se preferisci lavorare con i dati non processati, sono disponibili due sorgenti:
 
 
 *  **Sincronizzazione**: I dispositivi sono stati sincronizzati manualmente tramite un gesto di "doppio tocco" sul petto, registrato dagli accelerometri di entrambi i sensori.
+
+Ecco una proposta per la sezione del file `README.md` che descrive la struttura del tuo progetto, integrando le informazioni tecniche del dataset **PPG-DaLiA**.
+
+---
+
+## 📂 Struttura del Progetto
+
+Il progetto è organizzato in modo modulare per gestire le quattro fasi principali: pre-processing, fusione multimodale, generazione di segnali ECG e valutazione delle performance.
+
+```text
+PPG-ECG-Generation/
+│
+├── data/                       # Directory locale per la gestione dei dati
+│   ├── raw/                    # File originali del dataset SX.pkl (esclusi da git poiché troppo grandi)
+│   └── processed/              # Segnali memorizzati dopo la fase di pre-elaborazione
+│
+├── src/                        # Codice sorgente principale
+│   ├── __init__.py
+│   │
+│   ├── data_loader/            # Moduli per il caricamento dati e gestione Dataset PyTorch
+│   │   ├── dalia_loader.py     # Caricamento dei file .pkl con dati sincronizzati e etichettati
+│   │   └── transforms.py       # Operazioni di normalizzazione e data augmentation
+│   │
+│   ├── preprocessing/          # Fase 1: Elaborazione dei segnali canale per canale
+│   │   ├── filters.py          # Implementazione di filtri passa-banda e rimozione artefatti
+│   │   └── segmentation.py     # Segmentazione tramite sliding window (8s di finestra, 2s di shift)
+│   │
+│   ├── fusion/                 # Fase 2: Architettura di Fusione Multimodale
+│   │   ├── attention.py        # Implementazione di meccanismi di Self e Cross-Attention
+│   │   └── fusion_layers.py    # Definizione della struttura di fusione (Early/Late/Hybrid)
+│   │
+│   ├── generation/             # Fase 3: Definizione del Modello e Addestramento
+│   │   ├── models/             # Architetture generative (es. GAN, Diffusion o UNet)
+│   │   ├── trainer.py          # Gestione del loop di training e salvataggio dei pesi
+│   │   └── inference.py        # Generazione di ECG partendo da nuovi input PPG
+│   │
+│   └── evaluation/             # Fase 4: Metriche di Valutazione e Testing
+│       ├── metrics.py          # Calcolo di RMSE, correlazione e errore sulla HR
+│       └── ablation.py         # Script per l'esecuzione di studi di ablazione
+│
+├── notebooks/                  # Jupyter Notebooks per analisi esplorativa e visualizzazioni
+├── configs/                    # File .yaml o .json per la gestione degli iperparametri
+├── scripts/                    # Script shell per avviare rapidamente addestramento o test
+├── tests/                      # Unit test per la validazione dei singoli moduli
+├── requirements.txt            # Dipendenze del progetto
+└── README.md                   # Documentazione principale
+
+```
+
+### Dettagli sui Componenti Core
+_Da definire_
