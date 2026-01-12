@@ -1,3 +1,5 @@
+![Python](https://img.shields.io/badge/Python-3.10.19%20-blue?logo=python)
+
 | [🇬🇧 Read in English](README_en.md) | [🇮🇹 Leggi in Italiano](README.md) | 
 | :--- | :--- |
 ## 📊 Il Dataset
