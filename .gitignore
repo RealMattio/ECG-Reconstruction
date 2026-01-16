@@ -1,2 +1,14 @@
 PPG_FieldStudy/
 data/raw/*.pkl
+
+# Python artifacts
+**/__pycache__/
+*.py[cod]
+
+# Ambienti virtuali
+venv/
+.env
+ecg_gen_env/
+
+# Notebooks
+.ipynb_checkpoints/
