@@ -4,6 +4,7 @@ data/raw/*.pkl
 # Python artifacts
 **/__pycache__/
 *.py[cod]
+__pycache__/
 
 # Ambienti virtuali
 venv/

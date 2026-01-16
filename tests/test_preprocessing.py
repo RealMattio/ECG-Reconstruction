@@ -1,11 +1,11 @@
 import os
-
+import numpy as np
 from src.data_loader.data_loader import DaliaDataLoader
 from src.preprocessing.preprocessor import DaliaPreprocessor
 def main():
     # 1. Configurazione percorsi e parametri
     # Otteniamo il percorso assoluto della root del progetto
-    base_path = os.path.dirname(os.path.abspath(__file__))
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_path = os.path.join(base_path, 'data')
     
     # Selezioniamo un piccolo gruppo di soggetti per il test
@@ -41,8 +41,16 @@ def main():
     print("Calcolo della normalizzazione globale sul set di Training...")
     normalized_data = preprocessor.compute_and_apply_normalization(split_dict)
     
+    # Sostituzione della riga del print nel ciclo delle statistiche
     for key, stat in preprocessor.stats.items():
-        print(f"  - {key}: Media={stat['mean']:.2f}, Std={stat['std']:.2f}")
+        if isinstance(stat['mean'], np.ndarray):
+            # Se è un array (come per l'ACC), formattiamo ogni elemento
+            m_str = ", ".join([f"{x:.2f}" for x in stat['mean']])
+            s_str = ", ".join([f"{x:.2f}" for x in stat['std']])
+            print(f"  - {key}: Media=[{m_str}], Std=[{s_str}]")
+        else:
+            # Se è un numero singolo (PPG, EDA, ECG)
+            print(f"  - {key}: Media={stat['mean']:.2f}, Std={stat['std']:.2f}")
 
     # 6. Step 3: Windowing
     print(f"\nGenerazione finestre di {WINDOW_SIZE}s con shift {WINDOW_SHIFT}s...")
