@@ -8,6 +8,7 @@ from src.data_loader.data_loader import DaliaDataLoader
 from src.preprocessing.preprocessor import DaliaPreprocessor
 from src.generation.approach1.approach1_models import Approach1LateFusion
 from src.generation.approach1.trainer import Approach1Trainer
+from src.evaluation.visualization import save_training_plots
 
 def run_approach1_pipeline(subject_ids, base_path, configs):
     """
@@ -79,12 +80,16 @@ def run_approach1_pipeline(subject_ids, base_path, configs):
     
     # save_dir = os.path.join(base_path, 'models', 'approach_1')
     # os.makedirs(save_dir, exist_ok=True)
-
+    history = {'train': [], 'val': []}
     print("\nInizio addestramento multimodale...")
     for epoch in range(configs['epochs']):
         train_metrics = trainer.train_epoch(train_loader)
         val_metrics = trainer.validate_epoch(val_loader)
-        
+
+        # Salva le metriche per il plot finale
+        history['train'].append(train_metrics)
+        history['val'].append(val_metrics)
+            
         print(f"Epoca {epoch}: Train Loss: {train_metrics['total']:.4f} | Val Loss: {val_metrics['total']:.4f}")
         
         # Scheduler update basato sulla validation loss
@@ -97,5 +102,9 @@ def run_approach1_pipeline(subject_ids, base_path, configs):
         
         if trainer.check_early_stopping(val_metrics['total']):
             break
-            
+
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    plot_path = os.path.abspath(os.path.join(current_dir, "..", "models", "approach1"))
+    save_training_plots(history, plot_path)
+
     return trainer, windowed_data['test']
