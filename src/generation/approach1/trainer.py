@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import os
 from tqdm import tqdm
+import shutil
 
 class Approach1Trainer:
     def __init__(self, models_dict, device, configs):
@@ -178,30 +179,34 @@ class Approach1Trainer:
 
     def save_models(self, epoch, save_dir, is_best=False):
         """
-        Salva i 4 modelli separatamente.
-        
-        Args:
-            epoch (int): Numero epoca
-            save_dir (str): Directory base
-            is_best (bool): Se True, salva anche come 'best_model'
+        Salva i modelli e pulisce i checkpoint precedenti meno performanti.
         """
+        # 1. Rimuovi la cartella dell'epoca precedente (se non è il "best")
+        # In questo modo teniamo solo l'ultimo checkpoint temporale
+        if epoch > 0:
+            old_path = os.path.join(save_dir, f"epoch_{epoch-1}")
+            if os.path.exists(old_path):
+                shutil.rmtree(old_path)
+
+        # 2. Crea la nuova cartella per l'epoca corrente
         path = os.path.join(save_dir, f"epoch_{epoch}")
         os.makedirs(path, exist_ok=True)
         
         for name, model in self.models.items():
             torch.save(model.state_dict(), os.path.join(path, f"model_{name}.pth"))
-        
-        # Salva anche l'optimizer state
         torch.save(self.optimizer.state_dict(), os.path.join(path, "optimizer.pth"))
         
+        # 3. Se è il miglior modello, sovrascrivi la cartella 'best_model'
         if is_best:
             best_path = os.path.join(save_dir, "best_model")
+            # Rimuoviamo la vecchia directory 'best_model' prima di ricrearla
+            if os.path.exists(best_path):
+                shutil.rmtree(best_path)
             os.makedirs(best_path, exist_ok=True)
+            
             for name, model in self.models.items():
                 torch.save(model.state_dict(), os.path.join(best_path, f"model_{name}.pth"))
-            print(f"✓ Best model salvato in {best_path}")
-        
-        print(f"✓ Checkpoint epoca {epoch} salvato in {path}")
+            print(f"✓ Nuovo Best Model rilevato (Loss: {self.best_val_loss:.4f}) e salvato.")
 
     def load_models(self, load_dir):
         """Carica i modelli da una directory."""

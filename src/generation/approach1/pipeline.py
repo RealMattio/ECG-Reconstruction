@@ -8,7 +8,7 @@ from src.data_loader.data_loader import DaliaDataLoader
 from src.preprocessing.preprocessor import DaliaPreprocessor
 from src.generation.approach1.approach1_models import Approach1LateFusion
 from src.generation.approach1.trainer import Approach1Trainer
-from src.evaluation.visualization import save_training_plots
+from src.evaluation.visualization import save_training_plots, save_history_to_json
 
 def run_approach1_pipeline(subject_ids, base_path, configs):
     """
@@ -101,10 +101,12 @@ def run_approach1_pipeline(subject_ids, base_path, configs):
         trainer.save_models(epoch, save_dir, is_best=is_best)
         
         if trainer.check_early_stopping(val_metrics['total']):
+            print(f"Interruzione anticipata all'epoca {epoch}")
             break
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
     plot_path = os.path.abspath(os.path.join(current_dir, "..", "models", "approach1"))
     save_training_plots(history, plot_path)
+    save_history_to_json(history, plot_path)
 
     return trainer, windowed_data['test']

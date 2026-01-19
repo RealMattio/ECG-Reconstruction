@@ -15,3 +15,7 @@ ecg_gen_env/
 .ipynb_checkpoints/
 
 folder-structure.txt
+logs/
+job_ecg_gen.sh
+job_ecg_gen_prova.sh
+src/generation/models/*/

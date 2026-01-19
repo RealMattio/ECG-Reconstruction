@@ -34,7 +34,7 @@ def main():
         
         # Iperparametri di training
         'batch_size': 32,
-        'epochs': 1, # In linea con i training di CLEP-GAN e QRS-ED 
+        'epochs': 200, # 200 - In linea con i training di CLEP-GAN e QRS-ED 
         'lr': 1e-4,
         'patience': 15,
         'use_scheduler': True,

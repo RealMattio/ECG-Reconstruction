@@ -59,13 +59,21 @@ class ResNet1D(nn.Module):
             self.blocks.append(ResNetBlock1D(current_filters, next_filters, kernel_size, stride=1))
             current_filters = next_filters
         
-        self.adaptive_pool = nn.AdaptiveAvgPool1d(1)
-        self.fc = nn.Linear(current_filters, n_classes)
+        self.final_conv = nn.Conv1d(current_filters, 1, kernel_size=1) 
+        self.flatten = nn.Flatten()
+        
+        # Supponendo che dopo i blocchi la lunghezza sia L_out, 
+        # il layer lineare deve mappare (Batch, 1 * L_out) -> (Batch, 2048)
+        # Dobbiamo calcolare L_out o usare un AdaptivePool più grande
+        self.adaptive_pool = nn.AdaptiveAvgPool1d(512) # Teniamo 512 punti di feature temporali
+        self.fc = nn.Linear(512, n_classes)
 
     def forward(self, x):
         x = F.relu(self.first_bn(self.first_conv(x)))
         for block in self.blocks:
             x = block(x)
-        x = self.adaptive_pool(x).squeeze(-1)
-        x = self.fc(x)
+        
+        x = self.final_conv(x) # Riduce i canali a 1
+        x = self.adaptive_pool(x).squeeze(1) # (Batch, 512)
+        x = self.fc(x) # (Batch, 2048)
         return x
