@@ -48,9 +48,13 @@ class DaliaPreprocessor:
         
         return data_split
 
-    def create_windows(self, data_split, is_resampled, window_size=8, window_shift=2, shuffle_train=True):
+    def create_windows(self, data_split, is_resampled, window_size=8, window_shift=2, include_prev_ecg=False, shuffle_train=True):
         """
-        Esegue il windowing e opzionalmente mescola le finestre del set di training.
+        Esegue il windowing e opzionalmente include l'ECG della finestra temporale precedente.
+        
+        Args:
+            window_shift: Definisce lo scorrimento. L'overlap è (window_size - window_shift).
+            include_prev_ecg: Se True, aggiunge l'ECG della finestra precedente agli input.
         """
         windowed_data = {'train': [], 'val': [], 'test': []}
 
@@ -67,28 +71,50 @@ class DaliaPreprocessor:
                 
                 total_samples_ppg = len(sub['PPG'])
                 
+                # Inizializziamo il riferimento per la finestra precedente
+                prev_ecg_w = None
+                
                 for start_in in range(0, total_samples_ppg - samples_win_in, samples_shift_in):
                     end_in = start_in + samples_win_in
                     
+                    # Estrazione input standard
                     ppg_w = sub['PPG'][start_in:end_in]
                     eda_w = sub['EDA'][int(start_in * (sub['fs_eda']/fs_in)):int(end_in * (sub['fs_eda']/fs_in))] if not is_resampled else sub['EDA'][start_in:end_in]
                     acc_w = sub['ACC'][int(start_in * (sub['fs_acc']/fs_in)):int(end_in * (sub['fs_acc']/fs_in))] if not is_resampled else sub['ACC'][start_in:end_in]
                     
+                    # Estrazione target (ECG attuale)
                     start_ecg = int((start_in / fs_in) * fs_ecg)
                     end_ecg = start_ecg + samples_win_ecg
                     ecg_w = sub['ECG'][start_ecg:end_ecg]
 
                     if len(ecg_w) == samples_win_ecg:
-                        windowed_data[group].append({
-                            'input': (ppg_w, eda_w, acc_w),
-                            'target': ecg_w,
-                            'subject': sub_id
-                        })
+                        # Logica di condizionamento
+                        if include_prev_ecg:
+                            # Se è la prima finestra del soggetto, non abbiamo una precedente.
+                            # Saltiamo la prima per mantenere la coerenza dimensionale degli input nel batch.
+                            if prev_ecg_w is not None:
+                                windowed_data[group].append({
+                                    'input': (ppg_w, eda_w, acc_w, prev_ecg_w),
+                                    'target': ecg_w,
+                                    'subject': sub_id
+                                })
+                        else:
+                            # Comportamento originale
+                            windowed_data[group].append({
+                                'input': (ppg_w, eda_w, acc_w),
+                                'target': ecg_w,
+                                'subject': sub_id
+                            })
+                        
+                        # Aggiorniamo l'ECG precedente per la prossima iterazione
+                        prev_ecg_w = ecg_w
+                
+                # Resettiamo prev_ecg_w quando cambiamo soggetto
+                prev_ecg_w = None
         
-        # --- AGGIUNTA: Shuffling del set di training ---
+        # Shuffling del set di training
         if shuffle_train and len(windowed_data['train']) > 0:
             print(f"Mescolamento di {len(windowed_data['train'])} finestre di training...")
-            # Usiamo un seed per la riproducibilità se necessario, altrimenti random.shuffle è sufficiente
             random.seed(42) 
             random.shuffle(windowed_data['train'])
         
