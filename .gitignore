@@ -19,3 +19,4 @@ logs/
 job_ecg_gen.sh
 job_ecg_gen_prova.sh
 src/generation/models/*/
+job_ecg_gen*.sh
