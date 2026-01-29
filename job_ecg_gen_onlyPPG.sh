@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=PPG_ecg_gen_mattia
-#SBATCH --partition=gn01_a100-high      # Cambiato su A40
+#SBATCH --partition=gn02_a40-high      # Cambiato su A40
 #SBATCH --gres=gpu:1                   # 1 GPU NVIDIA A40 (48GB VRAM)
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -20,4 +20,4 @@ export PYTHONPATH=$PYTHONPATH:/home/mmerone/mattia/ecg_generation
 cd /home/mmerone/mattia/ecg_generation/
 
 # 3. Esecuzione con percorso assoluto (evita errori Conda)
-/home/mmerone/.conda/envs/ecg_gen_env/bin/python -u src/main_onlyPPG.py
+/home/mmerone/.conda/envs/ecg_gen_env/bin/python -u src/main_onlyPPG_BIDMC.py
