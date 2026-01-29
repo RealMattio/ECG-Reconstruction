@@ -46,7 +46,7 @@ def test_and_visualize():
     beat_len = 120 # Lunghezza battito Tabella 1 
     
     # Configurazione per il preprocessor
-    test_configs = {'overlap_windows': True} 
+    test_configs = {'overlap_windows': False} 
     
     test_subject_ids = [str(i).zfill(2) for i in range(48, 54)]
     print(f"--- Testing HA-CNN-BILSTM on Subjects: {test_subject_ids} ---")
