@@ -18,7 +18,7 @@ class HACNNBiLSTMTrainer:
     def _get_optimizer(self, opt_type, lr):
         if opt_type.upper() == 'ADAM':
             return optim.Adam(self.model.parameters(), lr=lr)
-        elif opt_type.upper() == 'SGDM': # Ottimizzatore top per RMSE
+        elif opt_type.upper() == 'SGDM': 
             return optim.SGD(self.model.parameters(), lr=lr, momentum=0.9)
         return optim.Adam(self.model.parameters(), lr=lr)
 
@@ -51,33 +51,26 @@ class HACNNBiLSTMTrainer:
         return total_loss / len(val_loader)
 
     def fit(self, train_loader, val_loader, epochs=100, patience=15):
-        """Esegue il ciclo di addestramento con Early Stopping."""
         best_val_loss = float('inf')
-        patience_counter = 0 # Contatore per la pazienza
+        patience_counter = 0 
         history = {'train_loss': [], 'val_loss': []}
         
         print(f"--- Training Start (Max Epochs: {epochs}, Patience: {patience}) ---")
         
         for epoch in range(epochs):
             start_time = time.time()
-            
             train_loss = self.train_epoch(train_loader)
             val_loss = self.evaluate(val_loader)
-            
             epoch_duration = time.time() - start_time
+            
             history['train_loss'].append(train_loss)
             history['val_loss'].append(val_loss)
             
-            # Log Epoca
-            print(f"Epoch [{epoch+1:03d}/{epochs}] | "
-                  f"Time: {epoch_duration:.2f}s | "
-                  f"Train RMSE: {train_loss:.4f} | "
-                  f"Val RMSE: {val_loss:.4f}", end="")
+            print(f"Epoch [{epoch+1:03d}/{epochs}] | Time: {epoch_duration:.2f}s | Train RMSE: {train_loss:.4f} | Val RMSE: {val_loss:.4f}", end="")
 
-            # Logica Early Stopping e salvataggio miglior checkpoint
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
-                patience_counter = 0 # Reset pazienza
+                patience_counter = 0 
                 save_path = os.path.join(self.configs['model_save_path'], 'best_ha_cnn_bilstm.pth')
                 torch.save(self.model.state_dict(), save_path)
                 print(" -> BEST Model Saved! ✓")
@@ -86,7 +79,7 @@ class HACNNBiLSTMTrainer:
                 print(f" -> Patience: {patience_counter}/{patience}")
             
             if patience_counter >= patience:
-                print(f"\n[Early Stopping] L'addestramento si ferma: nessun miglioramento per {patience} epoche.")
+                print(f"\n[Early Stopping] Stop a epoca {epoch+1}")
                 break
                 
         return history

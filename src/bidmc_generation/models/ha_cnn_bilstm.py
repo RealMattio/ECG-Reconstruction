@@ -3,79 +3,68 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class HACNNBiLSTM(nn.Module):
-    def __init__(self, input_dim=1, output_dim=1, seq_len=120):
-        """
-        Architettura HA-CNN-BILSTM basata sulla Tabella 1 del paper.
-        input_dim: 1 per PPG grezzo (anche se il paper suggerisce 19 per WST [cite: 154, 318]).
-        """
+    def __init__(self, configs, seq_len=120):
         super(HACNNBiLSTM, self).__init__()
         
-        # --- STAGE CONVOLUZIONALE (Local Feature Extraction) ---
-        # Conv -> BN -> ReLU -> MaxPool (x2) 
+        # Usiamo i valori rilevati dinamicamente dalla pipeline
+        input_dim = configs.get('input_channels', 1)
+        # La lunghezza del segnale in ingresso (es. 120 se raw, 30 se WST)
+        current_seq_len = configs.get('actual_seq_len', seq_len)
+        
+        # --- STAGE CONVOLUZIONALE ---
         self.cnn_stage = nn.Sequential(
             nn.Conv1d(input_dim, 64, kernel_size=3, padding=1),
             nn.BatchNorm1d(64),
             nn.ReLU(),
-            nn.MaxPool1d(kernel_size=2), # Seq: 120 -> 60
+            nn.MaxPool1d(kernel_size=2),
             
             nn.Conv1d(64, 128, kernel_size=3, padding=1),
             nn.BatchNorm1d(128),
             nn.ReLU(),
-            nn.MaxPool1d(kernel_size=2)  # Seq: 60 -> 30
+            nn.MaxPool1d(kernel_size=2)
         )
         
-        # --- FULLY CONNECTED PRE-LSTM ---
-        self.fc_pre_lstm = nn.Linear(128 * 30, 256)
+        # Calcolo dinamico dei neuroni post-CNN basato sulla sequenza REALE
+        with torch.no_grad():
+            dummy_input = torch.zeros(1, input_dim, current_seq_len)
+            self.cnn_out_dim = self.cnn_stage(dummy_input).view(1, -1).size(1)
+            print(f"DEBUG: CNN Output dimension = {self.cnn_out_dim} (Input Seq: {current_seq_len})")
+
+        self.fc_cnn = nn.Linear(self.cnn_out_dim, 256)
         
-        # --- BILSTM LAYER (Temporal Feature Extraction) ---
-        # Bidirectional mitigates gradient vanishing [cite: 26, 318]
-        self.bi_lstm = nn.LSTM(
-            input_size=256, 
-            hidden_size=128, 
-            num_layers=1, 
-            batch_first=True, 
-            bidirectional=True
-        )
+        # --- BILSTM ---
+        # L'input della BiLSTM è sempre la dimensione delle feature (1 o 19/8)
+        self.bi_lstm = nn.LSTM(input_dim, 128, batch_first=True, bidirectional=True)
+        self.fc_lstm = nn.Linear(256, 256)
+
+        # --- ATTENTION & REGRESSION ---
+        self.tanh = nn.Tanh()
+        self.attention_fc = nn.Linear(256, 256)
         
-        # --- ATTENTION & FUSION LAYERS (Tabella 1) ---
-        self.fc_post_lstm = nn.Linear(256, 256)
-        self.tanh = nn.Tanh() # Tanh posizionato a metà rete 
-        
-        self.fc_attention = nn.Linear(256, 256)
-        
-        # --- REGRESSION LAYER (Final Output) ---
-        # Include Dropout per prevenire overfitting [cite: 296, 318]
         self.regression = nn.Sequential(
             nn.Dropout(0.5),
             nn.Linear(256, 512),
             nn.ReLU(),
-            nn.Linear(512, seq_len) # Regression output lineare per ampiezze reali 
+            nn.Linear(512, seq_len) # L'output torna sempre a 120 per il confronto
         )
 
     def forward(self, x):
-        # x: (Batch, 1, 120)
+        # x: (Batch, Channels, Seq) -> Seq può essere 120 o 30
         batch_size = x.size(0)
         
-        # 1. CNN Stage
-        features = self.cnn_stage(x) # (Batch, 128, 30)
-        features = features.view(batch_size, -1)
+        # 1. CNN
+        cnn_out = self.cnn_stage(x) 
+        cnn_feat = self.fc_cnn(cnn_out.view(batch_size, -1))
         
-        # 2. Fully Connected
-        features = self.fc_pre_lstm(features) 
+        # 2. BiLSTM
+        lstm_in = x.transpose(1, 2)
+        lstm_out, _ = self.bi_lstm(lstm_in)
+        lstm_feat = self.fc_lstm(lstm_out[:, -1, :]) 
         
-        # 3. BiLSTM (input: Batch, Seq=1, H=256)
-        lstm_out, _ = self.bi_lstm(features.unsqueeze(1)) 
-        lstm_out = lstm_out.squeeze(1) # (Batch, 256)
+        # 3. Attention & Fusion
+        combined = self.tanh(cnn_feat + lstm_feat)
+        weights = torch.sigmoid(self.attention_fc(combined))
+        fused = combined * weights 
         
-        # 4. Attention & Fusion Logic 
-        # Concatenated addition e multiplier
-        res = self.fc_post_lstm(lstm_out)
-        activated = self.tanh(res)
-        
-        # Calcolo pesi attenzione (Multiplier Layer)
-        attn_weights = self.fc_attention(activated)
-        fused = activated * attn_weights 
-        
-        # 5. Regression Output
-        out = self.regression(fused) # (Batch, 120)
-        return out.unsqueeze(1) # Ritorna (Batch, 1, 120)
+        # 4. Output (120 campioni)
+        return self.regression(fused).unsqueeze(1)

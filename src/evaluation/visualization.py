@@ -177,94 +177,56 @@ def plot_ppg_ecg_comparison(model, val_data, device, save_path, epoch):
     plt.savefig(save_path)
     plt.close()
 
-def save_inference_plot(model, val_loader, device, save_path, title="Random Validation Window Inference"):
-    """
-    Esegue l'inferenza su una finestra casuale del validation set e salva il grafico di confronto.
-
-    Args:
-        model (torch.nn.Module): Il modello addestrato (es. HA-CNN-BILSTM).
-        val_loader (DataLoader): Il DataLoader contenente i dati di validazione.
-        device (torch.device): Il dispositivo su cui eseguire l'inferenza (cuda/cpu).
-        save_path (str): Il percorso completo dove salvare l'immagine (es. 'results/final_plot.png').
-        title (str, optional): Il titolo del grafico. Default: "Random Validation Window Inference".
-    """
-    model.eval() # Imposta il modello in modalità valutazione (disattiva dropout, ecc.)
-    
-    # Assicuriamoci che la directory di destinazione esista
+def save_inference_plot(model, val_loader, device, save_path, title="Validation Inference"):
+    model.eval()
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
     try:
-        # 1. Estrazione Casuale
-        # Per garantire la casualità, carichiamo tutti i batch (se la memoria lo consente)
-        # o iteriamo fino a un punto casuale. Dato che sono segmenti beat-by-beat,
-        # il validation set non dovrebbe essere enorme.
         all_batches = list(val_loader)
-        if not all_batches:
-            print("Errore: Validation loader vuoto.")
-            return
-
-        # Scelta di un batch casuale
-        random_batch_idx = random.randint(0, len(all_batches) - 1)
-        ppg_batch, ecg_batch = all_batches[random_batch_idx]
-
-        # Scelta di una finestra casuale all'interno del batch
-        # ppg_batch shape: (Batch_Size, 1, Seq_Len)
-        random_window_idx = random.randint(0, ppg_batch.shape[0] - 1)
+        ppg_batch, ecg_batch = all_batches[random.randint(0, len(all_batches) - 1)]
+        idx = random.randint(0, ppg_batch.shape[0] - 1)
         
-        # Estrazione e preparazione tensori per l'input (aggiunta dim batch=1)
-        ppg_win_tensor = ppg_batch[random_window_idx].unsqueeze(0).to(device)
-        ecg_real_tensor = ecg_batch[random_window_idx].unsqueeze(0).to(device)
+        ppg_win = ppg_batch[idx].unsqueeze(0).to(device)
+        ecg_real = ecg_batch[idx].unsqueeze(0).to(device)
 
-        # 2. Inferenza
         with torch.no_grad():
-            ecg_gen_tensor = model(ppg_win_tensor)
+            ecg_gen = model(ppg_win)
 
-        # 3. Conversione in Numpy per il plotting
-        # .squeeze() rimuove le dimensioni batch e channel (1, 1, 120) -> (120,)
-        ppg_np = ppg_win_tensor.squeeze().cpu().numpy()
-        ecg_real_np = ecg_real_tensor.squeeze().cpu().numpy()
-        ecg_gen_np = ecg_gen_tensor.squeeze().cpu().numpy()
+        # Conversione per plotting
+        ppg_np = ppg_win.squeeze().cpu().numpy()
+        ecg_real_np = ecg_real.squeeze().cpu().numpy()
+        ecg_gen_np = ecg_gen.squeeze().cpu().numpy()
         
-        # Asse X (campioni)
-        time_axis = np.arange(len(ecg_real_np))
-
-        # 4. Creazione del Grafico
         fig, axes = plt.subplots(2, 1, figsize=(12, 10))
 
-        # Subplot 1: Input PPG
-        axes[0].plot(time_axis, ppg_np, color='blue', label='Input PPG (Normalized)', linewidth=1.5)
-        axes[0].set_title("Input Photoplethysmogram (PPG)")
-        axes[0].set_ylabel("Normalized Amplitude")
-        axes[0].grid(True, which='both', linestyle='--', alpha=0.5)
-        axes[0].legend()
+        # --- Subplot 1: Input PPG ---
+        # Gestione dinamica: WST ha 2 dimensioni (Canali, Tempo), Raw ne ha 1
+        if ppg_np.ndim == 2:
+            # Se è WST (8x30), mostriamo i canali sovrapposti
+            time_ppg = np.arange(ppg_np.shape[1])
+            for i in range(ppg_np.shape[0]):
+                axes[0].plot(time_ppg, ppg_np[i], alpha=0.6)
+            axes[0].set_title(f"Input PPG WST Features ({ppg_np.shape[0]} channels)")
+        else:
+            axes[0].plot(np.arange(len(ppg_np)), ppg_np, color='blue')
+            axes[0].set_title("Input PPG (Time Domain)")
 
-        # Subplot 2: Confronto ECG Reale vs Generato
-        # Ground Truth in grigio tratteggiato, Generato in rosso solido
-        axes[1].plot(time_axis, ecg_real_np, color='black', linestyle='--', alpha=0.6, label='Ground Truth (Real ECG)', linewidth=2)
-        axes[1].plot(time_axis, ecg_gen_np, color='red', label='Generated ECG (HA-CNN-BILSTM)', linewidth=2)
-        
+        # --- Subplot 2: ECG Comparison ---
+        time_ecg = np.arange(len(ecg_real_np))
+        axes[1].plot(time_ecg, ecg_real_np, color='black', linestyle='--', alpha=0.5, label='Real')
+        axes[1].plot(time_ecg, ecg_gen_np, color='red', label='Generated')
         axes[1].set_title(title)
-        axes[1].set_xlabel("Time (Samples)")
-        axes[1].set_ylabel("Normalized Amplitude")
         axes[1].legend()
-        axes[1].grid(True, which='both', linestyle='--', alpha=0.5)
 
         plt.tight_layout()
-        
-        # 5. Salvataggio
         plt.savefig(save_path, dpi=300)
-        plt.close(fig) # Chiude la figura per liberare memoria
-        print(f"Grafico di inferenza salvato correttamente in: {save_path}")
+        plt.close()
+        print(f"Grafico salvato in: {save_path}")
 
     except Exception as e:
-        print(f"Errore durante la generazione del grafico di inferenza: {e}")
-    finally:
-        # Opzionale: riporta il modello in train mode se necessario, 
-        # ma solitamente questa funzione si chiama a fine addestramento.
-        # model.train() 
-        pass
+        print(f"Errore durante la generazione del grafico: {e}")
 
-def generate_long_window_smooth(model, ppg_signal, window_len=120, overlap_pct=0.5):
+def generate_long_window_smooth(model, ppg_signal, device, window_len=120, overlap_pct=0.5):
     """Genera un ECG lungo usando una sliding window e facendo la media degli overlap."""
     step = int(window_len * (1 - overlap_pct))
     output_ecg = np.zeros(len(ppg_signal))
