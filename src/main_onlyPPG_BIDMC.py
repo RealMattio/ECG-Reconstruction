@@ -30,8 +30,8 @@ def main():
         
         # Parametri del segnale (Fissi per BIDMC)
         'target_fs': 125,        # Frequenza di campionamento target
-        'beat_len': 60,         # Lunghezza finestra come da Tabella 1 
-        'overlap_pct': 0.1,     # 10% sovrapposizione per continuità
+        'beat_len': 120,         # Lunghezza finestra come da Tabella 1 
+        'overlap_pct': 0.4,     # 10% sovrapposizione per continuità
         # --- FLAG DI MODULARITÀ ---
         'overlap_windows': True, # Attiva sliding window per continuità temporale
         'apply_wst': True,       # Attiva Wavelet Scattering (19 canali in input)

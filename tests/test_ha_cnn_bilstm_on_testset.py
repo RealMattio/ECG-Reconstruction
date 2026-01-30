@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import random
-import datetime
 from torch.utils.data import DataLoader, TensorDataset
 
 # Importazione dei moduli del tuo progetto
@@ -14,21 +13,29 @@ from src.preprocessing.bidmc_preprocessor import BidmcPreprocessor
 def generate_long_window_smooth(model, ppg_signal, preprocessor, device, configs):
     """
     Genera un ECG lungo gestendo dinamicamente overlap e WST.
+    Risolve il problema dei campioni nulli alla fine coprendo l'intero segnale.
     """
     window_len = configs['beat_len']
     overlap_pct = configs.get('overlap_pct', 0.5)
     step = int(window_len * (1 - overlap_pct))
     
-    output_ecg = np.zeros(len(ppg_signal))
-    count_map = np.zeros(len(ppg_signal))
+    total_samples = len(ppg_signal)
+    output_ecg = np.zeros(total_samples)
+    count_map = np.zeros(total_samples)
     
     model.eval()
     with torch.no_grad():
-        for i in range(0, len(ppg_signal) - window_len, step):
+        # Generiamo la lista degli indici di inizio
+        start_indices = list(range(0, total_samples - window_len, step))
+        # Forziamo l'inclusione dell'ultima finestra per evitare campioni nulli alla fine
+        if total_samples > window_len and start_indices[-1] + window_len < total_samples:
+            start_indices.append(total_samples - window_len)
+            
+        for i in start_indices:
             seg = ppg_signal[i : i + window_len]
             
             if configs.get('apply_wst', False):
-                # Trasforma il segmento raw in feature WST
+                # Trasformazione WST come da architettura
                 seg_input = preprocessor.extract_wst_features(np.expand_dims(seg, axis=0))
                 seg_t = torch.tensor(seg_input).float().to(device)
             else:
@@ -36,7 +43,6 @@ def generate_long_window_smooth(model, ppg_signal, preprocessor, device, configs
             
             pred = model(seg_t).cpu().numpy().flatten()
             
-            # L'output del modello è sempre della lunghezza originale della finestra (es. 60)
             output_ecg[i : i + window_len] += pred
             count_map[i : i + window_len] += 1
             
@@ -44,31 +50,27 @@ def generate_long_window_smooth(model, ppg_signal, preprocessor, device, configs
     return output_ecg / count_map
 
 def test_and_visualize():
-    # 1. CONFIGURAZIONE PARAMETRI DI TEST (MODULARI)
+    # 1. CONFIGURAZIONE PARAMETRI (MODULARI)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    target_fs = 125 # Frequenza di campionamento BIDMC
     
-    # AGGIORNA QUESTO PERCORSO con la tua cartella timestamp
-    model_folder = 'src/bidmc_generation/models/ha_cnn_bilstm_withWST/20260130_141822/'
+    # AGGIORNA QUESTO PERCORSO con la tua cartella timestamp corretta
+    model_folder = 'src/bidmc_generation/models/ha_cnn_bilstm_withWST/20260130_154303/'
     model_path = os.path.join(model_folder, 'best_ha_cnn_bilstm.pth')
-    
     data_path = 'bidmc_data'
     
-    # Configurazione speculare a quella usata nel main del training
+    # Configurazione coerente con l'ultimo training (es. finestre da 60)
     test_configs = {
-        'beat_len': 60,            # Lunghezza usata nel training
-        'overlap_pct': 0.1,        # Overlap usato nel training (10%)
-        'apply_wst': True,         # Deve essere coerente con il modello salvato
-        'overlap_windows': False    # Caricamento batch standard per il test globale
+        'beat_len': 120,            
+        'overlap_pct': 0.5,        
+        'apply_wst': True,         
+        'overlap_windows': False    
     }
     
-    print(f"--- Testing HA-CNN-BILSTM (Modulare) ---")
-    print(f"Parametri: Beat_Len={test_configs['beat_len']}, Overlap={test_configs['overlap_pct']*100}%")
+    print(f"--- Esecuzione Test su TEST SET (Soggetti 48-53) ---")
 
-    # 2. RILEVAMENTO DINAMICO DIMENSIONI (Pre-inizializzazione)
-    # Creiamo un preprocessor temporaneo per "misurare" l'effetto della WST
-    preprocessor = BidmcPreprocessor(fs=125, beat_len=test_configs['beat_len'])
-    
-    # Testiamo la trasformazione su un array di zeri per ottenere le shape reali
+    # 2. RILEVAMENTO DINAMICO DIMENSIONI
+    preprocessor = BidmcPreprocessor(fs=target_fs, beat_len=test_configs['beat_len'])
     dummy_seg = np.zeros((1, test_configs['beat_len']))
     if test_configs['apply_wst']:
         dummy_wst = preprocessor.extract_wst_features(dummy_seg)
@@ -77,21 +79,17 @@ def test_and_visualize():
     else:
         test_configs['input_channels'] = 1
         test_configs['actual_seq_len'] = test_configs['beat_len']
-    
-    print(f"Dimensioni rilevate: Canali={test_configs['input_channels']}, Seq_Len={test_configs['actual_seq_len']}")
 
     # 3. CARICAMENTO MODELLO
     model = HACNNBiLSTM(configs=test_configs, seq_len=test_configs['beat_len']).to(device)
-    
     if not os.path.exists(model_path):
         print(f"Errore: Modello non trovato in {model_path}")
         return
-    
     model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
-    print("Modello e pesi caricati correttamente (No Size Mismatch).")
+    print("Modello caricato correttamente.")
 
-    # 4. PREPROCESSING DATI DI TEST
+    # 4. PREPROCESSING DATI DI TEST (Soggetti 48-53)
     loader = BidmcDataLoader()
     test_subject_ids = [str(i).zfill(2) for i in range(48, 54)]
     raw_data = loader.load_subjects(test_subject_ids, data_path)
@@ -105,55 +103,66 @@ def test_and_visualize():
             
     X = np.concatenate(all_ppg_beats)
     y = np.concatenate(all_ecg_beats)
-
     X_test = torch.tensor(X).float().to(device)
     if not test_configs['apply_wst']: X_test = X_test.unsqueeze(1)
     y_test = torch.tensor(y).float().unsqueeze(1).to(device)
     
-    # 5. INFERENZA E VISUALIZZAZIONE
+    # 5. INFERENZA E VISUALIZZAZIONE BATTITI SINGOLI
     with torch.no_grad():
         y_pred = model(X_test)
         rmse = torch.sqrt(torch.mean((y_pred - y_test)**2)).item()
         print(f"\n>> TEST SET GLOBAL RMSE: {rmse:.4f} <<\n")
 
-    # Plot sample casuali
     indices = random.sample(range(len(X_test)), 2)
     for i, idx in enumerate(indices):
         plt.figure(figsize=(10, 4))
-        plt.plot(y_test[idx, 0].cpu().numpy(), label='ECG Reale', color='black', alpha=0.4, linestyle='--')
-        plt.plot(y_pred[idx, 0].cpu().numpy(), label='ECG Generato', color='red')
-        plt.title(f"Test Random Segment {i+1} (60 samples)")
+        # Asse X in secondi per il singolo segmento
+        time_segment = np.arange(test_configs['beat_len']) / target_fs
+        plt.plot(time_segment, y_test[idx, 0].cpu().numpy(), label='ECG Reale', color='black', alpha=0.4, linestyle='--')
+        plt.plot(time_segment, y_pred[idx, 0].cpu().numpy(), label='ECG Generato', color='red')
+        plt.title(f"Test Segment {i+1} (RMSE: {rmse:.4f})")
+        plt.xlabel("Tempo (s)")
         plt.legend(); plt.grid(alpha=0.3)
-        plt.savefig(f"{model_folder}test_beat_{i+1}.png"); plt.close()
+        
+        # Salvataggio con percorso corretto
+        save_name = os.path.join(model_folder, f"test_beat_{i+1}.png")
+        plt.savefig(save_name); plt.close()
 
-    # 6. FINESTRA LUNGA (Sempre 7.2s -> 900 campioni)
+    # 6. FINESTRA LUNGA (Visualizzazione in Secondi e Fix campioni nulli)
     s_key = list(raw_data['subjects_data'].keys())[0]
     subj = raw_data['subjects_data'][s_key]
     ppg_norm = preprocessor.normalize_signal(preprocessor.apply_bandpass_filter(subj['PPG']))
     ecg_norm = preprocessor.normalize_signal(subj['ECG'])
     
-    start = random.randint(0, len(ppg_norm) - 900)
-    long_ppg = ppg_norm[start : start + 900]
-    long_ecg_real = ecg_norm[start : start + 900]
+    total_len = 900 # ~7.2 secondi
+    start = random.randint(0, len(ppg_norm) - total_len)
+    long_ppg = ppg_norm[start : start + total_len]
+    long_ecg_real = ecg_norm[start : start + total_len]
     
-    # Generazione fluida con i nuovi parametri modulari
-    long_ecg_gen = generate_long_window_smooth(
-        model, long_ppg, preprocessor, device, test_configs
-    )
+    long_ecg_gen = generate_long_window_smooth(model, long_ppg, preprocessor, device, test_configs)
+    
+    # Creazione asse temporale corretto
+    time_axis = np.arange(len(long_ppg)) / target_fs
     
     plt.figure(figsize=(15, 8))
     plt.subplot(2, 1, 1)
-    plt.plot(long_ppg, color='blue', label='Input PPG')
+    plt.plot(time_axis, long_ppg, color='blue', label='Input PPG (Test)')
+    plt.title(f"Segnale PPG Continuo - Soggetto {s_key}")
+    plt.ylabel("Ampiezza Norm.")
     plt.grid(alpha=0.3); plt.legend()
     
     plt.subplot(2, 1, 2)
-    plt.plot(long_ecg_real, color='black', alpha=0.3, label='ECG Reale')
-    plt.plot(long_ecg_gen, color='red', label='ECG Ricostruito (Smooth Stitching)')
-    plt.xlabel("Samples"); plt.legend(); plt.grid(alpha=0.3)
+    plt.plot(time_axis, long_ecg_real, color='black', alpha=0.3, label='ECG Reale')
+    plt.plot(time_axis, long_ecg_gen, color='red', label='ECG Ricostruito (Smooth Stitching)')
+    plt.title("Ricostruzione ECG Temporale (Asse in Secondi)")
+    plt.xlabel("Tempo (s)")
+    plt.ylabel("Ampiezza Norm.")
+    plt.legend(); plt.grid(alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(f"{model_folder}long_window_reconstruction.png")
-    print(f"Test completato. Risultati in: {model_folder}")
+    long_save_name = os.path.join(model_folder, "test_long_window_reconstruction.png")
+    plt.savefig(long_save_name)
+    print(f"Test completato. Grafici salvati in: {model_folder}")
 
 if __name__ == "__main__":
     test_and_visualize()
