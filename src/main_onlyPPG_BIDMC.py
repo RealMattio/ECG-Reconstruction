@@ -1,6 +1,7 @@
 import os
 import sys
 import torch
+import datetime
 
 # 1. GESTIONE PERCORSI
 # Assumiamo che il main sia nella cartella 'src'
@@ -14,10 +15,12 @@ from bidmc_generation.pipeline import run_ha_cnn_bilstm_pipeline
 def main():
     # 2. CONFIGURAZIONE PERCORSI DATI
     # Assicurati che 'bidmc_data' sia nella root del progetto
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     data_path = os.path.join(os.path.dirname(PROJECT_ROOT), 'bidmc_data')
+    model_save_path = os.path.join(PROJECT_ROOT, 'bidmc_generation', 'models', 'ha_cnn_bilstm_withWST', timestamp)
     
     # 3. SELEZIONE SOGGETTI (Dataset BIDMC Respiratory)
-    # 53 pazienti medici con segnali a 125Hz [cite: 310, 311, 313]
+    # 53 pazienti medici con segnali a 125Hz 
     all_subjects = [str(i).zfill(2) for i in range(1, 54)]
 
     # 4. CONFIGURAZIONE IPERPARAMETRI E FLAG MODULARI
@@ -26,23 +29,28 @@ def main():
         'device': torch.device("cuda" if torch.cuda.is_available() else "cpu"),
         
         # Parametri del segnale (Fissi per BIDMC)
-        'target_fs': 125,        # [cite: 313]
-        'beat_len': 120,         # Lunghezza finestra come da Tabella 1 [cite: 318]
-        
+        'target_fs': 125,        # Frequenza di campionamento target
+        'beat_len': 60,         # Lunghezza finestra come da Tabella 1 
+        'overlap_pct': 0.1,     # 10% sovrapposizione per continuità
         # --- FLAG DI MODULARITÀ ---
         'overlap_windows': True, # Attiva sliding window per continuità temporale
         'apply_wst': True,       # Attiva Wavelet Scattering (19 canali in input)
         'apply_dwt': False,      # Opzionale: DWT sull'ECG target
+
+        # --- NUOVI PARAMETRI LOSS MORFOLOGICA ---
+        'use_morphological_loss': True, # Attiva la Pearson Loss
+        'morph_loss_weight': 0.6,       # Peso (da 0 a 1). 0.6 spinge molto sulla forma.
+        'peak_loss_weight': 3.0,        # Peso per la Weighted MSE sui picchi (Quanto penalizzare gli errori sui picchi)
         
         # --- PARAMETRI DI TRAINING ---
-        'batch_size': 20,        # Minimo suggerito dal paper [cite: 318]
-        'optimizer_type': 'SGDM', # RMSE migliore (0.031) secondo lo studio [cite: 351, 529]
-        'lr': 0.001,             # [cite: 318]
+        'batch_size': 20,        # Minimo suggerito dal paper 
+        'optimizer_type': 'SGDM', # RMSE migliore (0.031) secondo lo studio 
+        'lr': 0.001,             # Learning Rate iniziale
         'epochs': 1000,           # Esteso con Early Stopping
         'patience': 15,          # "Simpatica" pazienza per la convergenza
         
         # Percorso salvataggio coerente con la tua struttura
-        'model_save_path': os.path.join(PROJECT_ROOT,'bidmc_generation', 'models', 'ha_cnn_bilstm_withWST')
+        'model_save_path': model_save_path
     }
 
     print("-" * 50)

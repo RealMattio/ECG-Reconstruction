@@ -44,7 +44,8 @@ class HACNNBiLSTM(nn.Module):
         self.regression = nn.Sequential(
             nn.Dropout(0.5),
             nn.Linear(256, 512),
-            nn.ReLU(),
+            #nn.ReLU(),
+            nn.LeakyReLU(negative_slope=0.1), # serve per evitare che le onde Q e S negative vengano regolarizzate dalla ReLU
             nn.Linear(512, seq_len) # L'output torna sempre a 120 per il confronto
         )
 

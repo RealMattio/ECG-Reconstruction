@@ -84,9 +84,10 @@ class BidmcPreprocessor:
         ppg_norm = self.normalize_signal(ppg_filtered)
         ecg_norm = self.normalize_signal(ecg_raw)
 
+        overlap_val = configs.get('overlap_pct', 0.1)
         # 2. Scelta della strategia di segmentazione
         if configs.get('overlap_windows', False):
-            ppg_beats, ecg_beats = self.segment_with_overlap(ppg_norm, ecg_norm)
+            ppg_beats, ecg_beats = self.segment_with_overlap(ppg_norm, ecg_norm, overlap_pct=overlap_val)
         else:
             peaks = self.detect_r_peaks(ecg_norm)
             ppg_beats, ecg_beats = self.segment_into_beats(ppg_norm, ecg_norm, peaks)
