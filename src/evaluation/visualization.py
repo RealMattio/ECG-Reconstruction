@@ -226,23 +226,106 @@ def save_inference_plot(model, val_loader, device, save_path, title="Validation 
     except Exception as e:
         print(f"Errore durante la generazione del grafico: {e}")
 
-def generate_long_window_smooth(model, ppg_signal, device, window_len=120, overlap_pct=0.5):
-    """Genera un ECG lungo usando una sliding window e facendo la media degli overlap."""
+def generate_long_window_smooth(model, ppg_signal, preprocessor, device, configs):
+    """
+    Genera un ECG lungo gestendo dinamicamente overlap e WST.
+    Risolve il problema dei campioni nulli alla fine coprendo l'intero segnale.
+    """
+    window_len = configs['beat_len']
+    overlap_pct = configs.get('overlap_pct', 0.5)
     step = int(window_len * (1 - overlap_pct))
-    output_ecg = np.zeros(len(ppg_signal))
-    count_map = np.zeros(len(ppg_signal)) # Per fare la media
+    
+    total_samples = len(ppg_signal)
+    output_ecg = np.zeros(total_samples)
+    count_map = np.zeros(total_samples)
     
     model.eval()
     with torch.no_grad():
-        for i in range(0, len(ppg_signal) - window_len, step):
+        start_indices = list(range(0, total_samples - window_len, step))
+        if total_samples > window_len and start_indices[-1] + window_len < total_samples:
+            start_indices.append(total_samples - window_len)
+            
+        for i in start_indices:
             seg = ppg_signal[i : i + window_len]
-            seg_t = torch.tensor(seg).float().unsqueeze(0).unsqueeze(0).to(device)
+            
+            if configs.get('apply_wst', False):
+                # Trasformazione WST tramite preprocessor
+                seg_input = preprocessor.extract_wst_features(np.expand_dims(seg, axis=0))
+                seg_t = torch.tensor(seg_input).float().to(device)
+            else:
+                seg_t = torch.tensor(seg).float().unsqueeze(0).unsqueeze(0).to(device)
             
             pred = model(seg_t).cpu().numpy().flatten()
-            
             output_ecg[i : i + window_len] += pred
             count_map[i : i + window_len] += 1
             
-    # Evita divisioni per zero e fai la media
     count_map[count_map == 0] = 1
     return output_ecg / count_map
+
+def save_extended_reports(model, subject_ids, raw_data, preprocessor, device, configs, set_name):
+    """Genera grafici a finestra lunga per un set specifico (Train/Val/Test)."""
+    save_dir = configs['model_save_path']
+    fs = configs['target_fs']
+    
+    # Selezione casuale di un soggetto dal set fornito
+    s_id = random.choice(subject_ids)
+    subj = raw_data['subjects_data'][s_id]
+    
+    ppg_norm = preprocessor.normalize_signal(preprocessor.apply_bandpass_filter(subj['PPG']))
+    ecg_norm = preprocessor.normalize_signal(subj['ECG'])
+    
+    # Finestra di circa 7.2s (900 campioni)
+    total_len = min(900, len(ppg_norm))
+    start = random.randint(0, len(ppg_norm) - total_len)
+    long_ppg = ppg_norm[start : start + total_len]
+    long_ecg_real = ecg_norm[start : start + total_len]
+    
+    # Chiamata alla funzione interna allo stesso file
+    long_ecg_gen = generate_long_window_smooth(model, long_ppg, preprocessor, device, configs)
+    
+    time_axis = np.arange(len(long_ppg)) / fs
+    plt.figure(figsize=(15, 8))
+    
+    plt.subplot(2, 1, 1)
+    plt.plot(time_axis, long_ppg, color='blue', label='Input PPG')
+    plt.title(f"[{set_name.upper()}] PPG Continuo - Soggetto {s_id}")
+    plt.ylabel("Ampiezza")
+    plt.grid(alpha=0.3); plt.legend()
+    
+    plt.subplot(2, 1, 2)
+    plt.plot(time_axis, long_ecg_real, color='black', alpha=0.3, label='ECG Reale')
+    plt.plot(time_axis, long_ecg_gen, color='red', label='ECG Ricostruito (Smooth Stitching)')
+    plt.title(f"[{set_name.upper()}] Ricostruzione ECG - Visualizzazione Temporale")
+    plt.xlabel("Tempo (s)"); plt.ylabel("Ampiezza")
+    plt.legend(); plt.grid(alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_dir, f"{set_name}_long_reconstruction.png"))
+    plt.close()
+
+def plot_training_history_metrics(history, save_dir):
+    """Grafico a tre pannelli per le metriche di training."""
+    epochs = range(1, len(history['train_loss']) + 1)
+    fig, axes = plt.subplots(1, 3, figsize=(21, 6))
+
+    # Pannello 1: Total Loss
+    axes[0].plot(epochs, history['train_loss'], label='Train')
+    axes[0].plot(epochs, history['val_loss'], label='Val', linestyle='--')
+    axes[0].set_title('Total Loss'); axes[0].legend()
+
+    # Pannello 2: Weighted RMSE
+    axes[1].plot(epochs, history['train_rmse'], label='Train', color='green')
+    axes[1].plot(epochs, history['val_rmse'], label='Val', color='lightgreen', linestyle='--')
+    axes[1].set_title('Weighted RMSE'); axes[1].legend()
+
+    # Pannello 3: Pearson Loss
+    axes[2].plot(epochs, history['train_pearson'], label='Train', color='red')
+    axes[2].plot(epochs, history['val_pearson'], label='Val', color='salmon', linestyle='--')
+    axes[2].set_title('Pearson Loss (1 - Corr)'); axes[2].legend()
+
+    for ax in axes: ax.set_xlabel('Epochs'); ax.grid(alpha=0.3)
+    
+    plt.tight_layout()
+    path = os.path.join(save_dir, 'training_metrics_curves.png')
+    plt.savefig(path); plt.close()
+    print(f"Grafico metriche salvato in: {path}")

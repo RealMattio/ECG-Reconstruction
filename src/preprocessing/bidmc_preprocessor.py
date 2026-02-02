@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import pywt
+import random
 from scipy.signal import butter, filtfilt, find_peaks
 from kymatio.torch import Scattering1D
 
@@ -12,6 +13,31 @@ class BidmcPreprocessor:
         # Inizializziamo la WST per ottenere circa 19 coefficienti [cite: 318, 530]
         # J=2 (scale), Q=8 (risoluzione) sono parametri tipici per segnali fisiologici
         self.scattering = Scattering1D(J=2, shape=(beat_len,), Q=8)
+
+    def split_subjects(self, available_keys, train_ratio=0.8, val_ratio=0.1, seed=42):
+        """
+        Divide i soggetti reali caricati dal loader in Train, Val e Test set.
+        """
+        random.seed(seed)
+        keys = sorted(list(available_keys)) # Assicura ordine prima dello shuffle
+        random.shuffle(keys)
+
+        n_total = len(keys)
+        n_train = int(n_total * train_ratio)
+        n_val = int(n_total * val_ratio)
+
+        train_keys = sorted(keys[:n_train])
+        val_keys = sorted(keys[n_train : n_train + n_val])
+        test_keys = sorted(keys[n_train + n_val :])
+
+        print("\n" + "="*40)
+        print(f"SOGGETTI SPLIT (Seed: {seed})")
+        print(f"Train ({len(train_keys)}): {train_keys}")
+        print(f"Val   ({len(val_keys)}): {val_keys}")
+        print(f"Test  ({len(test_keys)}): {test_keys}")
+        print("="*40 + "\n")
+
+        return train_keys, val_keys, test_keys
 
     def apply_bandpass_filter(self, signal, lowcut=0.5, highcut=8.0, order=4):
         """Filtro 0.5-8Hz come da specifiche HA-CNN-BILSTM[cite: 326]."""
@@ -76,29 +102,22 @@ class BidmcPreprocessor:
         return np.array(ppg_segments), np.array(ecg_segments)
 
     def process_subject(self, ppg_raw, ecg_raw, configs):
-        """
-        Orchestra il preprocessing modulare in base alle configs.
-        """
-        # 1. Filtraggio e Normalizzazione Base
+        # (Il codice esistente della funzione process_subject rimane lo stesso)
         ppg_filtered = self.apply_bandpass_filter(ppg_raw)
         ppg_norm = self.normalize_signal(ppg_filtered)
         ecg_norm = self.normalize_signal(ecg_raw)
 
         overlap_val = configs.get('overlap_pct', 0.1)
-        # 2. Scelta della strategia di segmentazione
         if configs.get('overlap_windows', False):
             ppg_beats, ecg_beats = self.segment_with_overlap(ppg_norm, ecg_norm, overlap_pct=overlap_val)
         else:
             peaks = self.detect_r_peaks(ecg_norm)
             ppg_beats, ecg_beats = self.segment_into_beats(ppg_norm, ecg_norm, peaks)
 
-        # 3. Trasformazioni Avanzate (Wavelet) [cite: 148, 154]
         if configs.get('apply_wst', False):
-            print("INFO: Applicazione Wavelet Scattering (WST) sul PPG...")
             ppg_beats = self.extract_wst_features(ppg_beats)
             
         if configs.get('apply_dwt', False):
-            print("INFO: Applicazione Discrete Wavelet (DWT) sull'ECG...")
             ecg_beats = self.apply_dwt_ecg(ecg_beats)
 
         return ppg_beats, ecg_beats

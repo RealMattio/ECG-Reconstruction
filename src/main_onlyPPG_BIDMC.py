@@ -31,7 +31,7 @@ def main():
         # Parametri del segnale (Fissi per BIDMC)
         'target_fs': 125,        # Frequenza di campionamento target
         'beat_len': 120,         # Lunghezza finestra come da Tabella 1 
-        'overlap_pct': 0.4,     # 10% sovrapposizione per continuità
+        'overlap_pct': 0.5,     # 10% sovrapposizione per continuità
         # --- FLAG DI MODULARITÀ ---
         'overlap_windows': True, # Attiva sliding window per continuità temporale
         'apply_wst': True,       # Attiva Wavelet Scattering (19 canali in input)
@@ -50,7 +50,11 @@ def main():
         'patience': 15,          # "Simpatica" pazienza per la convergenza
         
         # Percorso salvataggio coerente con la tua struttura
-        'model_save_path': model_save_path
+        'model_save_path': model_save_path,
+
+        'train_ratio': 0.80,   # 95% soggetti per training
+        'val_ratio': 0.15,    # 2.5% soggetti per validation
+        'seed': 45                # Per riproducibilità
     }
 
     print("-" * 50)
