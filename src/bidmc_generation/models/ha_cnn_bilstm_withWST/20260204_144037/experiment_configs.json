@@ -1,0 +1,33 @@
+{
+    "model_type": "ha_cnn_bilstm",
+    "device": "cuda",
+    "target_fs": 125,
+    "beat_len": 120,
+    "overlap_pct": 0.7,
+    "overlap_windows": false,
+    "apply_wst": true,
+    "apply_dwt": false,
+    "use_morphological_loss": true,
+    "morph_loss_weight": 0.6,
+    "peak_loss_weight": 1.0,
+    "batch_size": 64,
+    "optimizer_type": "ADAM",
+    "lr": 0.001,
+    "epochs": 1000,
+    "patience": 15,
+    "model_save_path": "/home/mmerone/mattia/ecg_generation/src/bidmc_generation/models/ha_cnn_bilstm_withWST/20260204_144037",
+    "train_ratio": 0.8,
+    "val_ratio": 0.15,
+    "seed": 42,
+    "input_channels": 8,
+    "actual_seq_len": 30,
+    "excluded_subjects": [
+        "S04",
+        "S10",
+        "S13",
+        "S15",
+        "S32",
+        "S33",
+        "S44"
+    ]
+}

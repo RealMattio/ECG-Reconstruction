@@ -31,21 +31,21 @@ def main():
         # Parametri del segnale (Fissi per BIDMC)
         'target_fs': 125,        # Frequenza di campionamento target
         'beat_len': 120,         # Lunghezza finestra come da Tabella 1 
-        'overlap_pct': 0.5,     # 10% sovrapposizione per continuità
+        'overlap_pct': 0.7,     # 10% sovrapposizione per continuità
         # --- FLAG DI MODULARITÀ ---
-        'overlap_windows': True, # Attiva sliding window per continuità temporale
+        'overlap_windows': False, # Attiva sliding window per continuità temporale
         'apply_wst': True,       # Attiva Wavelet Scattering (19 canali in input)
         'apply_dwt': False,      # Opzionale: DWT sull'ECG target
 
         # --- NUOVI PARAMETRI LOSS MORFOLOGICA ---
         'use_morphological_loss': True, # Attiva la Pearson Loss
         'morph_loss_weight': 0.6,       # Peso (da 0 a 1). 0.6 spinge molto sulla forma.
-        'peak_loss_weight': 3.0,        # Peso per la Weighted MSE sui picchi (Quanto penalizzare gli errori sui picchi)
+        'peak_loss_weight': 1.0,        # Peso per la Weighted MSE sui picchi (Quanto penalizzare gli errori sui picchi)
         
         # --- PARAMETRI DI TRAINING ---
-        'batch_size': 20,        # Minimo suggerito dal paper 
-        'optimizer_type': 'SGDM', # RMSE migliore (0.031) secondo lo studio 
-        'lr': 0.001,             # Learning Rate iniziale
+        'batch_size': 64,        # Minimo suggerito dal paper 
+        'optimizer_type': 'ADAM', # RMSE migliore (0.031) secondo lo studio 
+        'lr': 1e-3,             # Learning Rate iniziale
         'epochs': 1000,           # Esteso con Early Stopping
         'patience': 15,          # "Simpatica" pazienza per la convergenza
         
@@ -54,7 +54,7 @@ def main():
 
         'train_ratio': 0.80,   # 95% soggetti per training
         'val_ratio': 0.15,    # 2.5% soggetti per validation
-        'seed': 45                # Per riproducibilità
+        'seed': 42                # Per riproducibilità
     }
 
     print("-" * 50)

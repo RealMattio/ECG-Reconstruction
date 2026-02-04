@@ -43,15 +43,25 @@ def run_ha_cnn_bilstm_pipeline(base_path, configs):
     save_dir = configs['model_save_path']
     os.makedirs(save_dir, exist_ok=True)
 
+    # --- NOVITÀ: LISTA DI ESCLUSIONE ---
+    # Definiamo gli ID da escludere (formato intero per comodità)
+    exclude_ids = [4, 10, 13, 15, 32, 33, 44]
+    exclude_keys = [f"S{str(i).zfill(2)}" for i in exclude_ids]
+    
     # 1. CARICAMENTO DATI
-    # Passiamo una lista vuota o range(1,54) al loader se necessario
     loader = BidmcDataLoader()
+    # Carichiamo inizialmente tutti i 53 soggetti
     raw_data = loader.load_subjects([str(i).zfill(2) for i in range(1, 54)], base_path)
     
-    # Otteniamo le chiavi reali (es. ['S01', 'S02'...])
-    available_keys = raw_data['subjects_data'].keys()
+    # Filtraggio dei soggetti prima dello split
+    all_keys = list(raw_data['subjects_data'].keys())
+    available_keys = [k for k in all_keys if k not in exclude_keys]
+    
+    print(f"Soggetti totali caricati: {len(all_keys)}")
+    print(f"Soggetti esclusi: {exclude_keys}")
+    print(f"Soggetti utilizzati per la pipeline: {len(available_keys)}")
 
-    # 2. SPLITTING DEI SOGGETTI
+    # 2. SPLITTING DEI SOGGETTI (su lista filtrata)
     preprocessor = BidmcPreprocessor(fs=configs['target_fs'], beat_len=configs['beat_len'])
     train_keys, val_keys, test_keys = preprocessor.split_subjects(
         available_keys,
@@ -70,15 +80,16 @@ def run_ha_cnn_bilstm_pipeline(base_path, configs):
     print("Creazione Test Dataset...")
     test_ds = _prepare_data(test_keys, raw_data, preprocessor, configs)
 
-    # Rilevamento dimensioni (usando il primo sample del train)
+    # Rilevamento dimensioni
     actual_input_channels = train_ds[0][0].shape[0] if configs.get('apply_wst', False) else 1
     actual_seq_len = train_ds[0][0].shape[-1]
     configs['input_channels'] = actual_input_channels
     configs['actual_seq_len'] = actual_seq_len
 
-    # Salvataggio Config
+    # Salvataggio Config (include i soggetti esclusi per memoria futura)
     serializable_configs = configs.copy()
     serializable_configs['device'] = str(device)
+    serializable_configs['excluded_subjects'] = exclude_keys
     with open(os.path.join(save_dir, 'experiment_configs.json'), 'w') as f:
         json.dump(serializable_configs, f, indent=4)
 
@@ -87,36 +98,27 @@ def run_ha_cnn_bilstm_pipeline(base_path, configs):
     val_loader = DataLoader(val_ds, batch_size=configs['batch_size'], shuffle=False)
     test_loader = DataLoader(test_ds, batch_size=configs['batch_size'], shuffle=False)
 
-    # 4. MODELLO
+    # 4. MODELLO E TRAINER
     model = HACNNBiLSTM(configs=configs, seq_len=configs['beat_len'])
     trainer = HACNNBiLSTMTrainer(model, device, configs)
 
-    # 5. TRAINING (usando il val_loader per l'early stopping)
+    # 5. TRAINING
     history = trainer.fit(train_loader, val_loader, epochs=configs['epochs'], patience=configs['patience'])
 
-    # 6. SALVATAGGIO FINALE E REPORTISTICA ESTESA
+    # 6. SALVATAGGIO E REPORTISTICA
     final_model_path = os.path.join(save_dir, "ha_cnn_bilstm_final.pth")
     torch.save(model.state_dict(), final_model_path)
     save_training_history(history, save_dir)
     plot_training_history_metrics(history, save_dir)
     
-    # Carichiamo il miglior modello salvato durante il training per i grafici
     best_model_path = os.path.join(save_dir, 'best_ha_cnn_bilstm.pth')
     model.load_state_dict(torch.load(best_model_path, map_location=device))
     
     print("\n--- Generazione Report Grafici Estesi ---")
-    
-    # Genera report per il Training Set
     save_extended_reports(model, train_keys, raw_data, preprocessor, device, configs, "train")
-    
-    # Genera report per il Validation Set
     save_extended_reports(model, val_keys, raw_data, preprocessor, device, configs, "val")
-    
-    # Genera report per il Test Set
     save_extended_reports(model, test_keys, raw_data, preprocessor, device, configs, "test")
-    
-    # Manteniamo anche il tuo grafico di inferenza originale (sui batch del test set)
     save_inference_plot(model, test_loader, device, os.path.join(save_dir, "final_test_batch_inference.png"))
 
-    print(f"Pipeline completata. Tutti i grafici sono stati salvati in: {save_dir}")
+    print(f"Pipeline completata. Risultati in: {save_dir}")
     return history
