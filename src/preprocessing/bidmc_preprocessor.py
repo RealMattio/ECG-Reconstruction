@@ -39,17 +39,24 @@ class BidmcPreprocessor:
 
         return train_keys, val_keys, test_keys
 
-    def apply_bandpass_filter(self, signal, lowcut=0.5, highcut=8.0, order=4):
-        """Filtro 0.5-8Hz come da specifiche HA-CNN-BILSTM[cite: 326]."""
+    def apply_bandpass_filter(self, signal, lowcut, highcut, order=4):
         nyquist = 0.5 * self.fs
         low = lowcut / nyquist
         high = highcut / nyquist
+        # Clip high per sicurezza se vicino alla frequenza di Nyquist
+        if high >= 1.0: high = 0.99 
         b, a = butter(order, [low, high], btype='bandpass')
         return filtfilt(b, a, signal)
 
     def normalize_signal(self, signal):
         """Z-score normalization."""
         return (signal - np.mean(signal)) / (np.std(signal) + 1e-8)
+
+    def normalize_min_max(self, signal):
+        """Normalizza il segnale nell'intervallo [0, 1]."""
+        s_min = np.min(signal)
+        s_max = np.max(signal)
+        return (signal - s_min) / (s_max - s_min + 1e-8)
 
     def detect_r_peaks(self, ecg_signal):
         """Rilevamento picchi R per segmentazione beat-by-beat[cite: 86]."""
@@ -101,12 +108,34 @@ class BidmcPreprocessor:
                 ecg_segments.append(e_seg)
         return np.array(ppg_segments), np.array(ecg_segments)
 
-    def process_subject(self, ppg_raw, ecg_raw, configs):
-        # (Il codice esistente della funzione process_subject rimane lo stesso)
-        ppg_filtered = self.apply_bandpass_filter(ppg_raw)
-        ppg_norm = self.normalize_signal(ppg_filtered)
-        ecg_norm = self.normalize_signal(ecg_raw)
+    def process_subject(self, ppg_raw, ecg_raw, configs, is_training=False):
+        """
+        Esegue l'intera pipeline di processing: 
+        Filtro -> Normalizzazione -> Segmentazione -> (Augmentation) -> (WST/DWT)
+        """
+        
+        # 1. FILTRAGGIO DIFFERENZIATO (Soluzione 2)
+        # Il PPG viene filtrato 0.5-8Hz (standard per ossimetria)
+        ppg_filtered = self.apply_bandpass_filter(ppg_raw, lowcut=0.5, highcut=8.0)
+        
+        # L'ECG viene filtrato 0.5-30Hz (per mantenere i picchi R nitidi)
+        if configs.get('apply_ecg_filter', True):
+            ecg_filtered = self.apply_bandpass_filter(ecg_raw, lowcut=0.5, highcut=30.0)
+        else:
+            # Se disattivato, usa un filtro base o il segnale grezzo
+            ecg_filtered = self.apply_bandpass_filter(ecg_raw, lowcut=0.5, highcut=8.0)
 
+        # 2. NORMALIZZAZIONE MODULARE (Soluzione 1)
+        if configs.get('normalize_01', False):
+            # Intervallo [0, 1] richiesto dai nuovi paper
+            ppg_norm = self.normalize_min_max(ppg_filtered)
+            ecg_norm = self.normalize_min_max(ecg_filtered)
+        else:
+            # Vecchia Z-score normalization (media 0, std 1)
+            ppg_norm = self.normalize_signal(ppg_filtered)
+            ecg_norm = self.normalize_signal(ecg_filtered)
+
+        # 3. SEGMENTAZIONE (Invariata)
         overlap_val = configs.get('overlap_pct', 0.1)
         if configs.get('overlap_windows', False):
             ppg_beats, ecg_beats = self.segment_with_overlap(ppg_norm, ecg_norm, overlap_pct=overlap_val)
@@ -114,6 +143,23 @@ class BidmcPreprocessor:
             peaks = self.detect_r_peaks(ecg_norm)
             ppg_beats, ecg_beats = self.segment_into_beats(ppg_norm, ecg_norm, peaks)
 
+        # Se non ci sono battiti estratti (es. segnale troppo corto o piatto), esci subito
+        if len(ppg_beats) == 0:
+            return np.array([]), np.array([])
+
+        # 4. DATA AUGMENTATION (Soluzione 3)
+        # Si applica solo in fase di training e se attivata nei configs
+        if is_training and configs.get('apply_augmentation', False):
+            augmented_ppg = []
+            augmented_ecg = []
+            for i in range(len(ppg_beats)):
+                p_aug, e_aug = self.apply_augmentation(ppg_beats[i], ecg_beats[i], configs)
+                augmented_ppg.append(p_aug)
+                augmented_ecg.append(e_aug)
+            ppg_beats = np.array(augmented_ppg)
+            ecg_beats = np.array(augmented_ecg)
+
+        # 5. TRASFORMAZIONI OPZIONALI (WST / DWT)
         if configs.get('apply_wst', False):
             ppg_beats = self.extract_wst_features(ppg_beats)
             
@@ -121,3 +167,30 @@ class BidmcPreprocessor:
             ecg_beats = self.apply_dwt_ecg(ecg_beats)
 
         return ppg_beats, ecg_beats
+    
+    def apply_augmentation(self, ppg_segment, ecg_segment, configs):
+        """Applica augmentation in modo sincronizzato a input e target."""
+        aug_ppg = ppg_segment.copy()
+        aug_ecg = ecg_segment.copy()
+
+        # 1. Random Gain (Ampiezza)
+        if configs.get('aug_random_gain', False):
+            factor = np.random.uniform(0.8, 1.2)
+            aug_ppg *= factor
+            # L'ECG non lo scaliamo o lo scaliamo meno per mantenere il target stabile
+        
+        # 2. Time Stretching (Frequenza cardiaca)
+        if configs.get('aug_time_stretch', False):
+            # Stretching leggero tra 90% e 110%
+            stretch_factor = np.random.uniform(0.9, 1.1)
+            orig_len = len(ppg_segment)
+            new_len = int(orig_len * stretch_factor)
+            
+            # Resampling
+            indices = np.linspace(0, orig_len - 1, new_len)
+            aug_ppg = np.interp(np.linspace(0, orig_len - 1, orig_len), indices, 
+                                np.interp(indices, np.arange(orig_len), aug_ppg))
+            aug_ecg = np.interp(np.linspace(0, orig_len - 1, orig_len), indices, 
+                                np.interp(indices, np.arange(orig_len), aug_ecg))
+
+        return aug_ppg, aug_ecg

@@ -34,18 +34,25 @@ class HACNNBiLSTMTrainer:
         return 1 - torch.mean(correlation)
 
     def compute_detailed_losses(self, output, target):
-        """Calcola separatamente i componenti della loss."""
+        # Assicurati che output e target siano (Batch, 1, 120)
+        # Se il dataloader restituisce target come (Batch, 120), usa .unsqueeze(1)
+        if len(target.shape) == 2:
+            target = target.unsqueeze(1)
+
         # 1. Weighted RMSE
         weights = 1.0 + self.lambda_peak * torch.abs(target)
         weighted_mse = torch.mean(weights * (output - target)**2)
         rmse_w = torch.sqrt(weighted_mse + 1e-8)
         
         # 2. Pearson Loss
-        p_loss = self.pearson_loss(output, target) if self.use_morph else torch.tensor(0.0).to(self.device)
+        p_loss = self.pearson_loss(output, target)
         
-        # 3. Total Loss
-        total_loss = (1 - self.alpha) * rmse_w + self.alpha * p_loss if self.use_morph else rmse_w
+        # 3. Gradient Loss (Derivata)
+        dy_pred = output[:, :, 1:] - output[:, :, :-1]
+        dy_true = target[:, :, 1:] - target[:, :, :-1]
+        grad_loss = torch.mean((dy_pred - dy_true)**2)
         
+        total_loss = (1 - self.alpha) * rmse_w + self.alpha * p_loss + 0.1 * grad_loss
         return total_loss, rmse_w, p_loss
 
     def train_epoch(self, train_loader):

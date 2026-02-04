@@ -267,33 +267,49 @@ def save_extended_reports(model, subject_ids, raw_data, preprocessor, device, co
     save_dir = configs['model_save_path']
     fs = configs['target_fs']
     
-    # Selezione casuale di un soggetto dal set fornito
+    # 1. Selezione casuale di un soggetto
     s_id = random.choice(subject_ids)
     subj = raw_data['subjects_data'][s_id]
     
-    ppg_norm = preprocessor.normalize_signal(preprocessor.apply_bandpass_filter(subj['PPG']))
-    ecg_norm = preprocessor.normalize_signal(subj['ECG'])
+    # --- LOGICA DI PRE-PROCESSING ALLINEATA ---
+    # Filtraggio differenziato (Soluzione 2 implementata precedentemente)
+    ppg_f = preprocessor.apply_bandpass_filter(subj['PPG'], lowcut=0.5, highcut=8.0)
     
-    # Finestra di circa 7.2s (900 campioni)
+    if configs.get('apply_ecg_filter', True):
+        ecg_f = preprocessor.apply_bandpass_filter(subj['ECG'], lowcut=0.5, highcut=30.0)
+    else:
+        ecg_f = preprocessor.apply_bandpass_filter(subj['ECG'], lowcut=0.5, highcut=8.0)
+
+    # Normalizzazione modulare (Soluzione 1 implementata precedentemente)
+    if configs.get('normalize_01', False):
+        ppg_norm = preprocessor.normalize_min_max(ppg_f)
+        ecg_norm = preprocessor.normalize_min_max(ecg_f)
+    else:
+        ppg_norm = preprocessor.normalize_signal(ppg_f)
+        ecg_norm = preprocessor.normalize_signal(ecg_f)
+    # ------------------------------------------
+    
+    # Finestra di circa 7.2s (900 campioni a 125Hz)
     total_len = min(900, len(ppg_norm))
     start = random.randint(0, len(ppg_norm) - total_len)
     long_ppg = ppg_norm[start : start + total_len]
     long_ecg_real = ecg_norm[start : start + total_len]
     
-    # Chiamata alla funzione interna allo stesso file
+    # Generazione ECG sintetico
     long_ecg_gen = generate_long_window_smooth(model, long_ppg, preprocessor, device, configs)
     
     time_axis = np.arange(len(long_ppg)) / fs
     plt.figure(figsize=(15, 8))
     
+    # Plotting (Invariato)
     plt.subplot(2, 1, 1)
     plt.plot(time_axis, long_ppg, color='blue', label='Input PPG')
-    plt.title(f"[{set_name.upper()}] PPG Continuo - Soggetto {s_id}")
-    plt.ylabel("Ampiezza")
+    plt.title(f"[{set_name.upper()}] PPG Continuo (0.5-8Hz) - Soggetto {s_id}")
+    plt.ylabel("Ampiezza " + ("[0,1]" if configs.get('normalize_01') else "Z-Score"))
     plt.grid(alpha=0.3); plt.legend()
     
     plt.subplot(2, 1, 2)
-    plt.plot(time_axis, long_ecg_real, color='black', alpha=0.3, label='ECG Reale')
+    plt.plot(time_axis, long_ecg_real, color='black', alpha=0.3, label='ECG Reale (0.5-30Hz)')
     plt.plot(time_axis, long_ecg_gen, color='red', label='ECG Ricostruito (Smooth Stitching)')
     plt.title(f"[{set_name.upper()}] Ricostruzione ECG - Visualizzazione Temporale")
     plt.xlabel("Tempo (s)"); plt.ylabel("Ampiezza")

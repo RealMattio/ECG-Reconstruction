@@ -34,16 +34,21 @@ def main():
         'overlap_pct': 0.7,     # 10% sovrapposizione per continuità
         # --- FLAG DI MODULARITÀ ---
         'overlap_windows': False, # Attiva sliding window per continuità temporale
-        'apply_wst': True,       # Attiva Wavelet Scattering (19 canali in input)
+        'apply_wst': False,       # Attiva Wavelet Scattering (19 canali in input)
         'apply_dwt': False,      # Opzionale: DWT sull'ECG target
+        'apply_augmentation': True,     # Attiva il modulo generale
+        'aug_random_gain': True,        # Gain casuale
+        'aug_time_stretch': True,       # Stretching temporale
+        'normalize_01': True,         # Attiva standardizzazione 0-1 per PPG ed ECG
+        'apply_ecg_filter': True,     # Attiva filtro 0.5-30Hz sull'ECG
 
         # --- NUOVI PARAMETRI LOSS MORFOLOGICA ---
         'use_morphological_loss': True, # Attiva la Pearson Loss
         'morph_loss_weight': 0.6,       # Peso (da 0 a 1). 0.6 spinge molto sulla forma.
-        'peak_loss_weight': 1.0,        # Peso per la Weighted MSE sui picchi (Quanto penalizzare gli errori sui picchi)
+        'peak_loss_weight': 3.0,        # Peso per la Weighted MSE sui picchi (Quanto penalizzare gli errori sui picchi)
         
         # --- PARAMETRI DI TRAINING ---
-        'batch_size': 64,        # Minimo suggerito dal paper 
+        'batch_size': 64,        # 20 è Minimo suggerito dal paper 
         'optimizer_type': 'ADAM', # RMSE migliore (0.031) secondo lo studio 
         'lr': 1e-3,             # Learning Rate iniziale
         'epochs': 1000,           # Esteso con Early Stopping
@@ -54,7 +59,7 @@ def main():
 
         'train_ratio': 0.80,   # 95% soggetti per training
         'val_ratio': 0.15,    # 2.5% soggetti per validation
-        'seed': 42                # Per riproducibilità
+        'seed': 43                # Per riproducibilità
     }
 
     print("-" * 50)
