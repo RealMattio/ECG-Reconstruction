@@ -262,61 +262,154 @@ def generate_long_window_smooth(model, ppg_signal, preprocessor, device, configs
     count_map[count_map == 0] = 1
     return output_ecg / count_map
 
+def generate_autoregressive_recon(model, ppg_long, ecg_seed, device, configs, preprocessor):
+    """
+    Genera ECG in modo iterativo gestendo correttamente WST e Raw input.
+    """
+    fs = configs['target_fs']
+    x_sec = configs.get('x_sec', 7)
+    gen_sec = configs.get('gen_sec', 1)
+    
+    X_samples = int(fs * x_sec)
+    n_samples = int(fs * gen_sec)
+    
+    # Controllo lunghezza seed
+    if len(ecg_seed) < X_samples:
+        raise ValueError(f"Seed troppo corto. Serve almeno {X_samples} campioni.")
+        
+    generated_ecg = ecg_seed.tolist()
+    
+    model.eval()
+    with torch.no_grad():
+        cursor = len(ecg_seed)
+        
+        # Loop di generazione
+        while cursor + n_samples <= len(ppg_long):
+            
+            # 1. Estrazione segmenti RAW
+            # ECG Past: ultimi X campioni dal buffer
+            curr_ecg_past = np.array(generated_ecg[cursor - X_samples : cursor])
+            
+            # PPG Future: segmento corrispondente shiftato
+            start_ppg = cursor - X_samples + n_samples
+            end_ppg = cursor + n_samples
+            if start_ppg < 0: break
+            curr_ppg = ppg_long[start_ppg : end_ppg]
+            
+            # 2. PREPARAZIONE TENSORE DI INPUT (Gestione WST vs RAW)
+            if configs.get('apply_wst', False):
+                # --- CASO WST ---
+                # Dobbiamo espandere le dimensioni per simulare un batch di 1: (1, Time)
+                p_in = curr_ppg[np.newaxis, :] 
+                e_in = curr_ecg_past[np.newaxis, :]
+                
+                # Estraiamo le feature WST usando il preprocessor
+                # Output shape attesa: (1, Channels_per_signal, Time_Red)
+                p_feat = preprocessor.extract_wst_features(p_in)
+                e_feat = preprocessor.extract_wst_features(e_in)
+                
+                # Invece di stackare, CONCATENIAMO lungo i canali (Axis 1)
+                # Es: 8 canali PPG + 8 canali ECG = 16 canali totali
+                input_stack = np.concatenate([p_feat, e_feat], axis=1)
+                
+                # Convertiamo in tensore
+                input_t = torch.tensor(input_stack).float().to(device)
+                
+            else:
+                # --- CASO RAW ---
+                # Stack su nuovo asse canali: (2, Time)
+                input_stack = np.stack([curr_ppg, curr_ecg_past], axis=0)
+                # Aggiungiamo dimensione batch: (1, 2, Time)
+                input_t = torch.tensor(input_stack).float().unsqueeze(0).to(device)
+            
+            # 3. Inferenza
+            pred_sec = model(input_t).cpu().squeeze().numpy()
+            
+            # Gestione output (scalare o array)
+            if pred_sec.ndim == 0:
+                pred_sec = [pred_sec.item()]
+            else:
+                pred_sec = pred_sec.tolist()
+            
+            # 4. Aggiornamento buffer
+            generated_ecg.extend(pred_sec)
+            cursor += n_samples
+
+    return np.array(generated_ecg)
+
 def save_extended_reports(model, subject_ids, raw_data, preprocessor, device, configs, set_name):
-    """Genera grafici a finestra lunga per un set specifico (Train/Val/Test)."""
     save_dir = configs['model_save_path']
     fs = configs['target_fs']
     
-    # 1. Selezione casuale di un soggetto
+    # Leggiamo i parametri
+    x_sec = configs.get('x_sec', 7)
+    gen_sec = configs.get('gen_sec', 1)
+    
     s_id = random.choice(subject_ids)
     subj = raw_data['subjects_data'][s_id]
     
-    # --- LOGICA DI PRE-PROCESSING ALLINEATA ---
-    # Filtraggio differenziato (Soluzione 2 implementata precedentemente)
-    ppg_f = preprocessor.apply_bandpass_filter(subj['PPG'], lowcut=0.5, highcut=8.0)
+    # 1. Processing (Coerente con il training)
+    ppg_f = preprocessor.apply_bandpass_filter(subj['PPG'], 0.5, 8.0)
+    ecg_f = preprocessor.apply_bandpass_filter(subj['ECG'], 0.5, 30.0)
     
-    if configs.get('apply_ecg_filter', True):
-        ecg_f = preprocessor.apply_bandpass_filter(subj['ECG'], lowcut=0.5, highcut=30.0)
-    else:
-        ecg_f = preprocessor.apply_bandpass_filter(subj['ECG'], lowcut=0.5, highcut=8.0)
-
-    # Normalizzazione modulare (Soluzione 1 implementata precedentemente)
     if configs.get('normalize_01', False):
-        ppg_norm = preprocessor.normalize_min_max(ppg_f)
-        ecg_norm = preprocessor.normalize_min_max(ecg_f)
+        ppg_n, ecg_n = preprocessor.normalize_min_max(ppg_f), preprocessor.normalize_min_max(ecg_f)
     else:
-        ppg_norm = preprocessor.normalize_signal(ppg_f)
-        ecg_norm = preprocessor.normalize_signal(ecg_f)
-    # ------------------------------------------
+        ppg_n, ecg_n = preprocessor.normalize_signal(ppg_f), preprocessor.normalize_signal(ecg_f)
+
+    # 2. Selezione finestra lunga per il test (es. 15 secondi totali)
+    # Deve essere abbastanza lunga da contenere Seed + Generazione
+    total_sec = 15
+    total_samples = min(fs * total_sec, len(ppg_n))
     
-    # Finestra di circa 7.2s (900 campioni a 125Hz)
-    total_len = min(900, len(ppg_norm))
-    start = random.randint(0, len(ppg_norm) - total_len)
-    long_ppg = ppg_norm[start : start + total_len]
-    long_ecg_real = ecg_norm[start : start + total_len]
+    # Punto di partenza casuale
+    start_idx = random.randint(0, len(ppg_n) - total_samples)
     
-    # Generazione ECG sintetico
-    long_ecg_gen = generate_long_window_smooth(model, long_ppg, preprocessor, device, configs)
+    # Estraiamo i segmenti "Ground Truth" completi
+    long_ppg_gt = ppg_n[start_idx : start_idx + total_samples]
+    long_ecg_gt = ecg_n[start_idx : start_idx + total_samples]
     
-    time_axis = np.arange(len(long_ppg)) / fs
+    # 3. Definizione del SEED (Innesco)
+    # Con la nuova logica, il seed deve essere lungo ESATTAMENTE X secondi (window_sec)
+    # Questo perché il modello si aspetta un input ECG di lunghezza X.
+    seed_samples = int(fs * x_sec)
+    ecg_seed = long_ecg_gt[:seed_samples]
+    
+    # 4. Generazione Iterativa
+    # Passiamo tutto il PPG (che userà come guida futura) e il seed ECG
+    long_ecg_gen = generate_autoregressive_recon(model, long_ppg_gt, ecg_seed, device, configs, preprocessor)
+    
+    # 5. Plotting
+    # Tagliamo alla lunghezza minima comune per visualizzare
+    plot_len = min(len(long_ecg_gt), len(long_ecg_gen))
+    time_axis = np.arange(plot_len) / fs
+    
     plt.figure(figsize=(15, 8))
     
-    # Plotting (Invariato)
+    # Subplot 1: Input PPG
     plt.subplot(2, 1, 1)
-    plt.plot(time_axis, long_ppg, color='blue', label='Input PPG')
-    plt.title(f"[{set_name.upper()}] PPG Continuo (0.5-8Hz) - Soggetto {s_id}")
-    plt.ylabel("Ampiezza " + ("[0,1]" if configs.get('normalize_01') else "Z-Score"))
-    plt.grid(alpha=0.3); plt.legend()
-    
-    plt.subplot(2, 1, 2)
-    plt.plot(time_axis, long_ecg_real, color='black', alpha=0.3, label='ECG Reale (0.5-30Hz)')
-    plt.plot(time_axis, long_ecg_gen, color='red', label='ECG Ricostruito (Smooth Stitching)')
-    plt.title(f"[{set_name.upper()}] Ricostruzione ECG - Visualizzazione Temporale")
-    plt.xlabel("Tempo (s)"); plt.ylabel("Ampiezza")
+    plt.plot(time_axis, long_ppg_gt[:plot_len], color='blue', label='Input PPG (Full Context)')
+    # Evidenziamo l'area "osservata" iniziale vs quella dove avviene la generazione
+    plt.axvline(x=x_sec, color='green', linestyle='--', alpha=0.5, label='Generation Start')
+    plt.title(f"[{set_name.upper()}] PPG Input - Subject {s_id}")
     plt.legend(); plt.grid(alpha=0.3)
+
+    # Subplot 2: ECG Reconstruction
+    plt.subplot(2, 1, 2)
+    plt.plot(time_axis, long_ecg_gt[:plot_len], color='black', alpha=0.3, label='Real ECG (Ground Truth)')
+    
+    # Plottiamo la parte generata
+    # Nota: ecg_gen contiene il seed all'inizio. Lo plottiamo tutto, ma graficamente
+    # è utile distinguere visivamente il seed dalla predizione.
+    plt.plot(time_axis[:seed_samples], long_ecg_gen[:seed_samples], color='green', alpha=0.6, label='Seed (Real Data)')
+    plt.plot(time_axis[seed_samples:], long_ecg_gen[seed_samples:], color='red', label='Autoregressive Prediction')
+    
+    plt.axvline(x=x_sec, color='green', linestyle='--')
+    plt.title(f"[{set_name.upper()}] AR Reconstruction (Window: {x_sec}s, Gen: {gen_sec}s)")
+    plt.xlabel("Time (s)"); plt.legend(); plt.grid(alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(os.path.join(save_dir, f"{set_name}_long_reconstruction.png"))
+    plt.savefig(os.path.join(save_dir, f"{set_name}_autoregressive_recon.png"))
     plt.close()
 
 def plot_training_history_metrics(history, save_dir):

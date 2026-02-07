@@ -107,7 +107,7 @@ class HACNNBiLSTMTrainer:
             if v_m['total'] < best_val_loss:
                 best_val_loss = v_m['total']
                 patience_counter = 0 
-                torch.save(self.model.state_dict(), os.path.join(self.configs['model_save_path'], 'best_ha_cnn_bilstm.pth'))
+                torch.save(self.model.state_dict(), os.path.join(self.configs['model_save_path'], f'best_{self.configs.get("model_type", "ha_cnn_bilstm_ar")}.pth'))
                 print(" -> BEST ✓")
             else:
                 patience_counter += 1
