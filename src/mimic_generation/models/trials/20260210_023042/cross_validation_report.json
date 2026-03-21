@@ -1,0 +1,162 @@
+{
+    "experiment_config": {
+        "model_type": "bio_transformer",
+        "device": "cuda",
+        "excluded_subjects_ids": [
+            4,
+            13,
+            15,
+            31,
+            32,
+            33,
+            44,
+            53
+        ],
+        "target_fs": 125,
+        "beat_len": 120,
+        "overlap_pct": 0.7,
+        "x_sec": 6,
+        "gen_sec": 1,
+        "overlap_windows": false,
+        "apply_wst": true,
+        "apply_dwt": false,
+        "apply_augmentation": true,
+        "apply_context_augmentation": false,
+        "aug_context_noise": 0.1,
+        "aug_context_mask": true,
+        "aug_random_gain": true,
+        "aug_time_stretch": true,
+        "normalize_01": true,
+        "apply_ecg_filter": true,
+        "ppg_bandpass": [
+            0.5,
+            5.0
+        ],
+        "ecg_bandpass": [
+            0.5,
+            25.0
+        ],
+        "use_morphological_loss": true,
+        "morph_loss_weight": 0.7,
+        "peak_loss_weight": 1.5,
+        "batch_size": 64,
+        "optimizer_type": "ADAM",
+        "lr": 0.0005,
+        "epochs": 1000,
+        "patience": 20,
+        "k-fold": 5,
+        "model_save_path": "/home/mmerone/mattia/ecg_generation/src/mcd_rppg_generation/models/trials/20260210_023042/fold_5",
+        "train_ratio": 0.92,
+        "val_ratio": 0.04,
+        "seed": 43,
+        "input_channels": 16,
+        "actual_seq_len": 187,
+        "target_len": 125
+    },
+    "aggregated_performance": {
+        "mean": {
+            "rmse": 0.168547323346138,
+            "mae": 0.11902653276920319,
+            "snr": 7.360923862457275,
+            "pearson": 0.41022897362709043,
+            "cosine_sim": 0.913869035243988,
+            "bpm_mae": 20.85392336434424
+        },
+        "std": {
+            "rmse": 0.021791212231051137,
+            "mae": 0.021427702562252536,
+            "snr": 2.3386649005824047,
+            "pearson": 0.10256387505545496,
+            "cosine_sim": 0.04351750478091544,
+            "bpm_mae": 12.321750135936673
+        },
+        "min": {
+            "rmse": 0.14308179914951324,
+            "mae": 0.09835640341043472,
+            "snr": 4.090515613555908,
+            "pearson": 0.34586432576179504,
+            "cosine_sim": 0.8434911966323853,
+            "bpm_mae": 3.668283569712756
+        },
+        "max": {
+            "rmse": 0.19856908917427063,
+            "mae": 0.1513308584690094,
+            "snr": 9.79687786102295,
+            "pearson": 0.5914762616157532,
+            "cosine_sim": 0.9514397382736206,
+            "bpm_mae": 34.41134678298846
+        }
+    },
+    "fold_details": [
+        {
+            "fold": 1,
+            "train_subjects_count": 1195,
+            "val_subject": "S4902_before",
+            "test_subject": "S3245_before",
+            "metrics": {
+                "rmse": 0.19856908917427063,
+                "mae": 0.1513308584690094,
+                "snr": 6.4714837074279785,
+                "pearson": 0.36966672539711,
+                "cosine_sim": 0.917417049407959,
+                "bpm_mae": 17.591869367439614
+            }
+        },
+        {
+            "fold": 2,
+            "train_subjects_count": 1195,
+            "val_subject": "S8834_after",
+            "test_subject": "S8681_before",
+            "metrics": {
+                "rmse": 0.15478910505771637,
+                "mae": 0.1005280464887619,
+                "snr": 4.090515613555908,
+                "pearson": 0.3882908225059509,
+                "cosine_sim": 0.8434911966323853,
+                "bpm_mae": 3.668283569712756
+            }
+        },
+        {
+            "fold": 3,
+            "train_subjects_count": 1195,
+            "val_subject": "S3732_before",
+            "test_subject": "S7412_before",
+            "metrics": {
+                "rmse": 0.14308179914951324,
+                "mae": 0.09835640341043472,
+                "snr": 9.44167423248291,
+                "pearson": 0.35584673285484314,
+                "cosine_sim": 0.9481182098388672,
+                "bpm_mae": 34.41134678298846
+            }
+        },
+        {
+            "fold": 4,
+            "train_subjects_count": 1195,
+            "val_subject": "S9039_before",
+            "test_subject": "S5441_after",
+            "metrics": {
+                "rmse": 0.1808295100927353,
+                "mae": 0.12239231169223785,
+                "snr": 7.004067897796631,
+                "pearson": 0.34586432576179504,
+                "cosine_sim": 0.9088789820671082,
+                "bpm_mae": 31.146439493972057
+            }
+        },
+        {
+            "fold": 5,
+            "train_subjects_count": 1195,
+            "val_subject": "S8381_after",
+            "test_subject": "S6477_before",
+            "metrics": {
+                "rmse": 0.16546711325645447,
+                "mae": 0.12252504378557205,
+                "snr": 9.79687786102295,
+                "pearson": 0.5914762616157532,
+                "cosine_sim": 0.9514397382736206,
+                "bpm_mae": 17.45167760760832
+            }
+        }
+    ]
+}

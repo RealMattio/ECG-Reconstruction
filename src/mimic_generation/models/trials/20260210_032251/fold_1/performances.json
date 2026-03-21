@@ -1,0 +1,25 @@
+{
+    "model_type": "bio_transformer",
+    "generation_params": {
+        "fs": 125,
+        "num_predicted_points": 125,
+        "input_window_sec": 6,
+        "generation_sec": 1
+    },
+    "performance_metrics": {
+        "rmse": 0.19856908917427063,
+        "mae": 0.1513308584690094,
+        "snr": 6.4714837074279785,
+        "pearson": 0.36966672539711,
+        "cosine_sim": 0.917417049407959,
+        "bpm_mae": 17.591869367439614
+    },
+    "performance_std": {
+        "rmse_std": 0.0,
+        "mae_std": 0.0,
+        "snr_std": 0.0,
+        "pearson_std": 0.0,
+        "cosine_sim_std": 0.0,
+        "bpm_mae_std": 0.0
+    }
+}

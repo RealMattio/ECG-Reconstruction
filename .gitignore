@@ -1,5 +1,6 @@
 PPG_FieldStudy/
 data/raw/*.pkl
+.vscode/
 
 # Python artifacts
 **/__pycache__/
@@ -20,3 +21,18 @@ job_ecg_gen.sh
 job_ecg_gen_prova.sh
 src/generation/models/*/
 job_ecg_gen*.sh
+*.sh
+mcd_rppg_data/
+physionet_creds.json
+src/experiments
+logs_mimic/
+download_logs/
+mimic3wdb-matched_pruned_excess/
+mimic3wdb-matched_raw_data/
+mimic3wdb-matched_healthy_data/
+mimic3_pinn_cache/
+pinn_tree.txt
+CLAUDE.md
+bidmc_data/
+bidmc_data/
+data/processed/

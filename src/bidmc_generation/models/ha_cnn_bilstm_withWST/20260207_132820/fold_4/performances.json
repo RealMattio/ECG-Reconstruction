@@ -1,0 +1,25 @@
+{
+    "model_type": "dual_branch_hybrid",
+    "generation_params": {
+        "fs": 125,
+        "num_predicted_points": 125,
+        "input_window_sec": 6,
+        "generation_sec": 1
+    },
+    "performance_metrics": {
+        "rmse": 0.08509103208780289,
+        "mae": 0.048266053199768066,
+        "snr": 15.30552864074707,
+        "pearson": 0.05352463573217392,
+        "cosine_sim": 0.9852339029312134,
+        "bpm_mae": 26.273977837892204
+    },
+    "performance_std": {
+        "rmse_std": 0.0024198044557124376,
+        "mae_std": 0.0015547112561762333,
+        "snr_std": 0.24664516746997833,
+        "pearson_std": 0.018749283626675606,
+        "cosine_sim_std": 0.0008845439879223704,
+        "bpm_mae_std": 1.9551552156840175
+    }
+}

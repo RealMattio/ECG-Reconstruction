@@ -1,0 +1,566 @@
+ICD9_CODE,LONG_TITLE
+03641,Meningococcal pericarditis
+0860,Chagas' disease with heart involvement
+1641,Malignant neoplasm of heart
+1910,"Malignant neoplasm of cerebrum, except lobes and ventricles"
+1915,Malignant neoplasm of ventricles
+2127,Benign neoplasm of heart
+27540,Unspecified disorder of calcium metabolism
+27549,Other disorders of calcium metabolism
+2760,Hyperosmolality and/or hypernatremia
+2761,Hyposmolality and/or hyponatremia
+2762,Acidosis
+2763,Alkalosis
+2764,Mixed acid-base balance disorder
+27650,"Volume depletion, unspecified"
+27651,Dehydration
+27652,Hypovolemia
+27661,Transfusion associated circulatory overload
+27669,Other fluid overload
+2767,Hyperpotassemia
+2768,Hypopotassemia
+2769,Electrolyte and fluid disorders not elsewhere classified
+36284,Retinal ischemia
+37741,Ischemic optic neuropathy
+390,Rheumatic fever without mention of heart involvement
+3910,Acute rheumatic pericarditis
+3911,Acute rheumatic endocarditis
+3918,Other acute rheumatic heart disease
+393,Chronic rheumatic pericarditis
+3940,Mitral stenosis
+3941,Rheumatic mitral insufficiency
+3942,Mitral stenosis with insufficiency
+3949,Other and unspecified mitral valve diseases
+3950,Rheumatic aortic stenosis
+3951,Rheumatic aortic insufficiency
+3952,Rheumatic aortic stenosis with insufficiency
+3959,Other and unspecified rheumatic aortic diseases
+3960,Mitral valve stenosis and aortic valve stenosis
+3961,Mitral valve stenosis and aortic valve insufficiency
+3962,Mitral valve insufficiency and aortic valve stenosis
+3963,Mitral valve insufficiency and aortic valve insufficiency
+3968,Multiple involvement of mitral and aortic valves
+3969,"Mitral and aortic valve diseases, unspecified"
+3970,Diseases of tricuspid valve
+3971,Rheumatic diseases of pulmonary valve
+39890,"Rheumatic heart disease, unspecified"
+39891,Rheumatic heart failure (congestive)
+39899,Other rheumatic heart diseases
+4010,Malignant essential hypertension
+4011,Benign essential hypertension
+4019,Unspecified essential hypertension
+40200,Malignant hypertensive heart disease without heart failure
+40201,Malignant hypertensive heart disease with heart failure
+40210,Benign hypertensive heart disease without heart failure
+40211,Benign hypertensive heart disease with heart failure
+40290,Unspecified hypertensive heart disease without heart failure
+40291,Unspecified hypertensive heart disease with heart failure
+40300,"Hypertensive chronic kidney disease, malignant, with chronic kidney disease stage I through stage IV, or unspecified"
+40301,"Hypertensive chronic kidney disease, malignant, with chronic kidney disease stage V or end stage renal disease"
+40310,"Hypertensive chronic kidney disease, benign, with chronic kidney disease stage I through stage IV, or unspecified"
+40311,"Hypertensive chronic kidney disease, benign, with chronic kidney disease stage V or end stage renal disease"
+40390,"Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage I through stage IV, or unspecified"
+40391,"Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage V or end stage renal disease"
+40400,"Hypertensive heart and chronic kidney disease, malignant, without heart failure and with chronic kidney disease stage I through stage IV, or unspecified"
+40401,"Hypertensive heart and chronic kidney disease, malignant, with heart failure and with chronic kidney disease stage I through stage IV, or unspecified"
+40403,"Hypertensive heart and chronic kidney disease, malignant, with heart failure and with chronic kidney disease stage V or end stage renal disease"
+40411,"Hypertensive heart and chronic kidney disease, benign, with heart failure and with chronic kidney disease stage I through stage IV, or unspecified"
+40413,"Hypertensive heart and chronic kidney disease, benign, with heart failure and chronic kidney disease stage V or end stage renal disease"
+40490,"Hypertensive heart and chronic kidney disease, unspecified, without heart failure and with chronic kidney disease stage I through stage IV, or unspecified"
+40491,"Hypertensive heart and chronic kidney disease, unspecified, with heart failure and with chronic kidney disease stage I through stage IV, or unspecified"
+40492,"Hypertensive heart and chronic kidney disease, unspecified, without heart failure and with chronic kidney disease stage V or end stage renal disease"
+40493,"Hypertensive heart and chronic kidney disease, unspecified, with heart failure and chronic kidney disease stage V or end stage renal disease"
+40501,Malignant renovascular hypertension
+40511,Benign renovascular hypertension
+40591,Unspecified renovascular hypertension
+40599,Other unspecified secondary hypertension
+41000,"Acute myocardial infarction of anterolateral wall, episode of care unspecified"
+41001,"Acute myocardial infarction of anterolateral wall, initial episode of care"
+41002,"Acute myocardial infarction of anterolateral wall, subsequent episode of care"
+41010,"Acute myocardial infarction of other anterior wall, episode of care unspecified"
+41011,"Acute myocardial infarction of other anterior wall, initial episode of care"
+41012,"Acute myocardial infarction of other anterior wall, subsequent episode of care"
+41020,"Acute myocardial infarction of inferolateral wall, episode of care unspecified"
+41021,"Acute myocardial infarction of inferolateral wall, initial episode of care"
+41022,"Acute myocardial infarction of inferolateral wall, subsequent episode of care"
+41031,"Acute myocardial infarction of inferoposterior wall, initial episode of care"
+41032,"Acute myocardial infarction of inferoposterior wall, subsequent episode of care"
+41040,"Acute myocardial infarction of other inferior wall, episode of care unspecified"
+41041,"Acute myocardial infarction of other inferior wall, initial episode of care"
+41042,"Acute myocardial infarction of other inferior wall, subsequent episode of care"
+41051,"Acute myocardial infarction of other lateral wall, initial episode of care"
+41061,"True posterior wall infarction, initial episode of care"
+41071,"Subendocardial infarction, initial episode of care"
+41072,"Subendocardial infarction, subsequent episode of care"
+41081,"Acute myocardial infarction of other specified sites, initial episode of care"
+41082,"Acute myocardial infarction of other specified sites, subsequent episode of care"
+41090,"Acute myocardial infarction of unspecified site, episode of care unspecified"
+41091,"Acute myocardial infarction of unspecified site, initial episode of care"
+41092,"Acute myocardial infarction of unspecified site, subsequent episode of care"
+4110,Postmyocardial infarction syndrome
+4111,Intermediate coronary syndrome
+41181,Acute coronary occlusion without myocardial infarction
+41189,"Other acute and subacute forms of ischemic heart disease, other"
+412,Old myocardial infarction
+4131,Prinzmetal angina
+4139,Other and unspecified angina pectoris
+41400,"Coronary atherosclerosis of unspecified type of vessel, native or graft"
+41401,Coronary atherosclerosis of native coronary artery
+41402,Coronary atherosclerosis of autologous vein bypass graft
+41403,Coronary atherosclerosis of nonautologous biological bypass graft
+41404,Coronary atherosclerosis of artery bypass graft
+41405,Coronary atherosclerosis of unspecified bypass graft
+41410,Aneurysm of heart (wall)
+41411,Aneurysm of coronary vessels
+41412,Dissection of coronary artery
+41419,Other aneurysm of heart
+4142,Chronic total occlusion of coronary artery
+4144,Coronary atherosclerosis due to calcified coronary lesion
+4148,Other specified forms of chronic ischemic heart disease
+4149,"Chronic ischemic heart disease, unspecified"
+4150,Acute cor pulmonale
+41511,Iatrogenic pulmonary embolism and infarction
+41512,Septic pulmonary embolism
+41513,Saddle embolus of pulmonary artery
+41519,Other pulmonary embolism and infarction
+4160,Primary pulmonary hypertension
+4162,Chronic pulmonary embolism
+4168,Other chronic pulmonary heart diseases
+4169,"Chronic pulmonary heart disease, unspecified"
+4170,Arteriovenous fistula of pulmonary vessels
+4171,Aneurysm of pulmonary artery
+4178,Other specified diseases of pulmonary circulation
+4179,Unspecified disease of pulmonary circulation
+4200,Acute pericarditis in diseases classified elsewhere
+42090,"Acute pericarditis, unspecified"
+42091,Acute idiopathic pericarditis
+42099,Other acute pericarditis
+4210,Acute and subacute bacterial endocarditis
+4219,"Acute endocarditis, unspecified"
+4220,Acute myocarditis in diseases classified elsewhere
+42290,"Acute myocarditis, unspecified"
+42291,Idiopathic myocarditis
+42292,Septic myocarditis
+42293,Toxic myocarditis
+4230,Hemopericardium
+4231,Adhesive pericarditis
+4232,Constrictive pericarditis
+4233,Cardiac tamponade
+4238,Other specified diseases of pericardium
+4239,Unspecified disease of pericardium
+4240,Mitral valve disorders
+4241,Aortic valve disorders
+4242,"Tricuspid valve disorders, specified as nonrheumatic"
+4243,Pulmonary valve disorders
+42490,"Endocarditis, valve unspecified, unspecified cause"
+42491,Endocarditis in diseases classified elsewhere
+42511,Hypertrophic obstructive cardiomyopathy
+42518,Other hypertrophic cardiomyopathy
+4253,Endocardial fibroelastosis
+4254,Other primary cardiomyopathies
+4255,Alcoholic cardiomyopathy
+4257,Nutritional and metabolic cardiomyopathy
+4258,Cardiomyopathy in other diseases classified elsewhere
+4259,"Secondary cardiomyopathy, unspecified"
+4260,"Atrioventricular block, complete"
+42610,"Atrioventricular block, unspecified"
+42611,First degree atrioventricular block
+42612,Mobitz (type) II atrioventricular block
+42613,Other second degree atrioventricular block
+4262,Left bundle branch hemiblock
+4263,Other left bundle branch block
+4264,Right bundle branch block
+42650,"Bundle branch block, unspecified"
+42651,Right bundle branch block and left posterior fascicular block
+42652,Right bundle branch block and left anterior fascicular block
+42653,Other bilateral bundle branch block
+42654,Trifascicular block
+4266,Other heart block
+4267,Anomalous atrioventricular excitation
+42682,Long QT syndrome
+42689,Other specified conduction disorders
+4269,"Conduction disorder, unspecified"
+4270,Paroxysmal supraventricular tachycardia
+4271,Paroxysmal ventricular tachycardia
+4272,"Paroxysmal tachycardia, unspecified"
+42731,Atrial fibrillation
+42732,Atrial flutter
+42741,Ventricular fibrillation
+42742,Ventricular flutter
+4275,Cardiac arrest
+42760,"Premature beats, unspecified"
+42761,Supraventricular premature beats
+42769,Other premature beats
+42781,Sinoatrial node dysfunction
+42789,Other specified cardiac dysrhythmias
+4279,"Cardiac dysrhythmia, unspecified"
+4280,"Congestive heart failure, unspecified"
+4281,Left heart failure
+42820,"Systolic heart failure, unspecified"
+42821,Acute systolic heart failure
+42822,Chronic systolic heart failure
+42823,Acute on chronic systolic heart failure
+42830,"Diastolic heart failure, unspecified"
+42831,Acute diastolic heart failure
+42832,Chronic diastolic heart failure
+42833,Acute on chronic diastolic heart failure
+42840,"Combined systolic and diastolic heart failure, unspecified"
+42841,Acute combined systolic and diastolic heart failure
+42842,Chronic combined systolic and diastolic heart failure
+42843,Acute on chronic combined systolic and diastolic heart failure
+4289,"Heart failure, unspecified"
+4290,"Myocarditis, unspecified"
+4291,Myocardial degeneration
+4292,"Cardiovascular disease, unspecified"
+4293,Cardiomegaly
+4294,Functional disturbances following cardiac surgery
+4295,Rupture of chordae tendineae
+4296,Rupture of papillary muscle
+42971,Acquired cardiac septal defect
+42979,"Certain sequelae of myocardial infarction, not elsewhere classified, other"
+42981,Other disorders of papillary muscle
+42983,Takotsubo syndrome
+42989,Other ill-defined heart diseases
+4299,"Heart disease, unspecified"
+430,Subarachnoid hemorrhage
+431,Intracerebral hemorrhage
+4320,Nontraumatic extradural hemorrhage
+4321,Subdural hemorrhage
+4329,Unspecified intracranial hemorrhage
+43300,Occlusion and stenosis of basilar artery without mention of cerebral infarction
+43301,Occlusion and stenosis of basilar artery with cerebral infarction
+43310,Occlusion and stenosis of carotid artery without mention of cerebral infarction
+43311,Occlusion and stenosis of carotid artery with cerebral infarction
+43320,Occlusion and stenosis of vertebral artery without mention of cerebral infarction
+43321,Occlusion and stenosis of vertebral artery with cerebral infarction
+43330,Occlusion and stenosis of multiple and bilateral precerebral arteries without mention of cerebral infarction
+43331,Occlusion and stenosis of multiple and bilateral precerebral arteries with cerebral infarction
+43380,Occlusion and stenosis of other specified precerebral artery without mention of cerebral infarction
+43381,Occlusion and stenosis of other specified precerebral artery with cerebral infarction
+43391,Occlusion and stenosis of unspecified precerebral artery with cerebral infarction
+43400,Cerebral thrombosis without mention of cerebral infarction
+43401,Cerebral thrombosis with cerebral infarction
+43410,Cerebral embolism without mention of cerebral infarction
+43411,Cerebral embolism with cerebral infarction
+43490,"Cerebral artery occlusion, unspecified without mention of cerebral infarction"
+43491,"Cerebral artery occlusion, unspecified with cerebral infarction"
+4350,Basilar artery syndrome
+4351,Vertebral artery syndrome
+4352,Subclavian steal syndrome
+4353,Vertebrobasilar artery syndrome
+4358,Other specified transient cerebral ischemias
+4359,Unspecified transient cerebral ischemia
+436,"Acute, but ill-defined, cerebrovascular disease"
+4370,Cerebral atherosclerosis
+4371,Other generalized ischemic cerebrovascular disease
+4372,Hypertensive encephalopathy
+4373,"Cerebral aneurysm, nonruptured"
+4374,Cerebral arteritis
+4375,Moyamoya disease
+4376,Nonpyogenic thrombosis of intracranial venous sinus
+4377,Transient global amnesia
+4378,Other ill-defined cerebrovascular disease
+4379,Unspecified cerebrovascular disease
+4380,"Late effects of cerebrovascular disease, cognitive deficits"
+43810,"Late effects of cerebrovascular disease, speech and language deficit, unspecified"
+43811,"Late effects of cerebrovascular disease, aphasia"
+43812,"Late effects of cerebrovascular disease, dysphasia"
+43813,"Late effects of cerebrovascular disease, dysarthria"
+43814,"Late effects of cerebrovascular disease, fluency disorder"
+43819,"Late effects of cerebrovascular disease, other speech and language deficits"
+43820,"Late effects of cerebrovascular disease, hemiplegia affecting unspecified side"
+43821,"Late effects of cerebrovascular disease, hemiplegia affecting dominant side"
+43822,"Late effects of cerebrovascular disease, hemiplegia affecting nondominant side"
+43830,"Late effects of cerebrovascular disease, monoplegia of upper limb affecting unspecified side"
+43831,"Late effects of cerebrovascular disease, monoplegia of upper limb affecting dominant side"
+43840,"Late effects of cerebrovascular disease, monoplegia of lower limb affecting unspecified side"
+43850,"Late effects of cerebrovascular disease, other paralytic syndrome affecting unspecified side"
+43852,"Late effects of cerebrovascular disease, other paralytic syndrome affecting nondominant side"
+43853,"Late effects of cerebrovascular disease, other paralytic syndrome, bilateral"
+4386,"Late effects of cerebrovascular disease, alterations of sensations"
+4387,"Late effects of cerebrovascular disease, disturbances of vision"
+43881,"Other late effects of cerebrovascular disease, apraxia"
+43882,"Other late effects of cerebrovascular disease, dysphagia"
+43883,"Other late effects of cerebrovascular disease, facial weakness"
+43884,"Other late effects of cerebrovascular disease, ataxia"
+43885,"Other late effects of cerebrovascular disease, vertigo"
+43889,Other late effects of cerebrovascular disease
+4389,Unspecified late effects of cerebrovascular disease
+4400,Atherosclerosis of aorta
+4401,Atherosclerosis of renal artery
+44020,"Atherosclerosis of native arteries of the extremities, unspecified"
+44021,Atherosclerosis of native arteries of the extremities with intermittent claudication
+44022,Atherosclerosis of native arteries of the extremities with rest pain
+44023,Atherosclerosis of native arteries of the extremities with ulceration
+44024,Atherosclerosis of native arteries of the extremities with gangrene
+44029,Other atherosclerosis of native arteries of the extremities
+44030,Atherosclerosis of unspecified bypass graft of the extremities
+44031,Atherosclerosis of autologous vein bypass graft of the extremities
+44032,Atherosclerosis of nonautologous biological bypass graft of the extremities
+4404,Chronic total occlusion of artery of the extremities
+4408,Atherosclerosis of other specified arteries
+4409,Generalized and unspecified atherosclerosis
+44100,"Dissection of aorta, unspecified site"
+44101,"Dissection of aorta, thoracic"
+44102,"Dissection of aorta, abdominal"
+44103,"Dissection of aorta, thoracoabdominal"
+4411,"Thoracic aneurysm, ruptured"
+4412,Thoracic aneurysm without mention of rupture
+4413,"Abdominal aneurysm, ruptured"
+4414,Abdominal aneurysm without mention of rupture
+4416,"Thoracoabdominal aneurysm, ruptured"
+4417,"Thoracoabdominal aneurysm, without mention of rupture"
+4419,Aortic aneurysm of unspecified site without mention of rupture
+4420,Aneurysm of artery of upper extremity
+4421,Aneurysm of renal artery
+4422,Aneurysm of iliac artery
+4423,Aneurysm of artery of lower extremity
+44281,Aneurysm of artery of neck
+44282,Aneurysm of subclavian artery
+44283,Aneurysm of splenic artery
+44284,Aneurysm of other visceral artery
+44289,Aneurysm of other specified artery
+4430,Raynaud's syndrome
+4431,Thromboangiitis obliterans [Buerger's disease]
+44321,Dissection of carotid artery
+44322,Dissection of iliac artery
+44323,Dissection of renal artery
+44324,Dissection of vertebral artery
+44329,Dissection of other artery
+44381,Peripheral angiopathy in diseases classified elsewhere
+44382,Erythromelalgia
+44389,Other specified peripheral vascular diseases
+4439,"Peripheral vascular disease, unspecified"
+44409,Other arterial embolism and thrombosis of abdominal aorta
+4441,Embolism and thrombosis of thoracic aorta
+44421,Arterial embolism and thrombosis of upper extremity
+44422,Arterial embolism and thrombosis of lower extremity
+44481,Embolism and thrombosis of iliac artery
+44489,Embolism and thrombosis of other specified artery
+4449,Embolism and thrombosis of unspecified artery
+44502,Atheroembolism of lower extremity
+44581,Atheroembolism of kidney
+44589,Atheroembolism of other site
+4460,Polyarteritis nodosa
+44620,"Hypersensitivity angiitis, unspecified"
+44621,Goodpasture's syndrome
+44629,Other specified hypersensitivity angiitis
+4464,Wegener's granulomatosis
+4465,Giant cell arteritis
+4466,Thrombotic microangiopathy
+4467,Takayasu's disease
+4470,"Arteriovenous fistula, acquired"
+4471,Stricture of artery
+4472,Rupture of artery
+4473,Hyperplasia of renal artery
+4474,Celiac artery compression syndrome
+4475,Necrosis of artery
+4476,"Arteritis, unspecified"
+44771,Thoracic aortic ectasia
+44772,Abdominal aortic ectasia
+44773,Thoracoabdominal aortic ectasia
+4478,Other specified disorders of arteries and arterioles
+4479,Unspecified disorders of arteries and arterioles
+4480,Hereditary hemorrhagic telangiectasia
+4481,"Nevus, non-neoplastic"
+4489,Other and unspecified capillary diseases
+449,Septic arterial embolism
+4510,Phlebitis and thrombophlebitis of superficial vessels of lower extremities
+45111,Phlebitis and thrombophlebitis of femoral vein (deep) (superficial)
+45119,"Phlebitis and thrombophlebitis of deep veins of lower extremities, other"
+4512,"Phlebitis and thrombophlebitis of lower extremities, unspecified"
+45181,Phlebitis and thrombophlebitis of iliac vein
+45182,Phlebitis and thrombophlebitis of superficial veins of upper extremities
+45183,Phlebitis and thrombophlebitis of deep veins of upper extremities
+45184,"Phlebitis and thrombophlebitis of upper extremities, unspecified"
+45189,Phlebitis and thrombophlebitis of other sites
+4519,Phlebitis and thrombophlebitis of unspecified site
+452,Portal vein thrombosis
+4530,Budd-chiari syndrome
+4531,Thrombophlebitis migrans
+4532,Other venous embolism and thrombosis of inferior vena cava
+4533,Other venous embolism and thrombosis of renal vein
+45340,Acute venous embolism and thrombosis of unspecified deep vessels of lower extremity
+45341,Acute venous embolism and thrombosis of deep vessels of proximal lower extremity
+45342,Acute venous embolism and thrombosis of deep vessels of distal lower extremity
+45350,Chronic venous embolism and thrombosis of unspecified deep vessels of lower extremity
+45351,Chronic venous embolism and thrombosis of deep vessels of proximal lower extremity
+45352,Chronic venous embolism and thrombosis of deep vessels of distal lower extremity
+4536,Venous embolism and thrombosis of superficial vessels of lower extremity
+45371,Chronic venous embolism and thrombosis of superficial veins of upper extremity
+45372,Chronic venous embolism and thrombosis of deep veins of upper extremity
+45374,Chronic venous embolism and thrombosis of axillary veins
+45375,Chronic venous embolism and thrombosis of subclavian veins
+45376,Chronic venous embolism and thrombosis of internal jugular veins
+45377,Chronic venous embolism and thrombosis of other thoracic veins
+45379,Chronic venous embolism and thrombosis of other specified veins
+45381,Acute venous embolism and thrombosis of superficial veins of upper extremity
+45382,Acute venous embolism and thrombosis of deep veins of upper extremity
+45383,"Acute venous embolism and thrombosis of upper extremity, unspecified"
+45384,Acute venous embolism and thrombosis of axillary veins
+45385,Acute venous embolism and thrombosis of subclavian veins
+45386,Acute venous embolism and thrombosis of internal jugular veins
+45387,Acute venous embolism and thrombosis of other thoracic veins
+45389,Acute venous embolism and thrombosis of other specified veins
+4539,Other venous embolism and thrombosis of unspecified site
+4540,Varicose veins of lower extremities with ulcer
+4541,Varicose veins of lower extremities with inflammation
+4542,Varicose veins of lower extremities with ulcer and inflammation
+4548,Varicose veins of lower extremities with other complications
+4549,Asymptomatic varicose veins
+4550,Internal hemorrhoids without mention of complication
+4551,Internal thrombosed hemorrhoids
+4552,Internal hemorrhoids with other complication
+4553,External hemorrhoids without mention of complication
+4554,External thrombosed hemorrhoids
+4555,External hemorrhoids with other complication
+4556,Unspecified hemorrhoids without mention of complication
+4558,Unspecified hemorrhoids with other complication
+4559,Residual hemorrhoidal skin tags
+4560,Esophageal varices with bleeding
+4561,Esophageal varices without mention of bleeding
+45620,"Esophageal varices in diseases classified elsewhere, with bleeding"
+45621,"Esophageal varices in diseases classified elsewhere, without mention of bleeding"
+4568,Varices of other sites
+4570,Postmastectomy lymphedema syndrome
+4571,Other lymphedema
+4572,Lymphangitis
+4578,Other noninfectious disorders of lymphatic channels
+4580,Orthostatic hypotension
+4581,Chronic hypotension
+45821,Hypotension of hemodialysis
+45829,Other iatrogenic hypotension
+4588,Other specified hypotension
+4589,"Hypotension, unspecified"
+4590,"Hemorrhage, unspecified"
+45910,Postphlebetic syndrome without complications
+4592,Compression of vein
+45981,"Venous (peripheral) insufficiency, unspecified"
+45989,Other specified disorders of circulatory system
+4599,Unspecified circulatory system disorder
+5734,Hepatic infarction
+65971,"Abnormality in fetal heart rate or rhythm, delivered, with or without mention of antepartum condition"
+66811,"Cardiac complications of anesthesia or other sedation in labor and delivery, delivered, with or without mention of antepartum condition"
+71213,"Chondrocalcinosis, due to dicalcium phosphate crystals, forearm"
+71216,"Chondrocalcinosis, due to dicalcium phosphate crystals, lower leg"
+72782,Calcium deposits in tendon and bursa
+7450,Common truncus
+74510,Complete transposition of great vessels
+74511,Double outlet right ventricle
+74512,Corrected transposition of great vessels
+7452,Tetralogy of fallot
+7454,Ventricular septal defect
+7455,Ostium secundum type atrial septal defect
+74560,"Endocardial cushion defect, unspecified type"
+74561,Ostium primum defect
+74569,Other endocardial cushion defects
+7458,Other bulbus cordis anomalies and anomalies of cardiac septal closure
+7459,Unspecified defect of septal closure
+74600,"Congenital pulmonary valve anomaly, unspecified"
+74601,"Atresia of pulmonary valve, congenital"
+74602,"Stenosis of pulmonary valve, congenital"
+74609,Other congenital anomalies of pulmonary valve
+7461,"Tricuspid atresia and stenosis, congenital"
+7462,Ebstein's anomaly
+7463,Congenital stenosis of aortic valve
+7464,Congenital insufficiency of aortic valve
+7466,Congenital mitral insufficiency
+7467,Hypoplastic left heart syndrome
+74681,Subaortic stenosis
+74682,Cor triatriatum
+74683,Infundibular pulmonic stenosis
+74684,"Obstructive anomalies of heart, not elsewhere classified"
+74685,Coronary artery anomaly
+74686,Congenital heart block
+74687,Malposition of heart and cardiac apex
+74689,Other specified congenital anomalies of heart
+7469,Unspecified congenital anomaly of heart
+7470,Patent ductus arteriosus
+74710,Coarctation of aorta (preductal) (postductal)
+74711,Interruption of aortic arch
+74720,"Anomaly of aorta, unspecified"
+74721,Anomalies of aortic arch
+74722,Atresia and stenosis of aorta
+74729,Other anomalies of aorta
+74732,Pulmonary arteriovenous malformation
+74740,"Anomaly of great veins, unspecified"
+74741,Total anomalous pulmonary venous connection
+74742,Partial anomalous pulmonary venous connection
+74749,Other anomalies of great veins
+7475,Absence or hypoplasia of umbilical artery
+74761,Gastrointestinal vessel anomaly
+74762,Renal vessel anomaly
+74763,Upper limb vessel anomaly
+74769,Anomalies of other specified sites of peripheral vascular system
+74781,Anomalies of cerebrovascular system
+74782,Spinal vessel anomaly
+74783,Persistent fetal circulation
+74789,Other specified anomalies of circulatory system
+76381,Abnormality in fetal heart rate or rhythm before the onset of labor
+76382,Abnormality in fetal heart rate or rhythm during labor
+76383,"Abnormality in fetal heart rate or rhythm, unspecified as to time of onset"
+77210,Intraventricular hemorrhage unspecified grade
+77211,"Intraventricular hemorrhage, grade I"
+77212,"Intraventricular hemorrhage, grade II"
+77213,"Intraventricular hemorrhage, grade III"
+77214,"Intraventricular hemorrhage, grade IV"
+7797,Periventricular leukomalacia
+77981,Neonatal bradycardia
+77982,Neonatal tachycardia
+77985,Cardiac arrest of newborn
+7850,"Tachycardia, unspecified"
+7851,Palpitations
+7852,Undiagnosed cardiac murmurs
+7854,Gangrene
+78550,"Shock, unspecified"
+78551,Cardiogenic shock
+78552,Septic shock
+78559,Other shock without mention of trauma
+7856,Enlargement of lymph nodes
+7859,Other symptoms involving cardiovascular system
+7871,Heartburn
+86100,Unspecified injury of heart without mention of open wound into thorax
+86101,Contusion of heart without mention of open wound into thorax
+86102,Laceration of heart without penetration of heart chambers or without mention of open wound into thorax
+86103,Laceration of heart with penetration of heart chambers without mention of open wound into thorax
+86110,Unspecified injury of heart with open wound into thorax
+86112,"Laceration of heart without penetration of heart chambers, with open wound into thorax"
+86113,Laceration of heart with penetration of heart chambers with open wound into thorax
+9720,Poisoning by cardiac rhythm regulators
+9724,Poisoning by coronary vasodilators
+99601,Mechanical complication due to cardiac pacemaker (electrode)
+99602,Mechanical complication due to heart valve prosthesis
+99603,Mechanical complication due to coronary bypass graft
+99604,Mechanical complication of automatic implantable cardiac defibrillator
+99609,"Other mechanical complication of cardiac device, implant, and graft"
+99661,"Infection and inflammatory reaction due to cardiac device, implant, and graft"
+99671,Other complications due to heart valve prosthesis
+99672,"Other complications due to other cardiac device, implant, and graft"
+99683,Complications of transplanted heart
+99702,Iatrogenic cerebrovascular infarction or hemorrhage
+9971,"Cardiac complications, not elsewhere classified"
+E8706,"Accidental cut, puncture, perforation or hemorrhage during heart catheterization"
+E8716,Foreign object left in body during heart catheterization
+E8790,"Cardiac catheterization as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at time of procedure"
+E9386,Peripheral nerve- and plexus-blocking anesthetics causing adverse effects in therapeutic use
+E9420,Cardiac rhythm regulators causing adverse effects in therapeutic use
+E9424,Coronary vasodilators causing adverse effects in therapeutic use
+V1253,Personal history of sudden cardiac arrest
+V1254,"Personal history of transient ischemic attack (TIA), and cerebral infarction without residual deficits"
+V1365,Personal history of (corrected) congenital malformations of heart and circulatory system
+V151,"Personal history of surgery to heart and great vessels, presenting hazards to health"
+V173,Family history of ischemic heart disease
+V1741,Family history of sudden cardiac death (SCD)
+V421,Heart replaced by transplant
+V422,Heart valve replaced by transplant
+V433,Heart valve replaced by other means
+V4501,Cardiac pacemaker in situ
+V4502,Automatic implantable cardiac defibrillator in situ
+V4509,Other specified cardiac device in situ
+V4581,Aortocoronary bypass status
+V4582,Percutaneous transluminal coronary angioplasty status
+V5301,Fitting and adjustment of cerebral ventricular (communicating) shunt
+V5302,Fitting and adjustment of neuropacemaker (brain) (peripheral nerve) (spinal cord)
+V5331,Fitting and adjustment of cardiac pacemaker
+V5332,Fitting and adjustment of automatic implantable cardiac defibrillator
+V5339,Fitting and adjustment of other cardiac device

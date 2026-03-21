@@ -1,0 +1,25 @@
+{
+    "model_type": "ha_cnn_bilstm_ar",
+    "generation_params": {
+        "fs": 125,
+        "num_predicted_points": 125,
+        "input_window_sec": 6,
+        "generation_sec": 1
+    },
+    "performance_metrics": {
+        "rmse": 0.1335693597793579,
+        "mae": 0.08909207582473755,
+        "snr": 3.609694480895996,
+        "pearson": 0.43713265657424927,
+        "cosine_sim": 0.7966079115867615,
+        "bpm_mae": 4.430547489558013
+    },
+    "performance_std": {
+        "rmse_std": 0.014232128858566284,
+        "mae_std": 0.006934143137186766,
+        "snr_std": 0.937204897403717,
+        "pearson_std": 0.13317783176898956,
+        "cosine_sim_std": 0.04310731217265129,
+        "bpm_mae_std": 1.7479794567257847
+    }
+}

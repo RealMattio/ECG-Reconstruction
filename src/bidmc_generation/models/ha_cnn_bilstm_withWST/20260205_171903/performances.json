@@ -1,0 +1,25 @@
+{
+    "model_type": "lightweight_hybrid",
+    "generation_params": {
+        "fs": 125,
+        "num_predicted_points": 125,
+        "input_window_sec": 6,
+        "generation_sec": 1
+    },
+    "performance_metrics": {
+        "rmse": 0.07737819850444794,
+        "mae": 0.04696831479668617,
+        "snr": 15.589118003845215,
+        "pearson": 0.07598952203989029,
+        "cosine_sim": 0.9857996702194214,
+        "bpm_mae": 23.20293877764659
+    },
+    "performance_std": {
+        "rmse_std": 0.006966714281588793,
+        "mae_std": 0.004982329905033112,
+        "snr_std": 1.435930609703064,
+        "pearson_std": 0.07224614918231964,
+        "cosine_sim_std": 0.005003147758543491,
+        "bpm_mae_std": 4.010974114774387
+    }
+}
