@@ -267,13 +267,13 @@ def generate_autoregressive_recon(model, ppg_long, ecg_seed, device, configs):
                 curr_ppg = -curr_ppg
             curr_ppg_norm = _minmax_norm(curr_ppg)
 
-            # ECG passato: già in ~[0,1] (output del modello), ri-normalizza per sicurezza
+            # ECG passato: già in [0,1] (seed normalizzato o output del modello)
+            # NON ri-normalizzare: stretching su valori piatti distorce le ampiezze relative
             ecg_real_part = np.array(generated_ecg[start_win : cursor])
-            ecg_real_norm = _minmax_norm(ecg_real_part)
 
-            last_val      = ecg_real_norm[-1]
+            last_val      = ecg_real_part[-1]
             padding       = np.full((gen_samples,), last_val)
-            curr_ecg_past = np.concatenate([ecg_real_norm, padding])
+            curr_ecg_past = np.concatenate([ecg_real_part, padding])
 
             ppg_t    = torch.tensor(curr_ppg_norm).float()
             ppg_diff = torch.zeros_like(ppg_t)
@@ -381,9 +381,8 @@ def plot_training_history_metrics(history, save_dir):
     print(f"Grafico metriche salvato in: {path}")
 
 
-
 def plot_validation_snapshot(model, val_loader, device, save_dir, epoch, step=None, prefix='val'):
-    """Genera un plot di validazione estraendo il primo batch dal val_loader."""
+    """Genera un plot di validazione estraendo un sample casuale dal primo batch."""
     model.eval()
     with torch.no_grad():
         batch = next(iter(val_loader))
@@ -397,7 +396,8 @@ def plot_validation_snapshot(model, val_loader, device, save_dir, epoch, step=No
         Y_cpu = Y.cpu().numpy()
         preds_cpu = preds.cpu().numpy()
         
-        idx = 0
+        # FIX: Scegliamo un indice casuale nel batch invece di prendere sempre lo 0!
+        idx = random.randint(0, X_cpu.shape[0] - 1)
         pat_string = file_info[idx] if isinstance(file_info, (list, tuple)) else str(file_info)
 
         ppg_signal = X_cpu[idx, 0, :]
@@ -468,8 +468,6 @@ def plot_autoregressive_epoch(model, val_dataset, preprocessor, device, configs,
         plot_len  = min(len(long_ecg_gt), len(long_ecg_gen))
         time_axis = np.arange(plot_len) / fs
 
-        # Normalizza PPG e ECG ground-truth [0,1] per un confronto visivo equo
-        # con il segnale generato (che è già in scala [0,1] per costruzione)
         long_ppg_gt_norm = _minmax_norm(long_ppg_gt[:plot_len])
         long_ecg_gt_norm = _minmax_norm(long_ecg_gt[:plot_len])
 
@@ -489,7 +487,9 @@ def plot_autoregressive_epoch(model, val_dataset, preprocessor, device, configs,
         plt.legend(loc='upper right')
         
         os.makedirs(save_dir, exist_ok=True)
-        plt.savefig(os.path.join(save_dir, f"epoch_{epoch:03d}_autoregressive.png"))
+        # FIX: Gestione sicura per stringhe (es. "TEST_1") o interi
+        epoch_str = f"{epoch:03d}" if isinstance(epoch, int) else str(epoch)
+        plt.savefig(os.path.join(save_dir, f"epoch_{epoch_str}_autoregressive.png"))
         plt.close()
         
     except Exception as e:

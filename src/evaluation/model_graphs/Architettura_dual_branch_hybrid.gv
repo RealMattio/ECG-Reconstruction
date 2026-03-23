@@ -1,0 +1,449 @@
+strict digraph dual_branch_hybrid {
+	graph [ordering=in rankdir=LR size="50.4,50.4"]
+	node [align=left fontname="Linux libertine" fontsize=10 height=0.2 margin=0 ranksep=0.1 shape=plaintext style=filled]
+	edge [fontsize=10]
+	0 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>input-tensor<BR/>depth:0</TD></TR>
+                    </TABLE>> fillcolor=lightyellow]
+	1 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>interpolate<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	2 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	3 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>contiguous<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	4 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Scattering1D<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	5 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	3 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>contiguous<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	4 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Scattering1D<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	6 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	3 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>contiguous<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	4 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Scattering1D<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	7 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>cat<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	8 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>nan_to_num<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	9 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>unsqueeze<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	subgraph cluster_2 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		10 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		11 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		12 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	subgraph cluster_3 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		13 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		14 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		15 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	16 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>MaxPool2d<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	subgraph cluster_4 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		17 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		18 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		19 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	subgraph cluster_5 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		20 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		21 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm2d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		22 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	23 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>MaxPool2d<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	24 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>view<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	subgraph cluster_6 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		25 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		26 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		27 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	28 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	29 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	30 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>transpose<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	31 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LSTM<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	32 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>transpose<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	33 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LSTM<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	34 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>cat<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	subgraph cluster_7 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		35 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Linear<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		36 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LayerNorm<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		37 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Tanh<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	38 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>transpose<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	39 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>interpolate<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	40 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>cat<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	41 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>transpose<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	subgraph cluster_8 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		42 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Linear<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		43 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Tanh<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		44 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Linear<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		45 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Softmax<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+	}
+	46 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	47 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>unsqueeze<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	48 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>mul<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	49 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	50 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>unsqueeze<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	51 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>mul<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	52 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	53 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>interpolate<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	54 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>__getitem__<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	53 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>interpolate<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	55 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>cat<BR/>depth:1</TD></TR>
+                    </TABLE>> fillcolor=aliceblue]
+	subgraph cluster_9 {
+		fontsize=12 label=Sequential labeljust=l style=dashed
+		56 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		57 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>BatchNorm1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		58 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		59 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Dropout<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		60 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		61 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>LeakyReLU<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		62 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>Conv1d<BR/>depth:2</TD></TR>
+                    </TABLE>> fillcolor=darkseagreen1]
+		63 [label=<
+                    <TABLE BORDER="0" CELLBORDER="1"
+                    CELLSPACING="0" CELLPADDING="4">
+                        <TR><TD>output-tensor<BR/>depth:0</TD></TR>
+                    </TABLE>> fillcolor=lightyellow]
+	}
+	0 -> 1
+	1 -> 2
+	1 -> 5
+	1 -> 6
+	2 -> 3
+	3 -> 4
+	4 -> 7
+	5 -> 3
+	3 -> 4 [label=" x2"]
+	4 -> 7 [label=" x2"]
+	6 -> 3
+	3 -> 4 [label=" x3"]
+	4 -> 7 [label=" x3"]
+	7 -> 8
+	8 -> 9
+	8 -> 28
+	8 -> 29
+	9 -> 10
+	10 -> 11
+	11 -> 12
+	12 -> 13
+	13 -> 14
+	14 -> 15
+	15 -> 16
+	16 -> 17
+	17 -> 18
+	18 -> 19
+	19 -> 20
+	20 -> 21
+	21 -> 22
+	22 -> 23
+	23 -> 24
+	24 -> 25
+	25 -> 26
+	26 -> 27
+	27 -> 39
+	28 -> 30
+	29 -> 32
+	30 -> 31
+	31 -> 34
+	32 -> 33
+	33 -> 34
+	34 -> 35
+	35 -> 36
+	36 -> 37
+	37 -> 38
+	38 -> 40
+	38 -> 51
+	39 -> 40
+	39 -> 48
+	40 -> 41
+	41 -> 42
+	42 -> 43
+	43 -> 44
+	44 -> 45
+	45 -> 46
+	45 -> 49
+	46 -> 47
+	47 -> 48
+	48 -> 52
+	49 -> 50
+	50 -> 51
+	51 -> 54
+	52 -> 53
+	53 -> 55
+	54 -> 53
+	53 -> 55 [label=" x2"]
+	55 -> 56
+	56 -> 57
+	57 -> 58
+	58 -> 59
+	59 -> 60
+	60 -> 61
+	61 -> 62
+	62 -> 63
+}
