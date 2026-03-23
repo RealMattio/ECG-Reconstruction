@@ -49,12 +49,16 @@ def _bandpass(signal, lowcut, highcut, fs, order=4):
 def _check_polarity(ppg_signal):
     """
     True se il PPG è invertito.
-    Criterio: asimmetria di ampiezza sul segnale centrato.
-    In un PPG corretto il picco sistolico è la deviazione positiva dominante,
-    quindi max(centrato) > |min(centrato)|. Se vale il contrario, è invertito.
+    Criterio: skewness percentile.
+    In un PPG normale i picchi sistolici sono brevi e positivi → distribuzione
+    right-skewed → p90 - p50 > p50 - p10.
+    In un PPG invertito i picchi diventano dip brevi e negativi, mentre la
+    baseline (larga) è in alto → distribuzione left-skewed → p50 - p10 > p90 - p50.
     """
-    centered = ppg_signal - np.mean(ppg_signal)
-    return float(centered.max()) < float(-centered.min())
+    p10 = float(np.percentile(ppg_signal, 10))
+    p50 = float(np.percentile(ppg_signal, 50))
+    p90 = float(np.percentile(ppg_signal, 90))
+    return (p50 - p10) > (p90 - p50)
 
 
 def _spectral_sqi(ppg_signal, fs):

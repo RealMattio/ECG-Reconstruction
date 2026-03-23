@@ -10,12 +10,11 @@ from sklearn.model_selection import KFold, train_test_split
 import gc
 import psutil
 
-# Import specifici
 from src.data_loader.mimic3wdb_data_loader import MimicDataLoader
 from src.preprocessing.mimic_autoregressive_preprocessor import MimicAutoregressivePreprocessor
 from src.mimic_generation_PINN.trainer import Trainer
 from src.mimic_generation_PINN.model_factory import ModelFactory
-from src.evaluation.visualization import save_extended_reports, plot_training_history_metrics
+from src.evaluation.visualization import save_extended_reports, plot_training_history_metrics, plot_validation_snapshot, plot_autoregressive_epoch
 from src.evaluation.evaluation import save_training_history, evaluate_test_set_performance
 
 # ─────────────────────────────────────────────────────────────
@@ -272,12 +271,13 @@ def _prepare_data_legacy(subject_keys, raw_data, preprocessor, configs):
     except MemoryError:
         return None, 0
 
-# --- PIPELINE PRINCIPALE MODIFICATA ---
+# --- PIPELINE PRINCIPALE MODIFICATA PER SLURM RESUME E FINAL TRAINING CON TEST SET ---
 def run_k_fold_pipeline(base_path_unused, configs):
     main_save_dir = configs['model_save_path'] 
     os.makedirs(main_save_dir, exist_ok=True)
     device = configs['device']
     k_folds = configs.get('k_folds', 5)
+    start_fold = configs.get('start_fold', 1)
     seed = configs.get('seed', 42)
     set_reproducibility(seed)
 
@@ -299,30 +299,84 @@ def run_k_fold_pipeline(base_path_unused, configs):
     print(f"[PIPELINE] Pazienti totali nel dataset: {len(unique_patient_ids)}")
 
     patient_ids_arr = np.array(unique_patient_ids)
+    
+    # =========================================================================
+    # >>> CREAZIONE HOLD-OUT TEST SET (15% INVISIBILE) E SALVATAGGIO SPLIT
+    # =========================================================================
+    split_file_path = os.path.join(configs['preprocessed_data'], 'dataset_split.json')
+    
+    current_patients_set = set(patient_ids_arr)
+    use_existing_split = False
+
+    # 1. Controllo se esiste già uno split salvato
+    if os.path.exists(split_file_path):
+        with open(split_file_path, 'r') as f:
+            saved_split = json.load(f)
+            
+        saved_cv = set(saved_split.get("cv_patients", []))
+        saved_test = set(saved_split.get("test_patients", []))
+        saved_total = saved_cv.union(saved_test)
+        
+        # 2. Controllo di Coerenza: i pazienti salvati sono ESATTAMENTE quelli caricati oggi?
+        if saved_total == current_patients_set:
+            print(f"[PIPELINE] Trovato file di split coerente! Caricamento da: {split_file_path}")
+            cv_patients = np.array(saved_split["cv_patients"])
+            test_patients = np.array(saved_split["test_patients"])
+            use_existing_split = True
+        else:
+            print("[WARN] Il file di split esistente NON coincide con i pazienti attuali (forse hai scaricato nuovi dati).")
+            print("[WARN] Verrà generato e sovrascritto un nuovo split per mantenere la coerenza.")
+
+    # 3. Generazione e Salvataggio (se non esiste o non è coerente)
+    if not use_existing_split:
+        print("[PIPELINE] Generazione nuovo split 85/15 e salvataggio su file...")
+        cv_patients, test_patients = train_test_split(patient_ids_arr, test_size=0.15, random_state=seed)
+        
+        new_split = {
+            "cv_patients": cv_patients.tolist(),
+            "test_patients": test_patients.tolist()
+        }
+        with open(split_file_path, 'w') as f:
+            json.dump(new_split, f, indent=4)
+        print(f"[PIPELINE] Nuovo split salvato con successo in: {split_file_path}")
+
+    print(f"[PIPELINE] Pazienti allocati per CV e Final Train: {len(cv_patients)}")
+    print(f"[PIPELINE] Pazienti allocati per TEST SET (Unseen): {len(test_patients)}")
+
+    report_path = os.path.join(main_save_dir, "k_fold_final_report.json")
     fold_results = []
     
-    # --- FIX ROBUSTO PER LA GESTIONE DEGLI SPLIT ---
+    if start_fold > 1 and os.path.exists(report_path):
+        with open(report_path, 'r') as f:
+            fold_results = json.load(f)
+        print(f"[INFO] Ripresa da Fold {start_fold}. Trovati risultati delle {len(fold_results)} fold precedenti.")
+    
+    # --- SPLIT (Usa solo i cv_patients) ---
     if k_folds <= 1:
-        print("[INFO] k_folds impostato a 1. Esecuzione split singolo Train/Val (80/20).")
-        indices = np.arange(len(patient_ids_arr))
+        print("[INFO] k_folds impostato a 1. Split singolo Train/Val (80/20) sui dati CV.")
+        indices = np.arange(len(cv_patients))
         train_idx, val_idx = train_test_split(indices, test_size=0.2, random_state=seed)
         splits = [(train_idx, val_idx)]
-        k_folds = 1 # Normalizziamo a 1 per i log
+        k_folds = 1 
     else:
-        print(f"[INFO] Esecuzione {k_folds}-Fold Cross Validation.")
+        print(f"[INFO] Preparazione {k_folds}-Fold Cross Validation sui dati CV.")
         kf = KFold(n_splits=k_folds, shuffle=True, random_state=seed)
-        splits = kf.split(patient_ids_arr)
-    # -----------------------------------------------
+        splits = list(kf.split(cv_patients))
 
     for fold_idx, (train_idx, val_idx) in enumerate(splits):
-        print(f"\n{'='*50}\n>>> AVVIO FOLD {fold_idx + 1}/{k_folds}\n{'='*50}")
+        current_fold = fold_idx + 1
         
-        fold_dir = os.path.join(main_save_dir, f"fold_{fold_idx+1}")
+        if current_fold < start_fold:
+            continue
+            
+        print(f"\n{'='*50}\n>>> AVVIO FOLD {current_fold}/{k_folds}\n{'='*50}")
+        
+        fold_dir = os.path.join(main_save_dir, f"fold_{current_fold}")
         os.makedirs(fold_dir, exist_ok=True)
         configs['model_save_path'] = fold_dir
         
-        train_patients = patient_ids_arr[train_idx]
-        val_patients = patient_ids_arr[val_idx]
+        train_patients = cv_patients[train_idx]
+        val_patients = cv_patients[val_idx]
 
         if configs['apply_preprocessing']:
             train_keys = [k for k,v in raw_data['subjects_data'].items() if v['subject_id'] in train_patients]
@@ -336,20 +390,16 @@ def run_k_fold_pipeline(base_path_unused, configs):
             val_ds = MimicSmartDataset(val_subset, configs['preprocessed_data'], configs)
             n_train, n_val = len(train_ds), len(val_ds)
 
-        print(f"   Dataset: Train={n_train} finestre, Val={n_val} finestre")
-
         num_cpus = os.cpu_count()
         workers = min(num_cpus, 8) if device.type == 'cuda' else 0
         train_loader = DataLoader(train_ds, batch_size=configs['batch_size'], shuffle=True, num_workers=workers, pin_memory=True, persistent_workers=True if workers > 0 else False)
         val_loader = DataLoader(val_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True, persistent_workers=True if workers > 0 else False)
-        print(f"   [DEBUG] Batch Size: {configs['batch_size']} | Iterazioni per Epoca: {len(train_loader)} | Workers: {workers}")
         
         try:
             sample_x, sample_y, _, _, _ = train_ds[0] 
             configs['input_channels'] = sample_x.shape[0] 
             configs['actual_seq_len'] = sample_x.shape[-1]
             configs['target_len'] = sample_y.shape[-1]
-            
             model = ModelFactory.get_model(configs).to(device)
         except Exception as e:
             print(f"[ERROR] Init Modello Fallita: {e}"); continue
@@ -365,20 +415,96 @@ def run_k_fold_pipeline(base_path_unused, configs):
             model.load_state_dict(torch.load(best_path, map_location=device))
             
         metrics = evaluate_test_set_performance(model, val_loader, device, fold_dir, configs)
+        best_epoch_reached = history.get('best_epoch', configs['epochs'])
         
         fold_results.append({
-            "fold": fold_idx + 1,
+            "fold": current_fold,
             "train_patients": train_patients.tolist(),
             "val_patients": val_patients.tolist(),
-            "metrics": metrics
+            "metrics": metrics,
+            "best_epoch": best_epoch_reached
         })
         
+        with open(report_path, 'w') as f: json.dump(fold_results, f, indent=4)
         del model, trainer, train_loader, val_loader, train_ds, val_ds
         torch.cuda.empty_cache()
         gc.collect()
 
-    report_path = os.path.join(main_save_dir, "k_fold_final_report.json")
-    with open(report_path, 'w') as f: json.dump(fold_results, f, indent=4)
-    print(f"\n[PIPELINE COMPLETATA] Risultati salvati in: {main_save_dir}")
+    print(f"\n[PIPELINE K-FOLD COMPLETATA] Report salvato in: {report_path}")
+
+    # =========================================================================
+    # >>> ADDESTRAMENTO FINALE (100% DEI DATI DI CV, SENZA VALIDATION)
+    # =========================================================================
+    if len(fold_results) >= k_folds:
+        print(f"\n{'='*60}\n>>> ADDESTRAMENTO MODELLO FINALE (SU CV DATASET)\n{'='*60}")
+        
+        avg_epochs = int(np.mean([res.get('best_epoch', configs['epochs']) for res in fold_results]))
+        print(f"[INFO] L'epoca ottimale calcolata dalla cross-validation è: {avg_epochs}")
+        
+        final_dir = os.path.join(main_save_dir, "final_full_model")
+        os.makedirs(final_dir, exist_ok=True)
+        configs['model_save_path'] = final_dir
+        
+        print(" -> Caricamento dei dati di sviluppo...")
+        if configs['apply_preprocessing']:
+            all_keys = [k for k,v in raw_data['subjects_data'].items() if v['subject_id'] in cv_patients]
+            final_ds, n_final = _prepare_data_legacy(all_keys, raw_data, preprocessor, configs)
+        else:
+            final_subset = [m for m in full_manifest if m['subject_id'] in cv_patients]
+            final_ds = MimicSmartDataset(final_subset, configs['preprocessed_data'], configs)
+            n_final = len(final_ds)
+            
+        final_loader = DataLoader(final_ds, batch_size=configs['batch_size'], shuffle=True, num_workers=workers, pin_memory=True)
+        
+        try:
+            model_final = ModelFactory.get_model(configs).to(device)
+            configs['use_early_stopping'] = False 
+            
+            trainer_final = Trainer(model_final, device, configs, preprocessor=preprocessor)
+            print(f" -> Avvio Addestramento per {avg_epochs} epoche...")
+            
+            final_history = trainer_final.fit(final_loader, None, epochs=avg_epochs, patience=0)
+            save_training_history(final_history, final_dir)
+            
+            try:
+                plot_training_history_metrics(final_history, final_dir)
+            except Exception as e:
+                pass
+            print(f"\n✅ MODELLO FINALE PRONTO E SALVATO IN: {final_dir}")
+            
+        except Exception as e:
+            print(f"[ERROR] Addestramento Finale Fallito: {e}")
+            return fold_results
+
+        # =========================================================================
+        # >>> VALUTAZIONE TEST SET (DATI MAI VISTI) E PLOTS
+        # =========================================================================
+        print(f"\n{'='*60}\n>>> VALUTAZIONE SUL TEST SET (UNSEEN DATA)\n{'='*60}")
+        print(f" -> Caricamento del Test Set ({len(test_patients)} pazienti)...")
+        
+        if configs['apply_preprocessing']:
+            test_keys = [k for k,v in raw_data['subjects_data'].items() if v['subject_id'] in test_patients]
+            test_ds, n_test = _prepare_data_legacy(test_keys, raw_data, preprocessor, configs)
+        else:
+            test_subset = [m for m in full_manifest if m['subject_id'] in test_patients]
+            test_ds = MimicSmartDataset(test_subset, configs['preprocessed_data'], configs)
+            n_test = len(test_ds)
+            
+        test_loader = DataLoader(test_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True)
+        
+        # 1. Metriche Generali
+        print(" -> Calcolo metriche globali...")
+        metrics = evaluate_test_set_performance(model_final, test_loader, device, final_dir, configs)
+        
+        # 2. Generazione delle 6 Immagini
+        print(" -> Generazione Immagini sul Test Set...")
+        for i in range(1, 4):
+            # 3 Plot Snapshot
+            plot_validation_snapshot(model_final, test_loader, device, final_dir, epoch="TEST", step=i, prefix=f'test_inference')
+            # 3 Plot Autoregressivi
+            if preprocessor:
+                plot_autoregressive_epoch(model_final, test_ds, preprocessor, device, configs, epoch=f"TEST_{i}", save_dir=final_dir)
+        
+        print(f"✅ VALUTAZIONE TEST SET COMPLETATA.")
 
     return fold_results
