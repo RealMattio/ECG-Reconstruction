@@ -36,3 +36,5 @@ CLAUDE.md
 bidmc_data/
 bidmc_data/
 data/processed/
+paper_utils/
+requirements-local.txt

@@ -1,122 +1,410 @@
-![Python](https://img.shields.io/badge/Python-3.10.19%20-blue?logo=python)
+# PPG → ECG Reconstruction — PINN Pipeline
 
-| [🇮🇹 Leggi in Italiano](README.md) | [🇬🇧 Read in English](README_en.md) |
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.6-EE4C2C?logo=pytorch&logoColor=white)
+![CUDA](https://img.shields.io/badge/CUDA-12.4-76B900?logo=nvidia&logoColor=white)
+![License](https://img.shields.io/badge/License-Research%20Only-lightgrey)
+![Dataset](https://img.shields.io/badge/Dataset-MIMIC--III%20WDB-blueviolet)
+![Approach](https://img.shields.io/badge/Approach-Physics--Informed%20NN-orange)
+![SLURM](https://img.shields.io/badge/HPC-SLURM-informational?logo=linux&logoColor=white)
+
+| [🇬🇧 Read in English](README_en.md) | [🇮🇹 Leggi in Italiano](README.md) |
 | :--- | :--- |
-## 📊 Dataset
 
-The **PPG-DaLiA** (PPG-based Heart Rate Estimation Dataset for Daily Life Activities) dataset was created to address the challenge of estimating heart rate using photoplethysmography (PPG) in the presence of motion artifacts. Unlike laboratory datasets, this one includes long-term recordings made during daily life activities.
-
-### 📂 Folder Structure
-
-The dataset is organized by subject. There are **15 subjects** in total (7 men, 8 women). Each subject has their own folder identified by an ID (e.g., `S1`, `S2`, ... `S15`).
-
-```text
-PPG-FieldStudy/
-├── S1/
-│   ├── S1.pkl           # Synchronized and pre-processed data (Recommended)
-│   ├── S1_quest.csv     # Subject metadata (age, weight, fitness)
-│   ├── S1_activity.csv  # Activity start timestamps
-│   ├── S1_RespiBAN.h5   # Raw data from chest sensor
-│   └── S1_E4.zip        # Raw data from wrist sensor
-├── S2/...
-
-```
 ---
 
-### 📄 File Details
+## Objective
 
-#### 1. The Master File: `SX.pkl` (Recommended for Machine Learning)
+Reconstruction of the **ECG (Lead II)** signal starting strictly from the **PPG (photoplethysmography)** signal acquired via a non-invasive sensor. This is achieved using a Physics-Informed Neural Network (PINN) that incorporates the constraints of the McSharry differential equation, which governs cardiac dynamics, directly into the loss function.
 
-This file is a Python dictionary (`pickle`) containing all data already **synchronized and ready to use**. It is the main resource if you want to start training models right away.
+---
 
-*  **`signal`**: Contains raw data synchronized from both devices:
-    * `wrist`: Empatica E4 sensor data (ACC, BVP, EDA, TEMP).
-    * `chest`: RespiBAN sensor data (ACC, ECG, RESP).
-* **`label`**: The *Ground Truth* of the heart rate (calculated from the ECG) provided for 8-second windows with a 2-second shift.
-* **`activity`**: Activity labels corresponding to the data.
-* **`questionnaire`**: Demographic information about the subject.
-* **`rpeaks`**: R peak indices extracted from the ECG signal.
+## 1. Dataset — MIMIC-III Waveform Database (Matched)
 
-#### 2. Sensor Data (Raw Data)
+### Clinical Patient Selection
 
-If you prefer to work with unprocessed data, two sources are available:
+The source dataset is the **MIMIC-III Waveform Database Matched** (`mimic3wdb-matched`), accessible on [PhysioNet](https://physionet.org/content/mimic3wdb-matched/1.0/) upon registration and signing of the Data Use Agreement.
 
-*  **RespiBAN (Chest)**: Sampled at **700 Hz**. Includes ECG signals (used for baseline truth), respiration, and 3D accelerometer.
-* **Empatica E4 (Wrist)**: Includes several sensors with different frequencies:
-    * **BVP (PPG)**: 64 Hz (The main signal for HR estimation).
-    * **ACC**: 32 Hz (3 axes, essential for compensating for movement).
-    * **EDA / TEMP**: 4 Hz.
+Patient selection occurs in two phases:
 
-#### 3. Metadata and Protocol: `SX_quest.csv` and `SX_activity.csv`
+1. **Clinical Filtering** (`scripts/filter_no_cardiac_patologies_patients.py`, `scripts/filter_ecg_patologies.py`): Patients are extracted from the MIMIC-III clinical database and filtered by excluding those with ICD-9 diagnoses related to structural heart diseases (heart failure, infarction, atrial fibrillation, etc.). The result is an `allowed_patients.csv` file.
 
-* **Metadata**: Age, gender, height, weight, skin type (Fitzpatrick scale), and fitness level.
+2. **Selective Download** (`scripts/download_healthy_waveforms.py`): Downloads from PhysioNet only the WFDB waveforms of the approved patients, further filtering by a minimum duration (≥ 3 minutes per session) and balancing the contribution per patient (≤ 36 hours total). The download automatically pauses if free disk space drops below 4 GB. It supports parallelization via SLURM using `--worker_id` and `--total_workers`.
 
-* **Activity**: The dataset covers 8 different activities performed under natural conditions:
-
-
-| ID | Activity | Description | Average Duration |
-| --- | --- | --- | --- |
-| 1 | Sitting | Sitting and reading (baseline) | 10 min |
-| 2 | Stairs | Climbing and descending 6 flights of stairs | 5 min |
-| 3 | Table Soccer | 1 vs 1 table soccer match | 5 min |
-| 4 | Cycling | Outdoor cycling on various terrains | 8 min |
-| 5 | Driving | Driving in the city and on suburban roads | 15 min |
-| 6 | Lunch Break | Queuing in the cafeteria, eating and talking | 30 min |
-| 7 | Walking | Walking back to the office  | 10 min |
-| 8 | Working | Working on the computer in the office | 20 min |
-----
-
-### ⚠️ Important Notes
-
-*  **Subject S6**: Due to a hardware failure, S6 data is only valid for the first 90 minutes of collection.
-
-
-*  **Synchronization**: Devices were synchronized manually via a “double tap” gesture on the chest, recorded by the accelerometers of both sensors.
-
-
-## 📂 Project Structure
-
-The project is organized in a modular way to manage the four main phases: pre-processing, multimodal fusion, ECG signal generation, and performance evaluation.
+The downloaded files are `.hea` + `.dat` pairs in standard WFDB format, organized by patient:
 
 ```text
-PPG-ECG-Generation/
-│
-├── data/                       # Local directory for data management
-│   ├── raw/                    # Original files from the SX.pkl dataset (excluded from git because they are too large)
-│   └── processed/              # Signals stored after the pre-processing phase
-│
-├── src/                        # Main source code
-│   ├── __init__.py
-│   │
-│   ├── data_loader/            # Modules for data loading and PyTorch dataset management
-│   │   ├── dalia_loader.py     # Loading of .pkl files with synchronized and labeled data
-│   │   └── transforms.py       # Normalization and data augmentation operations
-│   │
-├── preprocessing/          # Phase 1: Channel-by-channel signal processing
-│   │   ├── filters.py          # Implementation of bandpass filters and artifact removal
-│   │   └── segmentation.py     # Segmentation using sliding window (8s window, 2s shift)
-│   │
-│   ├── fusion/                 # Phase 2: Multimodal fusion architecture
-│   │   ├── attention.py        # Implementation of self and cross-attention mechanisms
-│   │   └── fusion_layers.py    # Definition of the fusion structure (early/late/hybrid)
-│   │
-│   ├── generation/             # Phase 3: Model definition and training
-│   │   ├── models/             # Generative architectures (e.g., GAN, Diffusion, or UNet)
-│   │   ├── trainer.py          # Training loop management and weight saving
-│   │   └── inference.py        # ECG generation from new PPG inputs
-│   │
-│   └── evaluation/             # Phase 4: Evaluation and testing metrics
-│       ├── metrics.py          # Calculation of RMSE, correlation, and error on HR
-│       └── ablation.py         # Script for performing ablation studies
-│
-├── notebooks/                  # Jupyter Notebooks for exploratory analysis and visualizations
-├── configs/                    # .yaml or .json files for hyperparameter management
-├── scripts/                    # Shell scripts for quickly starting training or testing
-├── tests/                      # Unit tests for validating individual modules
-├── requirements.txt            # Project dependencies
-└── README.md                   # Main documentation
-
+mimic3wdb-matched_healthy_data/
+├── p00/
+│   └── p000052/
+│       ├── 3533390_0011.hea
+│       └── 3533390_0011.dat
+├── p01/
+│   └── ...
 ```
 
-### Details on Core Components
-_To be defined_
+Each record contains at least the **`II`** (ECG Lead II) and **`PLETH`** (PPG) channels.
+
+---
+
+## 2. Preprocessing and Manifest Creation
+
+The preprocessing is entirely **zero-copy**: no signal is duplicated on disk. The only output is a `dataset_manifest.json` file (a few KBs) that indexes the valid segments with their original WFDB paths.
+
+### Execution
+
+```bash
+sbatch run_pinn_manifest.sh
+# or locally:
+python scripts/preprocess_mimic_pinn_manifest.py \
+    --input_dir  ./mimic3wdb-matched_healthy_data \
+    --output_dir ./mimic3wdb-matched_healthy_data \
+    --target_fs 125 --ppg_thr 0.9 --ecg_thr 0.9
+```
+
+### Internal Steps
+
+```
+WFDB File (.hea + .dat)
+      │
+      ▼
+  Resampling to 125 Hz (scipy.signal.resample)
+      │
+      ▼
+  Butterworth bandpass filter (order 4)
+      ├── PPG:  0.5 – 5.0 Hz
+      └── ECG:  0.5 – 40.0 Hz
+      │
+      ▼
+  Sliding window for quality evaluation (4 s, step 1 s)
+      ├── PPG: Spectral SQI + morphology + polarity  →  Pearson score
+      └── ECG: kurtosis + QRS morphology             →  Pearson score
+      │
+      ▼
+  Merging valid PPG intervals ∩ valid ECG intervals
+      │
+      ▼
+  Extraction of contiguous segments ≥ 7 s
+      │
+      ▼
+  dataset_manifest.json  (WFDB path + segment indices + PPG inversion flag)
+```
+
+---
+
+## 3. Window Filtering — Signal Quality Criteria
+
+Each 4-second window is accepted only if it simultaneously passes the checks for both PPG **and** ECG.
+
+### 3.1 PPG — Signal Quality Index (SQI)
+
+| Criterion | Method | Threshold |
+|---|---|---|
+| **Non-flat signal** | standard deviation | `std > 1e-6` |
+| **Spectral SQI** | Welch PSD — ratio of power in HR peak (0.5–3 Hz) to total (0.5–10 Hz) | `≥ 0.5` |
+| **Beat morphology** | Pearson correlation between individual detected beats and median template | `≥ 0.9` |
+| **Polarity** | Amplitude asymmetry: `max(x – mean) > |min(x – mean)|` → if false, the signal is inverted | — |
+
+### 3.2 ECG — Signal Quality Index
+
+| Criterion | Method | Threshold |
+|---|---|---|
+| **Non-flat signal** | standard deviation | `std > 1e-4` |
+| **Kurtosis** | Pearson kurtosis (non-Fisher) — a clean ECG has impulsive R peaks → high kurtosis | `≥ 5.0` |
+| **QRS morphology** | Pearson correlation between extracted QRS complexes and median template | `≥ 0.9` |
+
+### 3.3 Intersection and Segmentation
+
+Intervals that pass the PPG filtering and those that pass the ECG filtering are merged (overlapping intervals are combined) and intersected. Only the resulting contiguous segments with a length of **≥ 7 seconds** are added to the manifest.
+
+### 3.4 Per-Window Normalization During Training
+
+At the time of extracting each training window (in `MimicSmartDataset.__getitem__`), both the PPG and ECG are **independently** normalized in the `[0, 1]` range using per-window min-max scaling:
+
+```
+x_norm = (x − min(x)) / (max(x) − min(x) + ε)
+```
+
+- **PPG (7 s)**: Normalized independently, after polarity correction.
+- **ECG (7 s = past + target)**: Past and target are normalized **together** with the same min/max, so the model doesn't see artificial discontinuities at the boundary between known context and the target to predict.
+- **theta, omega** (PINN physical signals): **Not normalized** — they encode phase (rad) and angular frequency (rad/s).
+
+---
+
+## 4. Training Pipeline Architecture
+
+```
+dataset_manifest.json
+        │
+        ▼
+  MimicSmartDataset.__init__
+  (loads WFDB → resamples → bandpass filter
+   → computes theta/omega → caches in RAM)
+        │
+        ▼
+  MimicSmartDataset.__getitem__
+  (for each window: PPG polarity correction
+   → [0,1] normalization for PPG and ECG → PPG derivative)
+        │
+        ▼
+  Model Input: X = [PPG, ΔPPGₜ, ECG_past]  shape: (B, 3, 875)
+  Target:      Y = ECG_target                shape: (B, 1, 125)
+        │
+        ▼
+      PINN Model
+        │
+        ▼
+  Hybrid PINN Loss
+  ├── Amplitude   (MAE / HUBER / RMSE weighted on peaks)   weight 1.0
+  ├── Morphology  (1 − predicted vs target Pearson)        weight 0.4
+  └── McSharry ODE (dz/dt residual − f(z,θ,ω))             weight 0.1
+        │
+        ▼
+  K-Fold CV (k=1 or k=4) per patient
+  Early Stopping (patience=20) + LR Scheduler (÷2 every 40 epochs)
+```
+
+### Model Inputs
+
+| Channel | Signal | Size |
+|---|---|---|
+| 0 | Normalized PPG [0,1] | 875 samples (7 s × 125 Hz) |
+| 1 | First derivative of PPG (ΔPPGₜ) | 875 samples |
+| 2 | Past ECG with last-value padding | 875 samples (6 s actual + 1 s padding) |
+
+### Target
+
+| Signal | Size |
+|---|---|
+| Normalized future ECG [0,1] | 125 samples (1 s × 125 Hz) |
+
+### PINN Loss — McSharry ODE
+
+The physical component of the loss enforces that the empirical derivative of the generated ECG respects the McSharry differential equation (2003):
+
+```
+dz/dt = −Σᵢ aᵢ · Δθᵢ · exp(−Δθᵢ²/2bᵢ²) − (z − z₀)
+
+where:  Δθᵢ = (θ − θᵢ) mod 2π
+        θ = instantaneous cardiac phase (from find_peaks on the ECG signal)
+        ω = instantaneous angular frequency (2π / RR period)
+```
+
+The ODE loss penalizes the discrepancy between the empirical derivative of the generated signal and the theoretical one:
+
+```
+L_ODE = mean((dz_emp − dz_phys)²)
+```
+
+---
+
+## 5. Models
+
+All models are located in `src/mimic_generation_PINN/models/` and can be selected via `--model`.
+
+### 5.1 `lightweight_hybrid` *(default)*
+
+Compact architecture designed for fast training on mid-range GPUs.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform (J=2, Q=8)
+    │
+    ▼
+1D CNN Encoder
+    ├── Conv1d(3→32, k=7) + BN + LeakyReLU + MaxPool(2)
+    └── Conv1d(32→64, k=5) + BN + LeakyReLU + MaxPool(2)
+    │
+    ▼
+BiLSTM (hidden=64, bidirectional → 128 features)
+    │
+    ▼
+Linear Upsample → 125 samples
+    │
+    ▼
+Decoder: Dropout(0.2) + Conv1d(128→64, k=3) + Conv1d(64→1, k=1)
+    │
+    ▼
+Output (B, 1, 125)
+```
+
+### 5.2 `ha_cnn_bilstm_ar`
+
+HA-CNN-BiLSTM autoregressive model with Attention Gate.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ▼
+CNN Stage
+    ├── Conv1d(3→64, k=7) + BN + LeakyReLU + MaxPool(2)
+    └── Conv1d(64→128, k=5) + BN + LeakyReLU + MaxPool(2)
+    │
+    ▼
+BiLSTM (hidden=128, bidirectional → 256 features)
+    │
+    ▼
+Linear Upsample → 125 samples
+    │
+    ▼
+Attention Gate: Conv1d(256→256, k=1) + Sigmoid  (element-wise gating)
+    │
+    ▼
+Regression Head: Conv1d(256→128) + Conv1d(128→64) + Conv1d(64→1)
+    │
+    ▼
+Output (B, 1, 125)
+```
+
+### 5.3 `dual_branch_hybrid`
+
+Dual-branch architecture that separates PPG processing from the contextual ECG.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ├─────────────────┬──────────────────────────┐
+    │                 │                          │
+    ▼                 ▼                          ▼
+2D CNN BRANCH    PPG LSTM BRANCH            ECG LSTM BRANCH
+(4 Conv2d blocks  2-layer BiLSTM             2-layer BiLSTM
+on spectrogram)   hidden=128 bidirect.       hidden=128 bidirect.
+                  on PPG + ΔPPG              on ECG_past
+    │                 └──────────┬───────────────┘
+    │                            │
+    │                      Fusion Linear(512→256)
+    │                            │
+    └────────────── Attention Gate (Softmax) ────┘
+                                 │
+                          Final Regression
+                        Conv1d(512→128→64→1)
+                                 │
+                          Output (B, 1, 125)
+```
+
+### 5.4 `bio_transformer`
+
+Transformer-based model with Sinusoidal Positional Encoding.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ▼
+CNN Projector: Conv1d → d_model (projection into token space)
+    │
+    ▼
+Positional Encoding (sinusoidal)
+    │
+    ▼
+Transformer Encoder (2 layers, 4 heads, FF=128, dropout=0.2)
+    │
+    ▼
+Upsample + Conv1d(d_model→1)
+    │
+    ▼
+Output (B, 1, 125)
+```
+
+### Wavelet Scattering Transform (WST)
+
+When `apply_wst=True` (default configuration), all models apply a **Wavelet Scattering Transform** ([Kymatio](https://www.kymat.io/) library) with parameters `J=2, Q=8` before their respective encoders. The WST produces time-frequency representations that are stable to deformations, useful for capturing the morphological characteristics of physiological signals independently of small phase and amplitude variations.
+
+---
+
+## 6. Execution
+
+### Prerequisites
+
+```bash
+pip install -r requirements.txt
+# Requires PhysioNet access (registration and DUA for MIMIC-III)
+```
+
+### Execution Order
+
+```bash
+# 1. Clinical filtering (one-time, requires access to the MIMIC-III clinical DB)
+python scripts/filter_no_cardiac_patologies_patients.py
+python scripts/filter_ecg_patologies.py
+
+# 2. Waveform download (SLURM cluster, can be parallelized)
+sbatch job_ecg_gen_download_dataset.sh
+
+# 3. Manifest creation (CPU-only, ~1-4 hours on 497 records)
+sbatch run_pinn_manifest.sh
+
+# 4. PINN Training
+sbatch run_pinn_ecg.sh
+# or locally:
+python src/main_onlyPPG_PINN_mimic3wdb.py --model lightweight_hybrid --epochs 100
+```
+
+### Main Arguments for `main_onlyPPG_PINN_mimic3wdb.py`
+
+| Argument | Default | Description |
+|---|---|---|
+| `--model` | `lightweight_hybrid` | Architecture: `lightweight_hybrid`, `ha_cnn_bilstm_ar`, `dual_branch_hybrid`, `bio_transformer` |
+| `--epochs` | `100` | Epochs per fold |
+| `--batch_size` | `256` | Batch size |
+| `--val_step` | `500` | Intermediate validation step |
+| `--use_raw` | `False` | Use raw WFDB data instead of the preprocessed manifest |
+
+---
+
+## 7. Experiment Outputs
+
+Results are saved in `src/experiments/mimic_pinn_results/healthy_patients/<LOSS>_loss/<model>_<timestamp>/`:
+
+```text
+<run>/
+├── fold_1/
+│   ├── best_lightweight_hybrid.pth      # Weights of the best model
+│   ├── performances.json                # RMSE, MAE, Pearson, SNR, BPM error
+│   ├── training_history.csv
+│   ├── train_loss.png / val_loss.png
+│   ├── val_epoch_*.png                  # Snapshot predicted vs true ECG
+│   └── epoch_*_autoregressive.png       # Autoregressive generation comparison
+└── k_fold_final_report.json             # Aggregated metrics across all folds
+```
+
+---
+
+## 8. Code Structure
+
+```text
+PPG2ECG_Workstation/
+├── src/
+│   ├── main_onlyPPG_PINN_mimic3wdb.py       # Main entry point
+│   ├── data_loader/
+│   │   └── mimic3wdb_data_loader.py          # Lazy/full WFDB loading
+│   ├── preprocessing/
+│   │   └── mimic_autoregressive_preprocessor.py
+│   ├── mimic_generation_PINN/
+│   │   ├── pipeline.py                       # MimicSmartDataset + K-Fold loop
+│   │   ├── trainer.py                        # Training loop + PINN loss
+│   │   ├── model_factory.py
+│   │   └── models/
+│   │       ├── lightweight_hybrid.py
+│   │       ├── ha_cnn_bilstm_autoregressive.py
+│   │       ├── dual_branch_hybrid.py
+│   │       └── bio_transformer.py
+│   └── evaluation/
+│       ├── evaluation.py                     # RMSE, MAE, Pearson, SNR, BPM
+│       └── visualization.py                  # Plotting + autoregressive generation
+├── scripts/
+│   ├── filter_no_cardiac_patologies_patients.py
+│   ├── filter_ecg_patologies.py
+│   ├── download_healthy_waveforms.py
+│   └── preprocess_mimic_pinn_manifest.py     # Zero-copy manifest builder
+├── mimic3wdb-matched_healthy_data/           # WFDB data (not tracked by git)
+│   └── dataset_manifest.json                 # Generated by preprocess_mimic_pinn_manifest.py
+├── run_pinn_manifest.sh                      # SLURM: preprocessing (CPU)
+└── run_pinn_ecg.sh                           # SLURM: training (GPU A100)
+```

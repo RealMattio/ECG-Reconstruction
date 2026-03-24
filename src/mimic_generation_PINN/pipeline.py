@@ -490,7 +490,7 @@ def run_k_fold_pipeline(base_path_unused, configs):
             test_ds = MimicSmartDataset(test_subset, configs['preprocessed_data'], configs)
             n_test = len(test_ds)
             
-        test_loader = DataLoader(test_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True)
+        test_loader = DataLoader(test_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True) # pyright: ignore[reportArgumentType]
         
         # 1. Metriche Generali
         print(" -> Calcolo metriche globali...")
@@ -504,6 +504,21 @@ def run_k_fold_pipeline(base_path_unused, configs):
             # 3 Plot Autoregressivi
             if preprocessor:
                 plot_autoregressive_epoch(model_final, test_ds, preprocessor, device, configs, epoch=f"TEST_{i}", save_dir=final_dir)
+        
+        # ==========================================
+        #  Salvataggio Report Modello Finale
+        # ==========================================
+        final_report = {
+            "model_type": configs.get("model_type", "Unknown"),
+            "total_epochs_trained": avg_epochs,
+            "test_set_metrics": metrics,
+            "test_patients_count": len(test_patients)
+        }
+        
+        final_report_path = os.path.join(final_dir, "final_model_report.json")
+        with open(final_report_path, 'w') as f:
+            json.dump(final_report, f, indent=4)
+        print(f"✅ Report Finale salvato in: {final_report_path}")
         
         print(f"✅ VALUTAZIONE TEST SET COMPLETATA.")
 

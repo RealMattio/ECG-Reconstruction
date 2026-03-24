@@ -18,10 +18,11 @@ def main():
     
     # Argomento per il modello
     parser.add_argument(
-        '-m', '--model', 
-        type=str, 
-        default='lightweight_hybrid', 
-        choices=['ha_cnn_bilstm_ar', 'bio_transformer', 'dual_branch_hybrid', 'lightweight_hybrid'],
+        '-m', '--model',
+        type=str,
+        default='lightweight_hybrid',
+        choices=['ha_cnn_bilstm_ar', 'bio_transformer', 'dual_branch_hybrid',
+                 'lightweight_hybrid', 'ppg_wavenet', 'ecg_unet1d'],
         help="Scegli l'architettura del modello da addestrare."
     )
     
@@ -35,6 +36,9 @@ def main():
     
     # --- NUOVO ARGOMENTO PER SLURM RESUME ---
     parser.add_argument('--start_fold', type=int, default=1, help="Specifica la fold da cui ripartire (es. 3)")
+    
+    # Aggiungo la LOSS come parametro da scegliere da riga di comando
+    parser.add_argument('--base_loss', type=str.upper, default='MAE', choices=['MAE', 'RMSE', 'HUBER'], help='Scegli la loss di base.')
 
     args = parser.parse_args()
     # -----------------------------------------------
@@ -45,7 +49,7 @@ def main():
     raw_data_path = os.path.join(os.path.dirname(PROJECT_ROOT), 'mimic3wdb-matched_raw_data')
     preprocessed_data_path = os.path.join(PROJECT_ROOT, '../mimic3wdb-matched_healthy_data')
 
-    BASE_LOSS = 'MAE'  
+    BASE_LOSS = args.base_loss  
 
     # Path Output Esperimenti
     model_save_path = os.path.join(PROJECT_ROOT, 'experiments', 'final_mimic_pinn_results', f"{BASE_LOSS}_loss" ,f"{args.model}_{timestamp}")

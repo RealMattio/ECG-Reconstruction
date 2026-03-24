@@ -178,8 +178,12 @@ def evaluate_test_set_performance(model, test_loader, device, save_dir, configs)
     return final_results
 
 def save_training_history(history, save_dir):
-    """Salva la history dell'addestramento in CSV."""
-    df = pd.DataFrame(history)
+    """Salva la history dell'addestramento in CSV, gestendo le differenze di lunghezza."""
+    # Filtra e mantiene SOLO gli elementi che sono liste e che NON sono vuoti.
+    # Questo previene il crash di Pandas se 'val_loss' è vuoto o se ci sono chiavi intere come 'best_epoch'.
+    clean_history = {k: v for k, v in history.items() if isinstance(v, list) and len(v) > 0}
+    
+    df = pd.DataFrame(clean_history)
     df.index.name = 'epoch'
     path = os.path.join(save_dir, 'training_history.csv')
     df.to_csv(path)

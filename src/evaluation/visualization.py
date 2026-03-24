@@ -350,27 +350,35 @@ def save_extended_reports(model, subject_ids, raw_data, preprocessor, device, co
 
 
 def plot_training_history_metrics(history, save_dir):
-    """Grafico a tre pannelli per le metriche di training. Adattato dinamicamente a MAE/HUBER/RMSE."""
+    """Grafico a tre pannelli per le metriche di training. Sicuro anche senza validation set."""
+    if 'train_loss' not in history or len(history['train_loss']) == 0:
+        return
+        
     epochs = range(1, len(history['train_loss']) + 1)
     fig, axes = plt.subplots(1, 3, figsize=(21, 6))
 
     # Pannello 1: Total Loss
     axes[0].plot(epochs, history['train_loss'], label='Train')
-    axes[0].plot(epochs, history['val_loss'], label='Val', linestyle='--')
+    if 'val_loss' in history and len(history['val_loss']) > 0:
+        axes[0].plot(epochs, history['val_loss'], label='Val', linestyle='--')
     axes[0].set_title('Total Loss'); axes[0].legend()
 
-    # --- FIX CRITICO: Rilevamento dinamico della chiave per l'ampiezza ---
+    # Rilevamento dinamico della chiave per l'ampiezza
     amp_train_key = 'train_amp_loss' if 'train_amp_loss' in history else 'train_rmse'
     amp_val_key = 'val_amp_loss' if 'val_amp_loss' in history else 'val_rmse'
 
     # Pannello 2: Amplitude Loss (MAE / Huber / RMSE)
-    axes[1].plot(epochs, history[amp_train_key], label='Train', color='green')
-    axes[1].plot(epochs, history[amp_val_key], label='Val', color='lightgreen', linestyle='--')
+    if amp_train_key in history:
+        axes[1].plot(epochs, history[amp_train_key], label='Train', color='green')
+    if amp_val_key in history and len(history[amp_val_key]) > 0:
+        axes[1].plot(epochs, history[amp_val_key], label='Val', color='lightgreen', linestyle='--')
     axes[1].set_title('Amplitude Loss (MAE/HUBER/RMSE)'); axes[1].legend()
 
     # Pannello 3: Pearson Loss
-    axes[2].plot(epochs, history['train_pearson'], label='Train', color='red')
-    axes[2].plot(epochs, history['val_pearson'], label='Val', color='salmon', linestyle='--')
+    if 'train_pearson' in history:
+        axes[2].plot(epochs, history['train_pearson'], label='Train', color='red')
+    if 'val_pearson' in history and len(history['val_pearson']) > 0:
+        axes[2].plot(epochs, history['val_pearson'], label='Val', color='salmon', linestyle='--')
     axes[2].set_title('Pearson Loss (1 - Corr)'); axes[2].legend()
 
     for ax in axes: ax.set_xlabel('Epochs'); ax.grid(alpha=0.3)
