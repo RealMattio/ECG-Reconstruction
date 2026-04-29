@@ -34,25 +34,50 @@ def main():
     parser.add_argument('--use_raw', action='store_true', help="Se attivo, usa i dati RAW invece di quelli preprocessati.")
     parser.add_argument('--val_step', type=int, default=500, help="Esegui validazione ogni N batch (step)")
     
-    # --- NUOVO ARGOMENTO PER SLURM RESUME ---
+    # --- ARGOMENTO PER SLURM RESUME ---
     parser.add_argument('--start_fold', type=int, default=1, help="Specifica la fold da cui ripartire (es. 3)")
-    
+
+    # --- CARTELLA OUTPUT (obbligatoria se --start_fold > 1) ---
+    parser.add_argument(
+        '--output_dir',
+        type=str,
+        default=None,
+        help=(
+            "Cartella in cui salvare (o dove continuare a salvare) i risultati. "
+            "Se omessa, viene creata automaticamente con timestamp. "
+            "OBBLIGATORIA quando --start_fold > 1."
+        )
+    )
+
     # Aggiungo la LOSS come parametro da scegliere da riga di comando
     parser.add_argument('--base_loss', type=str.upper, default='MAE', choices=['MAE', 'RMSE', 'HUBER'], help='Scegli la loss di base.')
 
     args = parser.parse_args()
+
+    # Validazione: --output_dir è obbligatorio se si riprende da una fold intermedia
+    if args.start_fold > 1 and args.output_dir is None:
+        parser.error("--output_dir è obbligatorio quando si specifica --start_fold > 1. "
+                     "Passa la stessa cartella usata all'avvio originale dell'esperimento.")
     # -----------------------------------------------
 
     # 3. CONFIGURAZIONE PERCORSI E DATI
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    
+
     raw_data_path = os.path.join(os.path.dirname(PROJECT_ROOT), 'mimic3wdb-matched_raw_data')
     preprocessed_data_path = os.path.join(PROJECT_ROOT, '../mimic3wdb-matched_healthy_data')
 
-    BASE_LOSS = args.base_loss  
+    BASE_LOSS = args.base_loss
 
-    # Path Output Esperimenti
-    model_save_path = os.path.join(PROJECT_ROOT, 'experiments', 'final_mimic_pinn_results', f"{BASE_LOSS}_loss" ,f"{args.model}_{timestamp}")
+    # Path Output Esperimenti:
+    # - se --output_dir è fornito, si usa quello (resume o cartella custom)
+    # - altrimenti si genera un nuovo path con timestamp
+    if args.output_dir is not None:
+        model_save_path = args.output_dir
+    else:
+        model_save_path = os.path.join(
+            PROJECT_ROOT, 'experiments', 'final_mimic_pinn_results',
+            f"{BASE_LOSS}_loss", f"{args.model}_{timestamp}"
+        )
 
     # 4. CONFIGURAZIONE COMPLETA (configs)
     configs = {
@@ -111,8 +136,9 @@ def main():
     print(f"Modello: {configs['model_type'].upper()}") 
     print(f"Epoche massime per Fold: {configs['epochs']} | Batch Size: {configs['batch_size']}")
     print(f"Device: {configs['device']}")
+    print(f"Output dir: {model_save_path}")
     if args.start_fold > 1:
-        print(f"⚠️ RESUME ATTIVO: Ripresa dalla Fold {args.start_fold}")
+        print(f"⚠️  RESUME ATTIVO: Ripresa dalla Fold {args.start_fold}")
     print("-" * 60)
 
     try:

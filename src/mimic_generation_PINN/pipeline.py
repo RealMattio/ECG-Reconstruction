@@ -453,7 +453,9 @@ def run_k_fold_pipeline(base_path_unused, configs):
             final_subset = [m for m in full_manifest if m['subject_id'] in cv_patients]
             final_ds = MimicSmartDataset(final_subset, configs['preprocessed_data'], configs)
             n_final = len(final_ds)
-            
+        
+        num_cpus = os.cpu_count()
+        workers = min(num_cpus, 8) if device.type == 'cuda' else 0
         final_loader = DataLoader(final_ds, batch_size=configs['batch_size'], shuffle=True, num_workers=workers, pin_memory=True)
         
         try:

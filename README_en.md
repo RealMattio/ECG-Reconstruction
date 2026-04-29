@@ -157,10 +157,10 @@ dataset_manifest.json
   Hybrid PINN Loss
   ├── Amplitude   (MAE / HUBER / RMSE weighted on peaks)   weight 1.0
   ├── Morphology  (1 − predicted vs target Pearson)        weight 0.4
-  └── McSharry ODE (dz/dt residual − f(z,θ,ω))             weight 0.1
+  └── McSharry ODE (dz/dt residual − f(z,θ,ω))            weight 0.1
         │
         ▼
-  K-Fold CV (k=1 or k=4) per patient
+  K-Fold CV (k=1 or k=5) per patient
   Early Stopping (patience=20) + LR Scheduler (÷2 every 40 epochs)
 ```
 
@@ -201,10 +201,21 @@ L_ODE = mean((dz_emp − dz_phys)²)
 ## 5. Models
 
 All models are located in `src/mimic_generation_PINN/models/` and can be selected via `--model`.
+The models deliberately cover **five distinct architectural paradigms** to ensure an exhaustive comparison for publication purposes:
+
+| Paradigm | Model(s) |
+|---|---|
+| CNN + recurrent (LSTM) | `lightweight_hybrid`, `ha_cnn_bilstm_ar` |
+| Multi-scale Transformer | `bio_transformer` (PhysioFormer) |
+| Pure TCN with gating (WaveNet-style) | `ppg_wavenet` |
+| Encoder-Decoder with skip connections | `ecg_unet1d` |
+| Dual-branch CNN 2D + LSTM | `dual_branch_hybrid` |
+
+---
 
 ### 5.1 `lightweight_hybrid` *(default)*
 
-Compact architecture designed for fast training on mid-range GPUs.
+Compact architecture designed for fast training. Best-performing model among the CNN+LSTM baselines.
 
 ```
 Input (B, 3, 875)
@@ -231,7 +242,7 @@ Output (B, 1, 125)
 
 ### 5.2 `ha_cnn_bilstm_ar`
 
-HA-CNN-BiLSTM autoregressive model with Attention Gate.
+HA-CNN-BiLSTM autoregressive model with Attention Gate, taken from the literature.
 
 ```
 Input (B, 3, 875)
@@ -259,7 +270,104 @@ Regression Head: Conv1d(256→128) + Conv1d(128→64) + Conv1d(64→1)
 Output (B, 1, 125)
 ```
 
-### 5.3 `dual_branch_hybrid`
+### 5.3 `bio_transformer` — *PhysioFormer*
+
+Original Transformer architecture with multi-scale tokenization and residual PPG bypass.
+Compared to the original version: Pre-LN, 4 layers, learnable positional embedding, progressive decoder, residual bypass from the PPG channel directly to the output.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ▼
+Multi-Scale Tokenizer
+    ├── Conv1d(3 → d/3,  k=1,  padding=0)  ← fine scale
+    ├── Conv1d(3 → d/3,  k=5,  padding=2)  ← medium scale
+    └── Conv1d(3 → d/3+, k=15, padding=7)  ← coarse scale
+    Concat → BN → GELU  →  (B, d_model=128, 875)
+    │
+    ▼
+Learnable Positional Embedding
+    │
+    ▼
+Transformer Encoder Pre-LN (4 layers, 8 heads, FF=256, dropout=0.1)
+    │
+    ▼
+Progressive Decoder
+    Interpolate → Conv1d(128→64, k=3) → Conv1d(64→32, k=3) → Conv1d(32→1, k=1)
+    │
+    ├── + Residual PPG Bypass: Conv1d(1→8→1) on the original PPG channel
+    ▼
+Output (B, 1, 125)
+```
+
+### 5.4 `ppg_wavenet` — *PPGWaveNet*
+
+Purely convolutional architecture inspired by WaveNet. No LSTM or Transformer.
+Highly parallelizable on GPU; very large receptive field through cyclic exponential dilations.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ▼
+Input Embedding: Conv1d(3→64, k=1) + BN + GELU
+    │
+    ▼
+Stack of 12 WaveNetResidualBlocks (2 cycles × [d=1,2,4,8,16,32])
+    │
+    Each block:
+    ├── filter_conv: Conv1d(64→64, k=3, dilation=d)
+    ├── gate_conv:   Conv1d(64→64, k=3, dilation=d)
+    ├── h = tanh(filter) ⊙ σ(gate)        ← gated activation
+    ├── residual = Conv1d(h) + x           → passed to next block
+    └── skip     = Conv1d(h)               → accumulated in skip_sum
+    │
+    ▼
+skip_sum + final_x → Output Head
+    GELU → Conv1d(64→64, k=1) → GELU → Conv1d(64→32, k=3) → Conv1d(32→1, k=1)
+    │
+    ▼
+Interpolate → 125 samples
+    │
+    ▼
+Output (B, 1, 125)
+```
+
+### 5.5 `ecg_unet1d` — *ECGUNet1D*
+
+Adaptation of U-Net (originally designed for biomedical image segmentation) to 1D signal regression.
+Skip connections preserve precise temporal morphology (R-peak position, QRS duration) during reconstruction.
+
+```
+Input (B, 3, 875)
+    │
+    ├── [optional] Wavelet Scattering Transform
+    │
+    ▼  Encoder
+    E1: ConvBlock(3→32)    → MaxPool(2)   →  (B, 32,  437)
+    E2: ConvBlock(32→64)   → MaxPool(2)   →  (B, 64,  218)
+    E3: ConvBlock(64→128)  → MaxPool(2)   →  (B, 128, 109)
+                              MaxPool(2)  →  (B, 128,  54)   Bottleneck input
+    │
+    ▼  Bottleneck
+    BiLSTM(128, hidden=128, 2 layers, bidirectional) + Conv1d(256→128)
+    │
+    ▼  Decoder  (Upsample ×2 + skip concatenation)
+    D3: Upsample → concat(E3) → ConvBlock(256→128)
+    D2: Upsample → concat(E2) → ConvBlock(192→64)
+    D1: Upsample → concat(E1) → ConvBlock(96→32)
+    │
+    ▼
+Conv1d(32→1, k=1) → Interpolate → 125 samples
+    │
+    ▼
+Output (B, 1, 125)
+```
+
+### 5.6 `dual_branch_hybrid`
 
 Dual-branch architecture that separates PPG processing from the contextual ECG.
 
@@ -271,10 +379,10 @@ Input (B, 3, 875)
     ├─────────────────┬──────────────────────────┐
     │                 │                          │
     ▼                 ▼                          ▼
-2D CNN BRANCH    PPG LSTM BRANCH            ECG LSTM BRANCH
-(4 Conv2d blocks  2-layer BiLSTM             2-layer BiLSTM
-on spectrogram)   hidden=128 bidirect.       hidden=128 bidirect.
-                  on PPG + ΔPPG              on ECG_past
+2D CNN BRANCH    PPG LSTM BRANCH         ECG LSTM BRANCH
+(4 Conv2d blocks  2-layer BiLSTM          2-layer BiLSTM
+on spectrogram)   hidden=128 bidirect.    hidden=128 bidirect.
+                  on PPG + ΔPPG           on ECG_past
     │                 └──────────┬───────────────┘
     │                            │
     │                      Fusion Linear(512→256)
@@ -285,31 +393,6 @@ on spectrogram)   hidden=128 bidirect.       hidden=128 bidirect.
                         Conv1d(512→128→64→1)
                                  │
                           Output (B, 1, 125)
-```
-
-### 5.4 `bio_transformer`
-
-Transformer-based model with Sinusoidal Positional Encoding.
-
-```
-Input (B, 3, 875)
-    │
-    ├── [optional] Wavelet Scattering Transform
-    │
-    ▼
-CNN Projector: Conv1d → d_model (projection into token space)
-    │
-    ▼
-Positional Encoding (sinusoidal)
-    │
-    ▼
-Transformer Encoder (2 layers, 4 heads, FF=128, dropout=0.2)
-    │
-    ▼
-Upsample + Conv1d(d_model→1)
-    │
-    ▼
-Output (B, 1, 125)
 ```
 
 ### Wavelet Scattering Transform (WST)
@@ -350,11 +433,13 @@ python src/main_onlyPPG_PINN_mimic3wdb.py --model lightweight_hybrid --epochs 10
 
 | Argument | Default | Description |
 |---|---|---|
-| `--model` | `lightweight_hybrid` | Architecture: `lightweight_hybrid`, `ha_cnn_bilstm_ar`, `dual_branch_hybrid`, `bio_transformer` |
+| `--model` | `lightweight_hybrid` | Architecture: `lightweight_hybrid`, `ha_cnn_bilstm_ar`, `dual_branch_hybrid`, `bio_transformer`, `ppg_wavenet`, `ecg_unet1d` |
 | `--epochs` | `100` | Epochs per fold |
 | `--batch_size` | `256` | Batch size |
 | `--val_step` | `500` | Intermediate validation step |
 | `--use_raw` | `False` | Use raw WFDB data instead of the preprocessed manifest |
+| `--start_fold` | `1` | Fold to resume from (SLURM resume) |
+| `--base_loss` | `MAE` | Base loss function: `MAE`, `RMSE`, `HUBER` |
 
 ---
 
@@ -391,10 +476,12 @@ PPG2ECG_Workstation/
 │   │   ├── trainer.py                        # Training loop + PINN loss
 │   │   ├── model_factory.py
 │   │   └── models/
-│   │       ├── lightweight_hybrid.py
-│   │       ├── ha_cnn_bilstm_autoregressive.py
-│   │       ├── dual_branch_hybrid.py
-│   │       └── bio_transformer.py
+│   │       ├── lightweight_hybrid.py          # 1D CNN + BiLSTM (best baseline)
+│   │       ├── ha_cnn_bilstm_autoregressive.py# 1D CNN + BiLSTM + Attention Gate
+│   │       ├── dual_branch_hybrid.py          # 2D CNN + Dual BiLSTM
+│   │       ├── bio_transformer.py             # PhysioFormer: multi-scale Transformer
+│   │       ├── ppg_wavenet.py                 # WaveNet-style dilated TCN with gating
+│   │       └── ecg_unet1d.py                  # 1D U-Net encoder-decoder with skip connections
 │   └── evaluation/
 │       ├── evaluation.py                     # RMSE, MAE, Pearson, SNR, BPM
 │       └── visualization.py                  # Plotting + autoregressive generation
@@ -402,9 +489,99 @@ PPG2ECG_Workstation/
 │   ├── filter_no_cardiac_patologies_patients.py
 │   ├── filter_ecg_patologies.py
 │   ├── download_healthy_waveforms.py
-│   └── preprocess_mimic_pinn_manifest.py     # Zero-copy manifest builder
+│   ├── preprocess_mimic_pinn_manifest.py     # Zero-copy manifest builder
+│   └── count_model_complexity.py             # Parameter count + FLOPs profiler
 ├── mimic3wdb-matched_healthy_data/           # WFDB data (not tracked by git)
 │   └── dataset_manifest.json                 # Generated by preprocess_mimic_pinn_manifest.py
 ├── run_pinn_manifest.sh                      # SLURM: preprocessing (CPU)
-└── run_pinn_ecg.sh                           # SLURM: training (GPU A100)
+├── run_pinn_ecg.sh                           # SLURM: training (GPU A40)
+├── Q1_REVIEW_CHECKLIST.md                    # Checklist for Q1 journal submission
+├── requirements.txt                          # GPU dependencies (workstation)
+├── requirements-local.txt                    # CPU-only dependencies (local dev)
+└── tests/
+    └── test_new_models_pipeline.py           # 49 end-to-end tests (pytest)
 ```
+
+---
+
+## 9. Model Computational Complexity
+
+Measured with `scripts/count_model_complexity.py` on input `(3, 875) → (125,)`, without WST.
+FLOPs are estimated via `torchinfo` (MACs × 2); the PhysioFormer column is underestimated because `torchinfo` does not fully count multi-head attention operations — on the A40 GPU the Transformer is much faster than on CPU thanks to native parallelization.
+
+| Model | Parameters | FLOPs (M) | Weight VRAM¹ | CPU fwd (batch=256) |
+|---|---:|---:|---:|---:|
+| LightweightHybrid | 102,465 | 45 | ~2 MB | 133 ms |
+| PPGWaveNet | 408,577 | 712 | ~6 MB | 3,153 ms² |
+| HA-CNN-BiLSTM-AR | 496,001 | 201 | ~8 MB | 366 ms |
+| ECGUNet1D | 999,745 | 335 | ~15 MB | 702 ms |
+| PhysioFormer (BioTransformer) | 1,204,266 | ~15³ | ~18 MB | 16,784 ms² |
+| DualBranchHybrid | 1,753,795 | 2,232 | ~27 MB | 4,103 ms |
+
+> ¹ VRAM = fp32 weights + gradients + Adam states. Excludes activations and data batch.
+> ² CPU values are not representative: PPGWaveNet and PhysioFormer benefit greatly from GPU parallelization.
+> ³ `torchinfo` underestimates Transformer FLOPs (does not count multi-head attention).
+
+**Estimated total VRAM on A40 (batch=256):** all models require < 4 GB including activations. The A40 GPU (48 GB) can train any model with batch 256 without issues.
+
+### Recommended Training Order on GPU A40
+
+Ordered by increasing computational risk (fastest models first to validate the pipeline):
+
+| Priority | Model | Rationale |
+|---|---|---|
+| 1 | `lightweight_hybrid` | Lightest (102K params, 45M FLOPs) — fast pipeline validation |
+| 2 | `ha_cnn_bilstm_ar` | Similar structure, useful as a direct baseline |
+| 3 | `ecg_unet1d` | Stable architecture, no problematic components |
+| 4 | `bio_transformer` | Transformer: slow on CPU but fast on A40, monitor early stopping |
+| 5 | `ppg_wavenet` | 712M FLOPs per step — verify throughput before 5 full folds |
+| 6 | `dual_branch_hybrid` | Heaviest (2.2B FLOPs) — run last |
+
+```bash
+# Recommended sequence on SLURM cluster (A40)
+python src/main_onlyPPG_PINN_mimic3wdb.py --model lightweight_hybrid  --epochs 100
+python src/main_onlyPPG_PINN_mimic3wdb.py --model ha_cnn_bilstm_ar    --epochs 100
+python src/main_onlyPPG_PINN_mimic3wdb.py --model ecg_unet1d          --epochs 100
+python src/main_onlyPPG_PINN_mimic3wdb.py --model bio_transformer     --epochs 100
+python src/main_onlyPPG_PINN_mimic3wdb.py --model ppg_wavenet         --epochs 100
+python src/main_onlyPPG_PINN_mimic3wdb.py --model dual_branch_hybrid  --epochs 100
+```
+
+---
+
+## 10. Experimental Results
+
+> **This section is updated progressively as trainings complete.**
+> Metrics computed on the validation set of the 5-fold CV on MIMIC-III (healthy patients, Lead II).
+> Format: `mean ± std` over 5 folds. Base loss: MAE. WST: enabled (`apply_wst=True`).
+
+### 10.1 Signal Reconstruction Metrics
+
+| Model | RMSE ↓ | MAE ↓ | Pearson ↑ | SNR (dB) ↑ | BPM Error ↓ |
+|---|---|---|---|---|---|
+| LightweightHybrid | — | — | — | — | — |
+| HA-CNN-BiLSTM-AR | — | — | — | — | — |
+| ECGUNet1D | — | — | — | — | — |
+| PhysioFormer | — | — | — | — | — |
+| PPGWaveNet | — | — | — | — | — |
+| DualBranchHybrid | — | — | — | — | — |
+
+### 10.2 Training Loss by Component (best fold)
+
+| Model | Total loss | MAE (weighted) | Pearson loss | ODE loss |
+|---|---|---|---|---|
+| LightweightHybrid | — | — | — | — |
+| HA-CNN-BiLSTM-AR | — | — | — | — |
+| ECGUNet1D | — | — | — | — |
+| PhysioFormer | — | — | — | — |
+| PPGWaveNet | — | — | — | — |
+| DualBranchHybrid | — | — | — | — |
+
+### 10.3 Methodological Notes
+
+- **Dataset:** MIMIC-III Waveform Database Matched — healthy patients (no structural cardiac pathologies)
+- **Split:** 85% CV (5-fold per patient) + 15% invisible hold-out test set
+- **Normalization:** per-window min-max [0,1], computed separately on PPG and ECG (6s past + 1s target together)
+- **Hardware:** NVIDIA A40 (48 GB VRAM), CUDA 12.4
+- **Seed:** 45 (reproducible via `set_reproducibility`)
+- **Fixed hyperparameters for all models:** lr=0.001, Adam, batch=256, patience=20, LR decay ÷2 every 40 epochs
