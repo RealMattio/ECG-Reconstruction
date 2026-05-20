@@ -1,0 +1,3091 @@
+{
+    "1m": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.22521750702071278,
+                "Pearson_10s": 0.27982359547622837,
+                "Wasserstein_10s": 0.20800921557005642,
+                "SampEn_Error_10s": 0.05408716488218779,
+                "LZ_Complexity_Error_10s": 0.032920679614558246,
+                "Cumulative_RMSD": 0.18887200580036062,
+                "Cumulative_CosineSim": 0.8446810051752968,
+                "Error_Cumulative_HRV_RMSSD": 7.612430228984902,
+                "Error_Cumulative_QRS_ms": 4.424588744588732,
+                "Error_Cumulative_PR_ms": 26.701298701298704,
+                "Error_Cumulative_QT_ms": 56.86035087719296
+            }
+        },
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0005",
+            "metrics": {
+                "MAE_10s": 0.1492836516651567,
+                "Pearson_10s": 0.18245490091395244,
+                "Wasserstein_10s": 0.14216644748943177,
+                "SampEn_Error_10s": 0.09990676161047685,
+                "LZ_Complexity_Error_10s": 0.16460339807279112,
+                "Cumulative_RMSD": 0.13371668423994507,
+                "Cumulative_CosineSim": 0.9777179074087726,
+                "Error_Cumulative_HRV_RMSSD": 35.15374125588119,
+                "Error_Cumulative_QRS_ms": 21.900205058099786,
+                "Error_Cumulative_PR_ms": 2.6897435897435855,
+                "Error_Cumulative_QT_ms": 8.185919343814078
+            }
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "metrics": {
+                "MAE_10s": 0.19058460338331593,
+                "Pearson_10s": 0.04298489222975076,
+                "Wasserstein_10s": 0.17358497622964134,
+                "SampEn_Error_10s": 0.3429427018981745,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.21445313811807207,
+                "Cumulative_CosineSim": 0.9423253700371457,
+                "Error_Cumulative_HRV_RMSSD": 144.3995660299504,
+                "Error_Cumulative_QRS_ms": 44.45045045045045,
+                "Error_Cumulative_PR_ms": 25.951219512195124,
+                "Error_Cumulative_QT_ms": 1.0171298058621687
+            }
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0002",
+            "metrics": {
+                "MAE_10s": 0.08834125153853706,
+                "Pearson_10s": -0.026431605273683823,
+                "Wasserstein_10s": 0.08834125153853703,
+                "SampEn_Error_10s": 0.1624127102034194,
+                "LZ_Complexity_Error_10s": 0.04115084951819779,
+                "Cumulative_RMSD": 0.38500130128182186,
+                "Cumulative_CosineSim": 0.8068785856200632,
+                "Error_Cumulative_HRV_RMSSD": null,
+                "Error_Cumulative_QRS_ms": null,
+                "Error_Cumulative_PR_ms": null,
+                "Error_Cumulative_QT_ms": null
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "metrics": {
+                "MAE_10s": 0.1400121204929611,
+                "Pearson_10s": -0.16914271884539983,
+                "Wasserstein_10s": 0.05074105298667031,
+                "SampEn_Error_10s": 0.10329981336489369,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.16289495157487505,
+                "Cumulative_CosineSim": 0.9159079487188546,
+                "Error_Cumulative_HRV_RMSSD": 182.33912019523183,
+                "Error_Cumulative_QRS_ms": 39.30196545562835,
+                "Error_Cumulative_PR_ms": 20.817539947974737,
+                "Error_Cumulative_QT_ms": 33.66235801018411
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0008",
+            "metrics": {
+                "MAE_10s": 0.1177226922128697,
+                "Pearson_10s": -0.017705830730726003,
+                "Wasserstein_10s": 0.09052010514862031,
+                "SampEn_Error_10s": 0.15952785953588466,
+                "LZ_Complexity_Error_10s": 0.1892939077837099,
+                "Cumulative_RMSD": 0.13857994199930707,
+                "Cumulative_CosineSim": 0.9071096992280777,
+                "Error_Cumulative_HRV_RMSSD": 411.89059080622735,
+                "Error_Cumulative_QRS_ms": 40.689318232289594,
+                "Error_Cumulative_PR_ms": 13.00813008130082,
+                "Error_Cumulative_QT_ms": 18.684432600488606
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "metrics": {
+                "MAE_10s": 0.17171851965087975,
+                "Pearson_10s": 0.024879037835317447,
+                "Wasserstein_10s": 0.15572030259839728,
+                "SampEn_Error_10s": 0.08917012871047414,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.13435651294676346,
+                "Cumulative_CosineSim": 0.9592801968723591,
+                "Error_Cumulative_HRV_RMSSD": 590.313771258739,
+                "Error_Cumulative_QRS_ms": 38.51532846715328,
+                "Error_Cumulative_PR_ms": 5.514053060152349,
+                "Error_Cumulative_QT_ms": 26.815896188158973
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.23824844564113154,
+                "Pearson_10s": -0.005721186557849263,
+                "Wasserstein_10s": 0.2052167840140979,
+                "SampEn_Error_10s": 0.04842053730110912,
+                "LZ_Complexity_Error_10s": 0.08230169903639556,
+                "Cumulative_RMSD": 0.24836676495503157,
+                "Cumulative_CosineSim": 0.9129967963083213,
+                "Error_Cumulative_HRV_RMSSD": 145.07594404807608,
+                "Error_Cumulative_QRS_ms": 72.63589743589742,
+                "Error_Cumulative_PR_ms": 32.35327635327634,
+                "Error_Cumulative_QT_ms": 67.98837606837611
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "metrics": {
+                "MAE_10s": 0.18541516577838407,
+                "Pearson_10s": -0.010841291740808383,
+                "Wasserstein_10s": 0.15855164258602403,
+                "SampEn_Error_10s": 0.1697248632985538,
+                "LZ_Complexity_Error_10s": 0.032920679614558246,
+                "Cumulative_RMSD": 0.16256029464254604,
+                "Cumulative_CosineSim": 0.8497349428293635,
+                "Error_Cumulative_HRV_RMSSD": 382.3615744923933,
+                "Error_Cumulative_QRS_ms": 26.18008658008658,
+                "Error_Cumulative_PR_ms": 13.780012570710241,
+                "Error_Cumulative_QT_ms": 48.41123476417596
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "metrics": {
+                "MAE_10s": 0.17638984606086727,
+                "Pearson_10s": 0.6844634756501062,
+                "Wasserstein_10s": 0.16051256379851414,
+                "SampEn_Error_10s": 0.028062026485253744,
+                "LZ_Complexity_Error_10s": 0.1399128883618725,
+                "Cumulative_RMSD": 0.1726117803758663,
+                "Cumulative_CosineSim": 0.866298968828614,
+                "Error_Cumulative_HRV_RMSSD": 121.62692427226008,
+                "Error_Cumulative_QRS_ms": 21.570429570429567,
+                "Error_Cumulative_PR_ms": 10.738691260430386,
+                "Error_Cumulative_QT_ms": 22.00466200466201
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "metrics": {
+                "MAE_10s": 0.23045753907261046,
+                "Pearson_10s": 0.07702692187950082,
+                "Wasserstein_10s": 0.20874573542539493,
+                "SampEn_Error_10s": 0.23982022123547936,
+                "LZ_Complexity_Error_10s": 0.06584135922911649,
+                "Cumulative_RMSD": 0.18194159563310955,
+                "Cumulative_CosineSim": 0.8337322065949169,
+                "Error_Cumulative_HRV_RMSSD": 287.86449344299166,
+                "Error_Cumulative_QRS_ms": 21.089898053753487,
+                "Error_Cumulative_PR_ms": 6.922813036020585,
+                "Error_Cumulative_QT_ms": 56.246012621916236
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "metrics": {
+                "MAE_10s": 0.31337096922626545,
+                "Pearson_10s": 0.12593171804236827,
+                "Wasserstein_10s": 0.3016142369639222,
+                "SampEn_Error_10s": 0.28726912245711,
+                "LZ_Complexity_Error_10s": 0.1069922087473143,
+                "Cumulative_RMSD": 0.11222671463896257,
+                "Cumulative_CosineSim": 0.9781010433526796,
+                "Error_Cumulative_HRV_RMSSD": 276.82747070832,
+                "Error_Cumulative_QRS_ms": 18.151674694746276,
+                "Error_Cumulative_PR_ms": 2.160401002506262,
+                "Error_Cumulative_QT_ms": 65.25641312871062
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "metrics": {
+                "MAE_10s": 0.14862072885848127,
+                "Pearson_10s": -0.2328905617550816,
+                "Wasserstein_10s": 0.10145048810877794,
+                "SampEn_Error_10s": 0.2041524095238597,
+                "LZ_Complexity_Error_10s": 0.1892939077837098,
+                "Cumulative_RMSD": 0.12367894159986106,
+                "Cumulative_CosineSim": 0.9144881251959975,
+                "Error_Cumulative_HRV_RMSSD": 289.3370344938571,
+                "Error_Cumulative_QRS_ms": 5.384778460886167,
+                "Error_Cumulative_PR_ms": 2.519545774294045,
+                "Error_Cumulative_QT_ms": 93.62560949756204
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0003",
+            "metrics": {
+                "MAE_10s": 0.21350574110205017,
+                "Pearson_10s": -0.23221199547968707,
+                "Wasserstein_10s": 0.16577001457413876,
+                "SampEn_Error_10s": 0.27652371716006335,
+                "LZ_Complexity_Error_10s": 0.22221458739826813,
+                "Cumulative_RMSD": 0.19124690747785256,
+                "Cumulative_CosineSim": 0.8343482617745951,
+                "Error_Cumulative_HRV_RMSSD": 241.0356892477825,
+                "Error_Cumulative_QRS_ms": 33.88235294117648,
+                "Error_Cumulative_PR_ms": 13.941176470588232,
+                "Error_Cumulative_QT_ms": 68.51764705882357
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0018",
+            "metrics": {
+                "MAE_10s": NaN,
+                "Pearson_10s": NaN,
+                "Wasserstein_10s": NaN,
+                "SampEn_Error_10s": null,
+                "LZ_Complexity_Error_10s": 0.3785878155674197,
+                "Cumulative_RMSD": NaN,
+                "Cumulative_CosineSim": NaN,
+                "Error_Cumulative_HRV_RMSSD": null,
+                "Error_Cumulative_QRS_ms": null,
+                "Error_Cumulative_PR_ms": null,
+                "Error_Cumulative_QT_ms": null
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "metrics": {
+                "MAE_10s": 0.16563579455062488,
+                "Pearson_10s": 0.7182405906069129,
+                "Wasserstein_10s": 0.1487400745451226,
+                "SampEn_Error_10s": 0.00431340681528386,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.1897620340519741,
+                "Cumulative_CosineSim": 0.8208185108995123,
+                "Error_Cumulative_HRV_RMSSD": 8.255211736669821,
+                "Error_Cumulative_QRS_ms": 23.386954781912777,
+                "Error_Cumulative_PR_ms": 2.0222222222222257,
+                "Error_Cumulative_QT_ms": 2.2139845052466285
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "metrics": {
+                "MAE_10s": 0.21897832289607833,
+                "Pearson_10s": -0.2998118923459671,
+                "Wasserstein_10s": 0.1224191671004546,
+                "SampEn_Error_10s": 0.07420072089937713,
+                "LZ_Complexity_Error_10s": 0.1399128883618725,
+                "Cumulative_RMSD": 0.20371860525306934,
+                "Cumulative_CosineSim": 0.7573896716113223,
+                "Error_Cumulative_HRV_RMSSD": 15.215682861811686,
+                "Error_Cumulative_QRS_ms": 45.391648443194825,
+                "Error_Cumulative_PR_ms": 20.315151515151513,
+                "Error_Cumulative_QT_ms": 2.208476517754889
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "metrics": {
+                "MAE_10s": 0.16395337091616446,
+                "Pearson_10s": 0.043614476266632854,
+                "Wasserstein_10s": 0.1353149839008371,
+                "SampEn_Error_10s": 0.32721106398220295,
+                "LZ_Complexity_Error_10s": 0.08230169903639561,
+                "Cumulative_RMSD": 0.13861929958947655,
+                "Cumulative_CosineSim": 0.9192384637113992,
+                "Error_Cumulative_HRV_RMSSD": 515.0327481307053,
+                "Error_Cumulative_QRS_ms": 13.279653679653691,
+                "Error_Cumulative_PR_ms": 3.7656565656565704,
+                "Error_Cumulative_QT_ms": 84.2672304439746
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "metrics": {
+                "MAE_10s": 0.12581041132523899,
+                "Pearson_10s": 0.005292300818458252,
+                "Wasserstein_10s": 0.08180972674226056,
+                "SampEn_Error_10s": 0.21788349074327662,
+                "LZ_Complexity_Error_10s": 0.07407152913275605,
+                "Cumulative_RMSD": 0.20134182923326108,
+                "Cumulative_CosineSim": 0.9224260331241838,
+                "Error_Cumulative_HRV_RMSSD": 489.2526112188525,
+                "Error_Cumulative_QRS_ms": 2.9511037755312657,
+                "Error_Cumulative_PR_ms": 63.42669942669944,
+                "Error_Cumulative_QT_ms": 33.77395577395578
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0035",
+            "metrics": {
+                "MAE_10s": 0.28230078198516917,
+                "Pearson_10s": -0.022622909185602107,
+                "Wasserstein_10s": 0.265775182390599,
+                "SampEn_Error_10s": 0.09924961317973235,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.1856337078170439,
+                "Cumulative_CosineSim": 0.8845832426576931,
+                "Error_Cumulative_HRV_RMSSD": 155.40105223212313,
+                "Error_Cumulative_QRS_ms": 13.658039215686273,
+                "Error_Cumulative_PR_ms": 12.681436210847977,
+                "Error_Cumulative_QT_ms": 88.16806722689074
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "metrics": {
+                "MAE_10s": 0.27575516247133064,
+                "Pearson_10s": -0.09219251982997453,
+                "Wasserstein_10s": 0.26429080552724415,
+                "SampEn_Error_10s": 0.4063288694577615,
+                "LZ_Complexity_Error_10s": 0.23867492720554717,
+                "Cumulative_RMSD": 0.2264123313306749,
+                "Cumulative_CosineSim": 0.6811081765346259,
+                "Error_Cumulative_HRV_RMSSD": 133.24000502897832,
+                "Error_Cumulative_QRS_ms": 13.741452295669177,
+                "Error_Cumulative_PR_ms": 8.08682170542636,
+                "Error_Cumulative_QT_ms": 90.24128514056224
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0036",
+            "metrics": {
+                "MAE_10s": 0.1122326255311288,
+                "Pearson_10s": -0.1070875371742315,
+                "Wasserstein_10s": 0.09215592225127689,
+                "SampEn_Error_10s": 0.36877263254633774,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.13625144238335093,
+                "Cumulative_CosineSim": 0.8877831470364148,
+                "Error_Cumulative_HRV_RMSSD": 359.9029398460678,
+                "Error_Cumulative_QRS_ms": 36.543209876543216,
+                "Error_Cumulative_PR_ms": 13.096867469879513,
+                "Error_Cumulative_QT_ms": 122.33086419753084
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0029",
+            "metrics": {
+                "MAE_10s": 0.22764093106648364,
+                "Pearson_10s": 0.09209962221092638,
+                "Wasserstein_10s": 0.20751093942481696,
+                "SampEn_Error_10s": 0.21104502987662255,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.21497717916801198,
+                "Cumulative_CosineSim": 0.7183452585539783,
+                "Error_Cumulative_HRV_RMSSD": 55.25827590800379,
+                "Error_Cumulative_QRS_ms": 2.122312470138553,
+                "Error_Cumulative_PR_ms": 9.60508308895406,
+                "Error_Cumulative_QT_ms": 20.17391304347825
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "metrics": {
+                "MAE_10s": 0.24435609948398254,
+                "Pearson_10s": 0.04219646468193185,
+                "Wasserstein_10s": 0.23409440118715907,
+                "SampEn_Error_10s": 0.41131789264600915,
+                "LZ_Complexity_Error_10s": 0.18929390778370986,
+                "Cumulative_RMSD": 0.19981384392439175,
+                "Cumulative_CosineSim": 0.7492669311200749,
+                "Error_Cumulative_HRV_RMSSD": 218.65928635278507,
+                "Error_Cumulative_QRS_ms": 22.136560069144338,
+                "Error_Cumulative_PR_ms": 0.9580246913580339,
+                "Error_Cumulative_QT_ms": 77.32065687121866
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "metrics": {
+                "MAE_10s": 0.17796333578027906,
+                "Pearson_10s": -0.009046437000118522,
+                "Wasserstein_10s": 0.1491381559691543,
+                "SampEn_Error_10s": 0.09653989177165495,
+                "LZ_Complexity_Error_10s": 0.0576111893254769,
+                "Cumulative_RMSD": 0.1623727500339402,
+                "Cumulative_CosineSim": 0.8840720070545764,
+                "Error_Cumulative_HRV_RMSSD": 303.8857200828935,
+                "Error_Cumulative_QRS_ms": 6.367424242424249,
+                "Error_Cumulative_PR_ms": 19.527173913043484,
+                "Error_Cumulative_QT_ms": 33.66287878787881
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0030",
+            "metrics": {
+                "MAE_10s": 0.19304360109272478,
+                "Pearson_10s": -0.16807488509387986,
+                "Wasserstein_10s": 0.1508199960189877,
+                "SampEn_Error_10s": 0.13287165708719326,
+                "LZ_Complexity_Error_10s": 0.008230169903639561,
+                "Cumulative_RMSD": 0.21967736449720013,
+                "Cumulative_CosineSim": 0.6378178734958252,
+                "Error_Cumulative_HRV_RMSSD": 49.93972802589606,
+                "Error_Cumulative_QRS_ms": 18.925657071339174,
+                "Error_Cumulative_PR_ms": 14.522988505747136,
+                "Error_Cumulative_QT_ms": 37.2945736434109
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "metrics": {
+                "MAE_10s": 0.1179438068127929,
+                "Pearson_10s": 0.1584375280631431,
+                "Wasserstein_10s": 0.06064531914796365,
+                "SampEn_Error_10s": 0.21919745817728722,
+                "LZ_Complexity_Error_10s": 0.016460339807279123,
+                "Cumulative_RMSD": 0.16321525215528443,
+                "Cumulative_CosineSim": 0.8707415750255415,
+                "Error_Cumulative_HRV_RMSSD": 37.4238157806534,
+                "Error_Cumulative_QRS_ms": 12.766666666666652,
+                "Error_Cumulative_PR_ms": 6.725925925925921,
+                "Error_Cumulative_QT_ms": 47.01734646038443
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0021",
+            "metrics": {
+                "MAE_10s": 0.26712658981466186,
+                "Pearson_10s": -0.1238610740270245,
+                "Wasserstein_10s": 0.2545110400306456,
+                "SampEn_Error_10s": 0.22431015874486473,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.21325479784220014,
+                "Cumulative_CosineSim": 0.8037974622692895,
+                "Error_Cumulative_HRV_RMSSD": 204.9583933534624,
+                "Error_Cumulative_QRS_ms": 21.006516712213568,
+                "Error_Cumulative_PR_ms": 19.87546699875466,
+                "Error_Cumulative_QT_ms": 117.19846350832267
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0026",
+            "metrics": {
+                "MAE_10s": 0.24721943566661994,
+                "Pearson_10s": -0.14973898697920096,
+                "Wasserstein_10s": 0.2087975654359659,
+                "SampEn_Error_10s": 0.1060877843022448,
+                "LZ_Complexity_Error_10s": 0.1563732281691516,
+                "Cumulative_RMSD": 0.23160629462377502,
+                "Cumulative_CosineSim": 0.6659702091884664,
+                "Error_Cumulative_HRV_RMSSD": 18.701754402836386,
+                "Error_Cumulative_QRS_ms": 1.3635847986386693,
+                "Error_Cumulative_PR_ms": 20.505747126436773,
+                "Error_Cumulative_QT_ms": 61.12989222915485
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "metrics": {
+                "MAE_10s": 0.11657575789767034,
+                "Pearson_10s": 0.3249465207365488,
+                "Wasserstein_10s": 0.09194076111816052,
+                "SampEn_Error_10s": 0.005921060811677925,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.11489611399824144,
+                "Cumulative_CosineSim": 0.9646428896753889,
+                "Error_Cumulative_HRV_RMSSD": 49.59442918499114,
+                "Error_Cumulative_QRS_ms": 87.75216522318456,
+                "Error_Cumulative_PR_ms": 52.13191205862758,
+                "Error_Cumulative_QT_ms": 36.11059293804129
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "metrics": {
+                "MAE_10s": 0.23520020983358392,
+                "Pearson_10s": -0.3078716490955735,
+                "Wasserstein_10s": 0.20785086454147772,
+                "SampEn_Error_10s": 0.04435338689444979,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.11913878754803557,
+                "Cumulative_CosineSim": 0.9805140472459035,
+                "Error_Cumulative_HRV_RMSSD": 18.40842414425984,
+                "Error_Cumulative_QRS_ms": 51.65206101914963,
+                "Error_Cumulative_PR_ms": 34.91012658227848,
+                "Error_Cumulative_QT_ms": 54.71989613761764
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "metrics": {
+                "MAE_10s": 0.09436287030718263,
+                "Pearson_10s": 0.034044412851045355,
+                "Wasserstein_10s": 0.05648713027301163,
+                "SampEn_Error_10s": 0.40515802832136005,
+                "LZ_Complexity_Error_10s": 0.20575424759098893,
+                "Cumulative_RMSD": 0.11099324743511069,
+                "Cumulative_CosineSim": 0.9571667785096889,
+                "Error_Cumulative_HRV_RMSSD": 154.24525907192967,
+                "Error_Cumulative_QRS_ms": 46.24090757424092,
+                "Error_Cumulative_PR_ms": 44.10864197530864,
+                "Error_Cumulative_QT_ms": 59.5422088755422
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "metrics": {
+                "MAE_10s": 0.2330539562403128,
+                "Pearson_10s": 0.11008805626144684,
+                "Wasserstein_10s": 0.22316005297761463,
+                "SampEn_Error_10s": 0.0009195020387047226,
+                "LZ_Complexity_Error_10s": 0.057611189325476875,
+                "Cumulative_RMSD": 0.13478894040641634,
+                "Cumulative_CosineSim": 0.9830609152353045,
+                "Error_Cumulative_HRV_RMSSD": 110.39337534715133,
+                "Error_Cumulative_QRS_ms": 24.78,
+                "Error_Cumulative_PR_ms": 0.10512820512821008,
+                "Error_Cumulative_QT_ms": 87.67894736842103
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "metrics": {
+                "MAE_10s": 0.1541147732184445,
+                "Pearson_10s": 0.022673753967798017,
+                "Wasserstein_10s": 0.13006042054078187,
+                "SampEn_Error_10s": 0.6544609528076435,
+                "LZ_Complexity_Error_10s": 0.4361990048928966,
+                "Cumulative_RMSD": 0.1017960031589824,
+                "Cumulative_CosineSim": 0.9817790676028357,
+                "Error_Cumulative_HRV_RMSSD": 42.581643665009494,
+                "Error_Cumulative_QRS_ms": 23.006487488415203,
+                "Error_Cumulative_PR_ms": 3.3260073260073284,
+                "Error_Cumulative_QT_ms": 99.23509422304605
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "metrics": {
+                "MAE_10s": 0.09369785189752046,
+                "Pearson_10s": -0.1685470860075321,
+                "Wasserstein_10s": 0.05444795591544905,
+                "SampEn_Error_10s": 0.034926323980345786,
+                "LZ_Complexity_Error_10s": 0.17283356797643068,
+                "Cumulative_RMSD": 0.10808080173016667,
+                "Cumulative_CosineSim": 0.9645096132207107,
+                "Error_Cumulative_HRV_RMSSD": 413.1690547979648,
+                "Error_Cumulative_QRS_ms": 15.039215686274503,
+                "Error_Cumulative_PR_ms": 8.750397456279813,
+                "Error_Cumulative_QT_ms": 111.19419822723609
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "metrics": {
+                "MAE_10s": 0.1767802535579935,
+                "Pearson_10s": -0.16654505599143074,
+                "Wasserstein_10s": 0.12366695774065257,
+                "SampEn_Error_10s": 0.0774071272688063,
+                "LZ_Complexity_Error_10s": 0.07407152913275603,
+                "Cumulative_RMSD": 0.20663513590260937,
+                "Cumulative_CosineSim": 0.6765655099725121,
+                "Error_Cumulative_HRV_RMSSD": 38.11056407068801,
+                "Error_Cumulative_QRS_ms": 10.854998659876713,
+                "Error_Cumulative_PR_ms": 40.59340659340659,
+                "Error_Cumulative_QT_ms": 57.98914338673376
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0002",
+            "metrics": {
+                "MAE_10s": NaN,
+                "Pearson_10s": NaN,
+                "Wasserstein_10s": NaN,
+                "SampEn_Error_10s": null,
+                "LZ_Complexity_Error_10s": 0.2962861165310241,
+                "Cumulative_RMSD": NaN,
+                "Cumulative_CosineSim": NaN,
+                "Error_Cumulative_HRV_RMSSD": null,
+                "Error_Cumulative_QRS_ms": null,
+                "Error_Cumulative_PR_ms": null,
+                "Error_Cumulative_QT_ms": null
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "metrics": {
+                "MAE_10s": 0.18651638531938178,
+                "Pearson_10s": -0.08647402159836086,
+                "Wasserstein_10s": 0.13673156733425273,
+                "SampEn_Error_10s": 0.1532067229662914,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.19812201530655363,
+                "Cumulative_CosineSim": 0.7899312329714714,
+                "Error_Cumulative_HRV_RMSSD": 279.7722744419314,
+                "Error_Cumulative_QRS_ms": 38.790476190476184,
+                "Error_Cumulative_PR_ms": 5.095798319327727,
+                "Error_Cumulative_QT_ms": 33.040564373897666
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "metrics": {
+                "MAE_10s": 0.1222015887727028,
+                "Pearson_10s": -0.16680098671896068,
+                "Wasserstein_10s": 0.04311250928408797,
+                "SampEn_Error_10s": 0.0016318541833240663,
+                "LZ_Complexity_Error_10s": 0.04115084951819781,
+                "Cumulative_RMSD": 0.18902392346605362,
+                "Cumulative_CosineSim": 0.8212705521585913,
+                "Error_Cumulative_HRV_RMSSD": 27.90477501730374,
+                "Error_Cumulative_QRS_ms": 65.3903048475762,
+                "Error_Cumulative_PR_ms": 22.631752055660968,
+                "Error_Cumulative_QT_ms": 1.7361319340329828
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0046",
+            "metrics": {
+                "MAE_10s": 0.18524229678393275,
+                "Pearson_10s": -0.11554302029530236,
+                "Wasserstein_10s": 0.12133115492814806,
+                "SampEn_Error_10s": 0.09036417871450375,
+                "LZ_Complexity_Error_10s": 0.07407152913275605,
+                "Cumulative_RMSD": 0.20159755478186092,
+                "Cumulative_CosineSim": 0.7316995620726225,
+                "Error_Cumulative_HRV_RMSSD": 14.564033781604959,
+                "Error_Cumulative_QRS_ms": 76.41147467503363,
+                "Error_Cumulative_PR_ms": 7.618658495062988,
+                "Error_Cumulative_QT_ms": 2.6912442396313736
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0034",
+            "metrics": {
+                "MAE_10s": 0.21980122124810605,
+                "Pearson_10s": -0.13235286777253455,
+                "Wasserstein_10s": 0.1997363045420029,
+                "SampEn_Error_10s": 0.23247169883404228,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.20319344708596568,
+                "Cumulative_CosineSim": 0.7367232779986405,
+                "Error_Cumulative_HRV_RMSSD": 481.3169186266897,
+                "Error_Cumulative_QRS_ms": 22.265679012345686,
+                "Error_Cumulative_PR_ms": 26.34666666666667,
+                "Error_Cumulative_QT_ms": 67.01432098765434
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "metrics": {
+                "MAE_10s": 0.19960543274229026,
+                "Pearson_10s": -0.08371230508339204,
+                "Wasserstein_10s": 0.14394700336434774,
+                "SampEn_Error_10s": 0.07308322748057533,
+                "LZ_Complexity_Error_10s": 0.10699220874731427,
+                "Cumulative_RMSD": 0.2163610919832774,
+                "Cumulative_CosineSim": 0.685641066797138,
+                "Error_Cumulative_HRV_RMSSD": 58.68816059700905,
+                "Error_Cumulative_QRS_ms": 44.90909090909091,
+                "Error_Cumulative_PR_ms": 12.456659619450306,
+                "Error_Cumulative_QT_ms": 49.07314524555903
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0010",
+            "metrics": {
+                "MAE_10s": 0.17842819346349706,
+                "Pearson_10s": -0.13547435689123935,
+                "Wasserstein_10s": 0.1678332894130671,
+                "SampEn_Error_10s": 0.07900998983438856,
+                "LZ_Complexity_Error_10s": 0.01646033980727915,
+                "Cumulative_RMSD": 0.24303105853371526,
+                "Cumulative_CosineSim": 0.9009832660193671,
+                "Error_Cumulative_HRV_RMSSD": 69.2302011383414,
+                "Error_Cumulative_QRS_ms": 26.411804521456617,
+                "Error_Cumulative_PR_ms": 25.76012542461458,
+                "Error_Cumulative_QT_ms": 64.21443075673483
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "metrics": {
+                "MAE_10s": 0.13029071277871895,
+                "Pearson_10s": -0.15114889657167258,
+                "Wasserstein_10s": 0.1053050167989032,
+                "SampEn_Error_10s": 0.08750984785156102,
+                "LZ_Complexity_Error_10s": 0.13991288836187252,
+                "Cumulative_RMSD": 0.2361489912541349,
+                "Cumulative_CosineSim": 0.8829125743164011,
+                "Error_Cumulative_HRV_RMSSD": 20.504264954384062,
+                "Error_Cumulative_QRS_ms": 41.43333333333332,
+                "Error_Cumulative_PR_ms": 2.903944595001505,
+                "Error_Cumulative_QT_ms": 9.975308641975289
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "metrics": {
+                "MAE_10s": 0.18587090575474258,
+                "Pearson_10s": -0.19686576805059153,
+                "Wasserstein_10s": 0.09357542484513603,
+                "SampEn_Error_10s": 0.11371837041253868,
+                "LZ_Complexity_Error_10s": 0.14814305826551205,
+                "Cumulative_RMSD": 0.17131368947109202,
+                "Cumulative_CosineSim": 0.7913560259137347,
+                "Error_Cumulative_HRV_RMSSD": 21.250277496490394,
+                "Error_Cumulative_QRS_ms": 10.42903267467392,
+                "Error_Cumulative_PR_ms": 11.957446808510639,
+                "Error_Cumulative_QT_ms": 3.2525252525252313
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0016",
+            "metrics": {
+                "MAE_10s": 0.09678110301200153,
+                "Pearson_10s": -0.01222625882110935,
+                "Wasserstein_10s": 0.05854562170576073,
+                "SampEn_Error_10s": 0.2784648502096536,
+                "LZ_Complexity_Error_10s": 0.1892939077837098,
+                "Cumulative_RMSD": 0.12449125975916953,
+                "Cumulative_CosineSim": 0.9116803497264149,
+                "Error_Cumulative_HRV_RMSSD": 389.15028638410996,
+                "Error_Cumulative_QRS_ms": 19.006974941875484,
+                "Error_Cumulative_PR_ms": 6.546938775510213,
+                "Error_Cumulative_QT_ms": 37.625419788168415
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "metrics": {
+                "MAE_10s": 0.1669569153613256,
+                "Pearson_10s": -0.057995168583775805,
+                "Wasserstein_10s": 0.1288188643164948,
+                "SampEn_Error_10s": 0.18547908078149314,
+                "LZ_Complexity_Error_10s": 0.1399128883618725,
+                "Cumulative_RMSD": 0.20412117641688193,
+                "Cumulative_CosineSim": 0.7176545241295719,
+                "Error_Cumulative_HRV_RMSSD": 45.513623932325814,
+                "Error_Cumulative_QRS_ms": 30.12596006144392,
+                "Error_Cumulative_PR_ms": 39.99799949987497,
+                "Error_Cumulative_QT_ms": 50.099524881220304
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "metrics": {
+                "MAE_10s": 0.24102620455376444,
+                "Pearson_10s": -0.21719615674767165,
+                "Wasserstein_10s": 0.18791012362587167,
+                "SampEn_Error_10s": 0.1858059048124378,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.2318141551441955,
+                "Cumulative_CosineSim": 0.7110201489454753,
+                "Error_Cumulative_HRV_RMSSD": 179.38117186128295,
+                "Error_Cumulative_QRS_ms": 48.39738562091503,
+                "Error_Cumulative_PR_ms": 17.04444444444445,
+                "Error_Cumulative_QT_ms": 0.020915032679738488
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "metrics": {
+                "MAE_10s": 0.3222873387651206,
+                "Pearson_10s": -0.144210671523874,
+                "Wasserstein_10s": 0.29785933695232425,
+                "SampEn_Error_10s": 0.2140145904628722,
+                "LZ_Complexity_Error_10s": 0.20575424759098895,
+                "Cumulative_RMSD": 0.13293605379239384,
+                "Cumulative_CosineSim": 0.9557637266303675,
+                "Error_Cumulative_HRV_RMSSD": 328.75297445468067,
+                "Error_Cumulative_QRS_ms": 27.114529914529896,
+                "Error_Cumulative_PR_ms": 15.174603174603178,
+                "Error_Cumulative_QT_ms": 40.98461538461538
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0037",
+            "metrics": {
+                "MAE_10s": 0.16575771019085722,
+                "Pearson_10s": -0.009630810568690723,
+                "Wasserstein_10s": 0.1368118647100915,
+                "SampEn_Error_10s": 0.04157129355396216,
+                "LZ_Complexity_Error_10s": 0.008230169903639561,
+                "Cumulative_RMSD": 0.1979134490909939,
+                "Cumulative_CosineSim": 0.7542278845713677,
+                "Error_Cumulative_HRV_RMSSD": 226.09618965805808,
+                "Error_Cumulative_QRS_ms": 45.95711265478707,
+                "Error_Cumulative_PR_ms": 17.827072152653543,
+                "Error_Cumulative_QT_ms": 19.30655391120507
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "metrics": {
+                "MAE_10s": 0.1022898241787609,
+                "Pearson_10s": -0.009575011856900871,
+                "Wasserstein_10s": 0.038204671921740804,
+                "SampEn_Error_10s": 0.4249649707727771,
+                "LZ_Complexity_Error_10s": 0.09053186894003518,
+                "Cumulative_RMSD": 0.16896436837664972,
+                "Cumulative_CosineSim": 0.925795944524442,
+                "Error_Cumulative_HRV_RMSSD": 12.465508967934284,
+                "Error_Cumulative_QRS_ms": 16.300910960916838,
+                "Error_Cumulative_PR_ms": 4.0876770916867144,
+                "Error_Cumulative_QT_ms": 8.099827882960426
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "metrics": {
+                "MAE_10s": 0.2451988166812106,
+                "Pearson_10s": -0.2044628912789835,
+                "Wasserstein_10s": 0.1991216164074488,
+                "SampEn_Error_10s": 0.0566282118243292,
+                "LZ_Complexity_Error_10s": 0.0329206796145583,
+                "Cumulative_RMSD": 0.21155007075125715,
+                "Cumulative_CosineSim": 0.7256173385422279,
+                "Error_Cumulative_HRV_RMSSD": 196.80851737266866,
+                "Error_Cumulative_QRS_ms": 28.22853861613551,
+                "Error_Cumulative_PR_ms": 22.639671682626542,
+                "Error_Cumulative_QT_ms": 75.4532047646058
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "metrics": {
+                "MAE_10s": 0.30980037456012194,
+                "Pearson_10s": -0.23102179337510906,
+                "Wasserstein_10s": 0.2920233907314195,
+                "SampEn_Error_10s": 0.0007923797686453238,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.14015339353402154,
+                "Cumulative_CosineSim": 0.9640246413799625,
+                "Error_Cumulative_HRV_RMSSD": 39.765823028786,
+                "Error_Cumulative_QRS_ms": 31.512294485668576,
+                "Error_Cumulative_PR_ms": 22.07793664143537,
+                "Error_Cumulative_QT_ms": 22.14578786556092
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "metrics": {
+                "MAE_10s": 0.16918432035653716,
+                "Pearson_10s": 0.038344311808450784,
+                "Wasserstein_10s": 0.11087086440420174,
+                "SampEn_Error_10s": 0.29508737470620383,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.16147241850214317,
+                "Cumulative_CosineSim": 0.9084209444429299,
+                "Error_Cumulative_HRV_RMSSD": 238.87603767561185,
+                "Error_Cumulative_QRS_ms": 39.01728653745418,
+                "Error_Cumulative_PR_ms": 5.1648129423660265,
+                "Error_Cumulative_QT_ms": 16.968944099378916
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "metrics": {
+                "MAE_10s": 0.14530728254905959,
+                "Pearson_10s": -0.16442997292118355,
+                "Wasserstein_10s": 0.029849600111352348,
+                "SampEn_Error_10s": 0.15357448778515095,
+                "LZ_Complexity_Error_10s": 0.06584135922911649,
+                "Cumulative_RMSD": 0.2071409014579407,
+                "Cumulative_CosineSim": 0.7696798693856567,
+                "Error_Cumulative_HRV_RMSSD": 9.007355595454293,
+                "Error_Cumulative_QRS_ms": 32.54585289514867,
+                "Error_Cumulative_PR_ms": 34.67407407407407,
+                "Error_Cumulative_QT_ms": 5.74314032342204
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3976189_0002",
+            "metrics": {
+                "MAE_10s": 0.1595930695426304,
+                "Pearson_10s": -0.10668517641508889,
+                "Wasserstein_10s": 0.07388622281529596,
+                "SampEn_Error_10s": 0.08135173452361993,
+                "LZ_Complexity_Error_10s": 0.1481430582655121,
+                "Cumulative_RMSD": 0.19844747353299846,
+                "Cumulative_CosineSim": 0.8572467276363067,
+                "Error_Cumulative_HRV_RMSSD": 532.9459510549857,
+                "Error_Cumulative_QRS_ms": 6.751773049645394,
+                "Error_Cumulative_PR_ms": 18.21467098166127,
+                "Error_Cumulative_QT_ms": 43.35035460992907
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "metrics": {
+                "MAE_10s": 0.20915611566909356,
+                "Pearson_10s": 0.024201643860718797,
+                "Wasserstein_10s": 0.17627726724544826,
+                "SampEn_Error_10s": 0.32802741381081935,
+                "LZ_Complexity_Error_10s": 0.1563732281691516,
+                "Cumulative_RMSD": 0.14830011217793324,
+                "Cumulative_CosineSim": 0.9293891836261934,
+                "Error_Cumulative_HRV_RMSSD": 263.6551153538323,
+                "Error_Cumulative_QRS_ms": 38.054901960784306,
+                "Error_Cumulative_PR_ms": 20.32941176470588,
+                "Error_Cumulative_QT_ms": 20.06196854979612
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0001",
+            "metrics": {
+                "MAE_10s": 0.15888829086986403,
+                "Pearson_10s": -0.18265392707309708,
+                "Wasserstein_10s": 0.08679037055330113,
+                "SampEn_Error_10s": 0.23764352711558556,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.22318581797929338,
+                "Cumulative_CosineSim": 0.8202939280286401,
+                "Error_Cumulative_HRV_RMSSD": 49.13309326481298,
+                "Error_Cumulative_QRS_ms": 18.950948332243314,
+                "Error_Cumulative_PR_ms": 23.519379844961236,
+                "Error_Cumulative_QT_ms": 10.658693824161446
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3939643_0001",
+            "metrics": {
+                "MAE_10s": 0.21533820059238765,
+                "Pearson_10s": -0.2346757957362611,
+                "Wasserstein_10s": 0.11223479027487465,
+                "SampEn_Error_10s": 0.048610817720177335,
+                "LZ_Complexity_Error_10s": 0.11522237865095383,
+                "Cumulative_RMSD": 0.1891749755326568,
+                "Cumulative_CosineSim": 0.804503952197381,
+                "Error_Cumulative_HRV_RMSSD": 17.13064877806298,
+                "Error_Cumulative_QRS_ms": 57.6023793182338,
+                "Error_Cumulative_PR_ms": 47.0009250693802,
+                "Error_Cumulative_QT_ms": 37.935483870967744
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0002",
+            "metrics": {
+                "MAE_10s": 0.1832408454103472,
+                "Pearson_10s": 0.051358439749194976,
+                "Wasserstein_10s": 0.17108399453156437,
+                "SampEn_Error_10s": 0.4413526716121245,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.18146558596581894,
+                "Cumulative_CosineSim": 0.8393821216738511,
+                "Error_Cumulative_HRV_RMSSD": 391.4621298044078,
+                "Error_Cumulative_QRS_ms": 28.059829059829056,
+                "Error_Cumulative_PR_ms": 37.0,
+                "Error_Cumulative_QT_ms": 44.130256410256436
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0006",
+            "metrics": {
+                "MAE_10s": 0.18490957466763822,
+                "Pearson_10s": 0.013858279290037094,
+                "Wasserstein_10s": 0.16049075184446987,
+                "SampEn_Error_10s": 0.3332029511378508,
+                "LZ_Complexity_Error_10s": 0.19752407768734942,
+                "Cumulative_RMSD": 0.1442741830031803,
+                "Cumulative_CosineSim": 0.929397386360868,
+                "Error_Cumulative_HRV_RMSSD": 16.08931134282642,
+                "Error_Cumulative_QRS_ms": 66.80591662931421,
+                "Error_Cumulative_PR_ms": 52.55368234250221,
+                "Error_Cumulative_QT_ms": 18.069027341999117
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "metrics": {
+                "MAE_10s": 0.18089783818869873,
+                "Pearson_10s": 0.03636216323117385,
+                "Wasserstein_10s": 0.16801171378926305,
+                "SampEn_Error_10s": 0.2782392850709869,
+                "LZ_Complexity_Error_10s": 0.008230169903639561,
+                "Cumulative_RMSD": 0.17782162701369805,
+                "Cumulative_CosineSim": 0.8391902108597318,
+                "Error_Cumulative_HRV_RMSSD": 461.58634120145484,
+                "Error_Cumulative_QRS_ms": 39.484818151484816,
+                "Error_Cumulative_PR_ms": 47.44513187886683,
+                "Error_Cumulative_QT_ms": 8.798131464798132
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "metrics": {
+                "MAE_10s": 0.24567198513009667,
+                "Pearson_10s": -0.16569527165301334,
+                "Wasserstein_10s": 0.19162531520324114,
+                "SampEn_Error_10s": 0.08857846457308816,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.2059826901056263,
+                "Cumulative_CosineSim": 0.7434680387852447,
+                "Error_Cumulative_HRV_RMSSD": 181.7856018628998,
+                "Error_Cumulative_QRS_ms": 52.212121212121204,
+                "Error_Cumulative_PR_ms": 54.82567947516402,
+                "Error_Cumulative_QT_ms": 33.47727272727275
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "metrics": {
+                "MAE_10s": 0.16927828039996107,
+                "Pearson_10s": -0.1919146882503412,
+                "Wasserstein_10s": 0.11831329065569222,
+                "SampEn_Error_10s": 0.12523173752491867,
+                "LZ_Complexity_Error_10s": 0.11522237865095383,
+                "Cumulative_RMSD": 0.17415045691898628,
+                "Cumulative_CosineSim": 0.8210145097238284,
+                "Error_Cumulative_HRV_RMSSD": 193.03915113083445,
+                "Error_Cumulative_QRS_ms": 60.14603174603175,
+                "Error_Cumulative_PR_ms": 44.749063670412,
+                "Error_Cumulative_QT_ms": 21.725274725274744
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "metrics": {
+                "MAE_10s": 0.23165388524291503,
+                "Pearson_10s": -0.2002620595148974,
+                "Wasserstein_10s": 0.14762896621980404,
+                "SampEn_Error_10s": 0.12637074055991201,
+                "LZ_Complexity_Error_10s": 0.16460339807279117,
+                "Cumulative_RMSD": 0.21883134053583983,
+                "Cumulative_CosineSim": 0.7519531036219118,
+                "Error_Cumulative_HRV_RMSSD": 118.96065769834064,
+                "Error_Cumulative_QRS_ms": 51.842504279775,
+                "Error_Cumulative_PR_ms": 43.97800621563472,
+                "Error_Cumulative_QT_ms": 17.446808510638277
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "metrics": {
+                "MAE_10s": 0.14949549893260314,
+                "Pearson_10s": 0.14497942295403193,
+                "Wasserstein_10s": 0.13856282803596937,
+                "SampEn_Error_10s": 0.4539742355964309,
+                "LZ_Complexity_Error_10s": 0.18106373788007032,
+                "Cumulative_RMSD": 0.15334702564730993,
+                "Cumulative_CosineSim": 0.8638082045990187,
+                "Error_Cumulative_HRV_RMSSD": 433.17644960272276,
+                "Error_Cumulative_QRS_ms": 36.43257918552037,
+                "Error_Cumulative_PR_ms": 50.272727272727266,
+                "Error_Cumulative_QT_ms": 39.24768570783476
+            }
+        }
+    ],
+    "30m": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.24877757330050398,
+                "Pearson_10s": 0.36859759571927736,
+                "Wasserstein_10s": 0.23550527171179092,
+                "SampEn_Error_10s": 0.03446888602771098,
+                "LZ_Complexity_Error_10s": 0.04115084951819781,
+                "Cumulative_RMSD": 0.11440833692609359,
+                "Cumulative_CosineSim": 0.9532997216602709,
+                "Error_Cumulative_HRV_RMSSD": 88.8387368034643,
+                "Error_Cumulative_QRS_ms": 26.017062420019926,
+                "Error_Cumulative_PR_ms": 0.014847925689750241,
+                "Error_Cumulative_QT_ms": 131.2903737886479
+            }
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "metrics": {
+                "MAE_10s": 0.17333392232470246,
+                "Pearson_10s": 0.1346755813664069,
+                "Wasserstein_10s": 0.14478319583157778,
+                "SampEn_Error_10s": 0.3378500823322745,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.1999308240335169,
+                "Cumulative_CosineSim": 0.9419752462800636,
+                "Error_Cumulative_HRV_RMSSD": 172.9680354814172,
+                "Error_Cumulative_QRS_ms": 57.66837128574855,
+                "Error_Cumulative_PR_ms": 20.9661962663954,
+                "Error_Cumulative_QT_ms": 45.64237617122973
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "metrics": {
+                "MAE_10s": 0.1708404568086658,
+                "Pearson_10s": -0.20060863840553889,
+                "Wasserstein_10s": 0.12384801473116486,
+                "SampEn_Error_10s": 0.03498810571986605,
+                "LZ_Complexity_Error_10s": 0.04115084951819781,
+                "Cumulative_RMSD": 0.16282462590528501,
+                "Cumulative_CosineSim": 0.9127698009987582,
+                "Error_Cumulative_HRV_RMSSD": 325.8099979360173,
+                "Error_Cumulative_QRS_ms": 58.674845205323194,
+                "Error_Cumulative_PR_ms": 23.33203644346419,
+                "Error_Cumulative_QT_ms": 12.466331914687032
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "metrics": {
+                "MAE_10s": 0.25040159248962307,
+                "Pearson_10s": 0.030154332816140064,
+                "Wasserstein_10s": 0.23461342549633235,
+                "SampEn_Error_10s": 0.30241091980607815,
+                "LZ_Complexity_Error_10s": 0.10699220874731427,
+                "Cumulative_RMSD": 0.15775649813934814,
+                "Cumulative_CosineSim": 0.931027832413616,
+                "Error_Cumulative_HRV_RMSSD": 285.0300859760203,
+                "Error_Cumulative_QRS_ms": 63.96979959219644,
+                "Error_Cumulative_PR_ms": 27.235469913669164,
+                "Error_Cumulative_QT_ms": 22.539088941964735
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.1883408746899372,
+                "Pearson_10s": -0.1761770871443303,
+                "Wasserstein_10s": 0.12521260119767502,
+                "SampEn_Error_10s": 0.1764931409735941,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.20984945402660007,
+                "Cumulative_CosineSim": 0.8511648470629647,
+                "Error_Cumulative_HRV_RMSSD": 34.0461478810397,
+                "Error_Cumulative_QRS_ms": 95.88859250566495,
+                "Error_Cumulative_PR_ms": 17.7707851756182,
+                "Error_Cumulative_QT_ms": 53.45566393120333
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "metrics": {
+                "MAE_10s": 0.14953121361144706,
+                "Pearson_10s": 0.5237995843789995,
+                "Wasserstein_10s": 0.11977540441797771,
+                "SampEn_Error_10s": 0.017130363556427164,
+                "LZ_Complexity_Error_10s": 0.02469050971091863,
+                "Cumulative_RMSD": 0.18629949180598981,
+                "Cumulative_CosineSim": 0.8809875933079274,
+                "Error_Cumulative_HRV_RMSSD": 141.78123072047703,
+                "Error_Cumulative_QRS_ms": 27.938330971103213,
+                "Error_Cumulative_PR_ms": 1.4180868912445987,
+                "Error_Cumulative_QT_ms": 2.7668883199966103
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "metrics": {
+                "MAE_10s": 0.23817511302971753,
+                "Pearson_10s": 0.17565974727236397,
+                "Wasserstein_10s": 0.22766678385849204,
+                "SampEn_Error_10s": 0.4028166432271305,
+                "LZ_Complexity_Error_10s": 0.15637322816915156,
+                "Cumulative_RMSD": 0.18351304218752632,
+                "Cumulative_CosineSim": 0.879704870101687,
+                "Error_Cumulative_HRV_RMSSD": 157.02506421226187,
+                "Error_Cumulative_QRS_ms": 52.13999008279089,
+                "Error_Cumulative_PR_ms": 20.9562931657742,
+                "Error_Cumulative_QT_ms": 3.4737204550757497
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "metrics": {
+                "MAE_10s": 0.44467110110728664,
+                "Pearson_10s": 0.3579194101171337,
+                "Wasserstein_10s": 0.43444211232903157,
+                "SampEn_Error_10s": 0.2243744457534545,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.25240105407620816,
+                "Cumulative_CosineSim": 0.9128773178708762,
+                "Error_Cumulative_HRV_RMSSD": 190.7108291762114,
+                "Error_Cumulative_QRS_ms": 12.742347778354855,
+                "Error_Cumulative_PR_ms": 8.483860266676487,
+                "Error_Cumulative_QT_ms": 44.00107133229159
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "metrics": {
+                "MAE_10s": 0.18038854041017865,
+                "Pearson_10s": 0.10074499868549215,
+                "Wasserstein_10s": 0.1541839122277104,
+                "SampEn_Error_10s": 0.3174300163738646,
+                "LZ_Complexity_Error_10s": 0.1234525485545934,
+                "Cumulative_RMSD": 0.10754049771698622,
+                "Cumulative_CosineSim": 0.977570781513814,
+                "Error_Cumulative_HRV_RMSSD": 250.87692581661085,
+                "Error_Cumulative_QRS_ms": 12.32179902357609,
+                "Error_Cumulative_PR_ms": 0.8907088828875089,
+                "Error_Cumulative_QT_ms": 73.46149352999566
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "metrics": {
+                "MAE_10s": 0.14679044652078851,
+                "Pearson_10s": -0.06680836904208112,
+                "Wasserstein_10s": 0.052844669851335124,
+                "SampEn_Error_10s": 0.060847647436435615,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.16855246754729136,
+                "Cumulative_CosineSim": 0.9203808796559997,
+                "Error_Cumulative_HRV_RMSSD": 135.52929177747313,
+                "Error_Cumulative_QRS_ms": 20.830345046639295,
+                "Error_Cumulative_PR_ms": 7.2500793231094605,
+                "Error_Cumulative_QT_ms": 22.388406896950926
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "metrics": {
+                "MAE_10s": 0.24006997243739603,
+                "Pearson_10s": 0.19552987477314834,
+                "Wasserstein_10s": 0.2169323905710679,
+                "SampEn_Error_10s": 0.1865370802839178,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.21899511891394796,
+                "Cumulative_CosineSim": 0.9130687096101074,
+                "Error_Cumulative_HRV_RMSSD": 331.23324282229106,
+                "Error_Cumulative_QRS_ms": 8.593487220501487,
+                "Error_Cumulative_PR_ms": 20.25041092635398,
+                "Error_Cumulative_QT_ms": 31.651370984916355
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "metrics": {
+                "MAE_10s": 0.19017487297800031,
+                "Pearson_10s": 0.0876416692509927,
+                "Wasserstein_10s": 0.16926522609563305,
+                "SampEn_Error_10s": 0.40395519858175327,
+                "LZ_Complexity_Error_10s": 0.08230169903639561,
+                "Cumulative_RMSD": 0.2189582089394043,
+                "Cumulative_CosineSim": 0.7970695669384649,
+                "Error_Cumulative_HRV_RMSSD": 98.34503590474903,
+                "Error_Cumulative_QRS_ms": 62.77581958566448,
+                "Error_Cumulative_PR_ms": 12.929579635050104,
+                "Error_Cumulative_QT_ms": 0.22146239879373297
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "metrics": {
+                "MAE_10s": 0.23798656615360028,
+                "Pearson_10s": 0.18564909384769132,
+                "Wasserstein_10s": 0.21925025138186033,
+                "SampEn_Error_10s": 0.36834771544816786,
+                "LZ_Complexity_Error_10s": 0.09876203884367468,
+                "Cumulative_RMSD": 0.1543874142593282,
+                "Cumulative_CosineSim": 0.9162090610484279,
+                "Error_Cumulative_HRV_RMSSD": 211.76329619511708,
+                "Error_Cumulative_QRS_ms": 25.461086930146905,
+                "Error_Cumulative_PR_ms": 1.2220420685048197,
+                "Error_Cumulative_QT_ms": 16.7571079483817
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "metrics": {
+                "MAE_10s": 0.19816349321533644,
+                "Pearson_10s": -0.13540915155282862,
+                "Wasserstein_10s": 0.16555998545564393,
+                "SampEn_Error_10s": 0.1246405737354867,
+                "LZ_Complexity_Error_10s": 0.12345254855459331,
+                "Cumulative_RMSD": 0.1418260592075896,
+                "Cumulative_CosineSim": 0.932211196135152,
+                "Error_Cumulative_HRV_RMSSD": 314.0233922596466,
+                "Error_Cumulative_QRS_ms": 10.018705921227195,
+                "Error_Cumulative_PR_ms": 12.799648528365069,
+                "Error_Cumulative_QT_ms": 38.13655924025517
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "metrics": {
+                "MAE_10s": 0.23005201541745782,
+                "Pearson_10s": 0.13292098084322942,
+                "Wasserstein_10s": 0.2105111094216076,
+                "SampEn_Error_10s": 0.1923595505001515,
+                "LZ_Complexity_Error_10s": 0.10699220874731427,
+                "Cumulative_RMSD": 0.17141017944574424,
+                "Cumulative_CosineSim": 0.8949683869159349,
+                "Error_Cumulative_HRV_RMSSD": 145.33663756961934,
+                "Error_Cumulative_QRS_ms": 12.972837453056684,
+                "Error_Cumulative_PR_ms": 5.213978258529764,
+                "Error_Cumulative_QT_ms": 54.62011423247344
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "metrics": {
+                "MAE_10s": 0.27832877177170795,
+                "Pearson_10s": -0.052082793251236756,
+                "Wasserstein_10s": 0.26928652230647676,
+                "SampEn_Error_10s": 0.3667141820730227,
+                "LZ_Complexity_Error_10s": 0.11522237865095386,
+                "Cumulative_RMSD": 0.11222273356448358,
+                "Cumulative_CosineSim": 0.955960688438896,
+                "Error_Cumulative_HRV_RMSSD": 230.80649383499278,
+                "Error_Cumulative_QRS_ms": 26.839008054386255,
+                "Error_Cumulative_PR_ms": 14.69972804600144,
+                "Error_Cumulative_QT_ms": 110.7864283392621
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "metrics": {
+                "MAE_10s": 0.2918320550755459,
+                "Pearson_10s": -0.05181554818983905,
+                "Wasserstein_10s": 0.26910080375072226,
+                "SampEn_Error_10s": 0.20524207607692846,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.19380721652016045,
+                "Cumulative_CosineSim": 0.9134647004123209,
+                "Error_Cumulative_HRV_RMSSD": 256.88063773145444,
+                "Error_Cumulative_QRS_ms": 30.313273296047043,
+                "Error_Cumulative_PR_ms": 28.37900294075463,
+                "Error_Cumulative_QT_ms": 121.34522710368657
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0030",
+            "metrics": {
+                "MAE_10s": 0.268004904059417,
+                "Pearson_10s": -0.059441432858296256,
+                "Wasserstein_10s": 0.2583337803753705,
+                "SampEn_Error_10s": 0.48828278522928936,
+                "LZ_Complexity_Error_10s": 0.20575424759098895,
+                "Cumulative_RMSD": 0.17176783768396717,
+                "Cumulative_CosineSim": 0.8875907542522119,
+                "Error_Cumulative_HRV_RMSSD": 105.442979614569,
+                "Error_Cumulative_QRS_ms": 3.4215982596574577,
+                "Error_Cumulative_PR_ms": 20.779996584966327,
+                "Error_Cumulative_QT_ms": 37.63127640750048
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "metrics": {
+                "MAE_10s": 0.2871191502429545,
+                "Pearson_10s": 0.01949864239279248,
+                "Wasserstein_10s": 0.278072257114712,
+                "SampEn_Error_10s": 0.42078044304881934,
+                "LZ_Complexity_Error_10s": 0.17283356797643074,
+                "Cumulative_RMSD": 0.18097971113058944,
+                "Cumulative_CosineSim": 0.9175111047833793,
+                "Error_Cumulative_HRV_RMSSD": 209.41846083217786,
+                "Error_Cumulative_QRS_ms": 23.364560188191973,
+                "Error_Cumulative_PR_ms": 15.377425666871446,
+                "Error_Cumulative_QT_ms": 81.97619612655922
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0021",
+            "metrics": {
+                "MAE_10s": 0.25650184694488076,
+                "Pearson_10s": -0.27897790405034456,
+                "Wasserstein_10s": 0.23747386353354932,
+                "SampEn_Error_10s": 0.340360536490116,
+                "LZ_Complexity_Error_10s": 0.00823016990363959,
+                "Cumulative_RMSD": 0.18243459145372629,
+                "Cumulative_CosineSim": 0.8657853494571977,
+                "Error_Cumulative_HRV_RMSSD": 229.7828152195204,
+                "Error_Cumulative_QRS_ms": 81.60027843839384,
+                "Error_Cumulative_PR_ms": 26.541603059404068,
+                "Error_Cumulative_QT_ms": 204.15777365845582
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0026",
+            "metrics": {
+                "MAE_10s": 0.2596789451949996,
+                "Pearson_10s": 0.03876000598157879,
+                "Wasserstein_10s": 0.23965984978510452,
+                "SampEn_Error_10s": 0.23176453220493637,
+                "LZ_Complexity_Error_10s": 0.13168271845823293,
+                "Cumulative_RMSD": 0.16619909441625427,
+                "Cumulative_CosineSim": 0.9062519200507791,
+                "Error_Cumulative_HRV_RMSSD": 96.74177880454312,
+                "Error_Cumulative_QRS_ms": 11.908183375376325,
+                "Error_Cumulative_PR_ms": 21.303370646882087,
+                "Error_Cumulative_QT_ms": 46.8191621745064
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "metrics": {
+                "MAE_10s": 0.14902248152816752,
+                "Pearson_10s": 0.024547152258883726,
+                "Wasserstein_10s": 0.12267220014044285,
+                "SampEn_Error_10s": 0.024989410622231756,
+                "LZ_Complexity_Error_10s": 0.07407152913275605,
+                "Cumulative_RMSD": 0.14183526122757678,
+                "Cumulative_CosineSim": 0.9592511871825777,
+                "Error_Cumulative_HRV_RMSSD": 209.681281094185,
+                "Error_Cumulative_QRS_ms": 62.833771505690564,
+                "Error_Cumulative_PR_ms": 38.81886259193733,
+                "Error_Cumulative_QT_ms": 28.239266447125658
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "metrics": {
+                "MAE_10s": 0.15299741058417118,
+                "Pearson_10s": 0.09705052338088534,
+                "Wasserstein_10s": 0.13671817804953845,
+                "SampEn_Error_10s": 0.10772110534677115,
+                "LZ_Complexity_Error_10s": 0.11522237865095392,
+                "Cumulative_RMSD": 0.12120715232511688,
+                "Cumulative_CosineSim": 0.9705258984558421,
+                "Error_Cumulative_HRV_RMSSD": 218.16759464118343,
+                "Error_Cumulative_QRS_ms": 57.543113686352,
+                "Error_Cumulative_PR_ms": 42.85930548345674,
+                "Error_Cumulative_QT_ms": 49.68502132081068
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "metrics": {
+                "MAE_10s": 0.11818917893531529,
+                "Pearson_10s": -0.03929333930818409,
+                "Wasserstein_10s": 0.0694675139778024,
+                "SampEn_Error_10s": 0.7685079521569746,
+                "LZ_Complexity_Error_10s": 0.4608895146038153,
+                "Cumulative_RMSD": 0.14935768496115714,
+                "Cumulative_CosineSim": 0.9607359613379877,
+                "Error_Cumulative_HRV_RMSSD": 194.98077835619569,
+                "Error_Cumulative_QRS_ms": 53.76519162980924,
+                "Error_Cumulative_PR_ms": 37.24882053631947,
+                "Error_Cumulative_QT_ms": 69.47134153378119
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "metrics": {
+                "MAE_10s": 0.20499632107742782,
+                "Pearson_10s": -0.07052529674503225,
+                "Wasserstein_10s": 0.1969648391774562,
+                "SampEn_Error_10s": 0.10179921787520008,
+                "LZ_Complexity_Error_10s": 0.2715956068201055,
+                "Cumulative_RMSD": 0.16442882747813364,
+                "Cumulative_CosineSim": 0.9620918072259483,
+                "Error_Cumulative_HRV_RMSSD": 194.89092420775523,
+                "Error_Cumulative_QRS_ms": 0.07781259280690733,
+                "Error_Cumulative_PR_ms": 6.55588120466669,
+                "Error_Cumulative_QT_ms": 32.57051356522237
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "metrics": {
+                "MAE_10s": 0.08107590676696025,
+                "Pearson_10s": 0.07957468794356178,
+                "Wasserstein_10s": 0.06805126592085148,
+                "SampEn_Error_10s": 0.15319008105871823,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.1726302714661393,
+                "Cumulative_CosineSim": 0.9560655122850018,
+                "Error_Cumulative_HRV_RMSSD": 146.90054832254455,
+                "Error_Cumulative_QRS_ms": 30.78353611731559,
+                "Error_Cumulative_PR_ms": 9.272992593712559,
+                "Error_Cumulative_QT_ms": 124.19124677002583
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "metrics": {
+                "MAE_10s": 0.0860752087782685,
+                "Pearson_10s": 0.04923045076542698,
+                "Wasserstein_10s": 0.030108160021386075,
+                "SampEn_Error_10s": 0.1599595472281763,
+                "LZ_Complexity_Error_10s": 0.08230169903639561,
+                "Cumulative_RMSD": 0.10991287406941566,
+                "Cumulative_CosineSim": 0.9710708355818152,
+                "Error_Cumulative_HRV_RMSSD": 331.874698638023,
+                "Error_Cumulative_QRS_ms": 23.446304193319136,
+                "Error_Cumulative_PR_ms": 1.7473047515600655,
+                "Error_Cumulative_QT_ms": 92.09654852825523
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "metrics": {
+                "MAE_10s": 0.24398302763216542,
+                "Pearson_10s": -0.1334828541972734,
+                "Wasserstein_10s": 0.20980330696787136,
+                "SampEn_Error_10s": 0.13288928184247747,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.17097842700012722,
+                "Cumulative_CosineSim": 0.8667879170033024,
+                "Error_Cumulative_HRV_RMSSD": 136.56354391227785,
+                "Error_Cumulative_QRS_ms": 20.67133316126842,
+                "Error_Cumulative_PR_ms": 32.263928197853076,
+                "Error_Cumulative_QT_ms": 71.72677430882413
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "metrics": {
+                "MAE_10s": 0.3122324356901778,
+                "Pearson_10s": -0.1785965331814694,
+                "Wasserstein_10s": 0.29067619576825754,
+                "SampEn_Error_10s": 0.16270684921516598,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.16626124712700102,
+                "Cumulative_CosineSim": 0.9238161260554482,
+                "Error_Cumulative_HRV_RMSSD": 269.1346301050023,
+                "Error_Cumulative_QRS_ms": 34.03373837782023,
+                "Error_Cumulative_PR_ms": 16.723056242898437,
+                "Error_Cumulative_QT_ms": 48.465205638823875
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "metrics": {
+                "MAE_10s": 0.17138578203092406,
+                "Pearson_10s": -0.12756096546979356,
+                "Wasserstein_10s": 0.09350592328319533,
+                "SampEn_Error_10s": 0.041236101890533366,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.2068021779867448,
+                "Cumulative_CosineSim": 0.7303835830090536,
+                "Error_Cumulative_HRV_RMSSD": 34.84608792096513,
+                "Error_Cumulative_QRS_ms": 50.65951209391821,
+                "Error_Cumulative_PR_ms": 18.90612373025698,
+                "Error_Cumulative_QT_ms": 19.74106545538274
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0034",
+            "metrics": {
+                "MAE_10s": 0.22635385743122988,
+                "Pearson_10s": -0.014623974859252712,
+                "Wasserstein_10s": 0.19886856779819875,
+                "SampEn_Error_10s": 0.08703930367882609,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.18898292602035396,
+                "Cumulative_CosineSim": 0.8750592886946424,
+                "Error_Cumulative_HRV_RMSSD": 199.48780978085435,
+                "Error_Cumulative_QRS_ms": 28.65118954844675,
+                "Error_Cumulative_PR_ms": 28.93945688472583,
+                "Error_Cumulative_QT_ms": 67.82077752021513
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "metrics": {
+                "MAE_10s": 0.24481519035139107,
+                "Pearson_10s": -0.133944065832444,
+                "Wasserstein_10s": 0.20701363335212591,
+                "SampEn_Error_10s": 0.1373418726643392,
+                "LZ_Complexity_Error_10s": 0.09876203884367474,
+                "Cumulative_RMSD": 0.26163421088055805,
+                "Cumulative_CosineSim": 0.7082903619042755,
+                "Error_Cumulative_HRV_RMSSD": 77.4989869629233,
+                "Error_Cumulative_QRS_ms": 37.61348054492029,
+                "Error_Cumulative_PR_ms": 20.92842655609141,
+                "Error_Cumulative_QT_ms": 53.065567960304804
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "metrics": {
+                "MAE_10s": 0.1982053424190749,
+                "Pearson_10s": -0.17437489630263975,
+                "Wasserstein_10s": 0.14651465469730907,
+                "SampEn_Error_10s": 0.0656315042441572,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.2569300440163203,
+                "Cumulative_CosineSim": 0.5988231445815835,
+                "Error_Cumulative_HRV_RMSSD": 37.10689852022387,
+                "Error_Cumulative_QRS_ms": 51.516637394390386,
+                "Error_Cumulative_PR_ms": 8.629698805581285,
+                "Error_Cumulative_QT_ms": 54.89682403606622
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "metrics": {
+                "MAE_10s": 0.15966448344570616,
+                "Pearson_10s": -0.15484662034024707,
+                "Wasserstein_10s": 0.04208896182971769,
+                "SampEn_Error_10s": 0.014132060012465864,
+                "LZ_Complexity_Error_10s": 0.07407152913275603,
+                "Cumulative_RMSD": 0.18720511013950417,
+                "Cumulative_CosineSim": 0.8530138523144485,
+                "Error_Cumulative_HRV_RMSSD": 58.491728325839134,
+                "Error_Cumulative_QRS_ms": 1.55094978737921,
+                "Error_Cumulative_PR_ms": 5.0612931022625105,
+                "Error_Cumulative_QT_ms": 11.262791388270216
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0016",
+            "metrics": {
+                "MAE_10s": 0.25949779325268363,
+                "Pearson_10s": 0.01822300928055511,
+                "Wasserstein_10s": 0.24236432262401433,
+                "SampEn_Error_10s": 0.09414274189928784,
+                "LZ_Complexity_Error_10s": 0.05761118932547693,
+                "Cumulative_RMSD": 0.17245372197973075,
+                "Cumulative_CosineSim": 0.9068890864734874,
+                "Error_Cumulative_HRV_RMSSD": 218.7591034103481,
+                "Error_Cumulative_QRS_ms": 23.880300817986267,
+                "Error_Cumulative_PR_ms": 11.310844759693893,
+                "Error_Cumulative_QT_ms": 22.180074186170202
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "metrics": {
+                "MAE_10s": 0.24211808739677118,
+                "Pearson_10s": -0.13993289193799396,
+                "Wasserstein_10s": 0.20071872618350278,
+                "SampEn_Error_10s": 0.02848203220554235,
+                "LZ_Complexity_Error_10s": 0.032920679614558246,
+                "Cumulative_RMSD": 0.18818272760862434,
+                "Cumulative_CosineSim": 0.922230885910539,
+                "Error_Cumulative_HRV_RMSSD": 318.8684446087971,
+                "Error_Cumulative_QRS_ms": 24.8454623668068,
+                "Error_Cumulative_PR_ms": 23.355502939707563,
+                "Error_Cumulative_QT_ms": 42.87969159509419
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "metrics": {
+                "MAE_10s": 0.17370835590679204,
+                "Pearson_10s": -0.11707529389225554,
+                "Wasserstein_10s": 0.10825947086438155,
+                "SampEn_Error_10s": 0.00918470932357493,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.2386219604686658,
+                "Cumulative_CosineSim": 0.7456467865619021,
+                "Error_Cumulative_HRV_RMSSD": 176.27835742809873,
+                "Error_Cumulative_QRS_ms": 39.50242429373745,
+                "Error_Cumulative_PR_ms": 13.187539394618526,
+                "Error_Cumulative_QT_ms": 51.799490809389226
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "metrics": {
+                "MAE_10s": 0.2858763649431067,
+                "Pearson_10s": -0.3163794280064911,
+                "Wasserstein_10s": 0.24383958607523554,
+                "SampEn_Error_10s": 0.16189687215689913,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.15823084041008484,
+                "Cumulative_CosineSim": 0.9339586768914622,
+                "Error_Cumulative_HRV_RMSSD": 262.1175809123318,
+                "Error_Cumulative_QRS_ms": 11.192187984854371,
+                "Error_Cumulative_PR_ms": 24.87099463966647,
+                "Error_Cumulative_QT_ms": 3.228245390373388
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "metrics": {
+                "MAE_10s": 0.151359142036356,
+                "Pearson_10s": -0.17728824240714325,
+                "Wasserstein_10s": 0.06426905979802781,
+                "SampEn_Error_10s": 0.5066523712176714,
+                "LZ_Complexity_Error_10s": 0.16460339807279123,
+                "Cumulative_RMSD": 0.15362904049703427,
+                "Cumulative_CosineSim": 0.9296945717721964,
+                "Error_Cumulative_HRV_RMSSD": 184.60421837378118,
+                "Error_Cumulative_QRS_ms": 23.380544360331925,
+                "Error_Cumulative_PR_ms": 8.54979421201024,
+                "Error_Cumulative_QT_ms": 34.88744242611284
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "metrics": {
+                "MAE_10s": 0.270152944064105,
+                "Pearson_10s": -0.22033694169895102,
+                "Wasserstein_10s": 0.2348982675613719,
+                "SampEn_Error_10s": 0.19024427671258917,
+                "LZ_Complexity_Error_10s": 0.07407152913275605,
+                "Cumulative_RMSD": 0.23099244219759735,
+                "Cumulative_CosineSim": 0.825091684004804,
+                "Error_Cumulative_HRV_RMSSD": 186.7117977802666,
+                "Error_Cumulative_QRS_ms": 25.795135832110617,
+                "Error_Cumulative_PR_ms": 24.078736402747964,
+                "Error_Cumulative_QT_ms": 87.74358760063132
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "metrics": {
+                "MAE_10s": 0.13853182752347357,
+                "Pearson_10s": -0.10856424597264684,
+                "Wasserstein_10s": 0.0921566061509852,
+                "SampEn_Error_10s": 0.00035766064423481403,
+                "LZ_Complexity_Error_10s": 0.0,
+                "Cumulative_RMSD": 0.15263422181528602,
+                "Cumulative_CosineSim": 0.9587025568044546,
+                "Error_Cumulative_HRV_RMSSD": 38.00662073714574,
+                "Error_Cumulative_QRS_ms": 6.787505340272361,
+                "Error_Cumulative_PR_ms": 19.586579796783823,
+                "Error_Cumulative_QT_ms": 84.27500127017458
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "metrics": {
+                "MAE_10s": 0.24092744843020877,
+                "Pearson_10s": -0.0156392375691424,
+                "Wasserstein_10s": 0.2223159201791423,
+                "SampEn_Error_10s": 0.2194190854672688,
+                "LZ_Complexity_Error_10s": 0.15637322816915164,
+                "Cumulative_RMSD": 0.16955956955162152,
+                "Cumulative_CosineSim": 0.9159364919419625,
+                "Error_Cumulative_HRV_RMSSD": 259.34377587448324,
+                "Error_Cumulative_QRS_ms": 54.36237818580527,
+                "Error_Cumulative_PR_ms": 23.425866084057617,
+                "Error_Cumulative_QT_ms": 20.368085023655624
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "metrics": {
+                "MAE_10s": 0.16036243628853702,
+                "Pearson_10s": -0.07875024612426029,
+                "Wasserstein_10s": 0.11328943514283574,
+                "SampEn_Error_10s": 0.048346151594706344,
+                "LZ_Complexity_Error_10s": 0.13168271845823293,
+                "Cumulative_RMSD": 0.21514053532989832,
+                "Cumulative_CosineSim": 0.8226367694066841,
+                "Error_Cumulative_HRV_RMSSD": 121.98355668195242,
+                "Error_Cumulative_QRS_ms": 32.38612908578065,
+                "Error_Cumulative_PR_ms": 23.136142826688868,
+                "Error_Cumulative_QT_ms": 15.626068853680465
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "metrics": {
+                "MAE_10s": 0.1648804022068945,
+                "Pearson_10s": -0.244747385850506,
+                "Wasserstein_10s": 0.10257107783524644,
+                "SampEn_Error_10s": 0.08200243110004057,
+                "LZ_Complexity_Error_10s": 0.17283356797643074,
+                "Cumulative_RMSD": 0.1573153069119547,
+                "Cumulative_CosineSim": 0.9314058897170228,
+                "Error_Cumulative_HRV_RMSSD": 2334.5453583308113,
+                "Error_Cumulative_QRS_ms": 51.88706465412952,
+                "Error_Cumulative_PR_ms": 17.44168216837255,
+                "Error_Cumulative_QT_ms": 5.130797417276256
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3939643_0001",
+            "metrics": {
+                "MAE_10s": 0.2491469261904159,
+                "Pearson_10s": -0.24215829615093987,
+                "Wasserstein_10s": 0.18197542501655145,
+                "SampEn_Error_10s": 0.1389168673765959,
+                "LZ_Complexity_Error_10s": 0.032920679614558246,
+                "Cumulative_RMSD": 0.2310489806530257,
+                "Cumulative_CosineSim": 0.7856581159739414,
+                "Error_Cumulative_HRV_RMSSD": 84.22260943571197,
+                "Error_Cumulative_QRS_ms": 66.97556634743209,
+                "Error_Cumulative_PR_ms": 59.55577433319368,
+                "Error_Cumulative_QT_ms": 12.161850863718428
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0006",
+            "metrics": {
+                "MAE_10s": 0.23130357424425374,
+                "Pearson_10s": -0.06414637240833795,
+                "Wasserstein_10s": 0.19811545171817913,
+                "SampEn_Error_10s": 0.14239613728168204,
+                "LZ_Complexity_Error_10s": 0.09876203884367471,
+                "Cumulative_RMSD": 0.16386607528917918,
+                "Cumulative_CosineSim": 0.9221118593355901,
+                "Error_Cumulative_HRV_RMSSD": 223.76617538887646,
+                "Error_Cumulative_QRS_ms": 51.92747246956024,
+                "Error_Cumulative_PR_ms": 57.172923288702165,
+                "Error_Cumulative_QT_ms": 21.04724651231004
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "metrics": {
+                "MAE_10s": 0.15087235158834347,
+                "Pearson_10s": -0.07426130794241279,
+                "Wasserstein_10s": 0.08516621893565242,
+                "SampEn_Error_10s": 0.26089051300541616,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.17683567032699382,
+                "Cumulative_CosineSim": 0.9214275704281111,
+                "Error_Cumulative_HRV_RMSSD": 329.9229110004152,
+                "Error_Cumulative_QRS_ms": 59.46654320886746,
+                "Error_Cumulative_PR_ms": 62.60016651959097,
+                "Error_Cumulative_QT_ms": 15.071872622651256
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "metrics": {
+                "MAE_10s": 0.23139490315165276,
+                "Pearson_10s": -0.1944024227606737,
+                "Wasserstein_10s": 0.17163551650602324,
+                "SampEn_Error_10s": 0.07026998250584207,
+                "LZ_Complexity_Error_10s": 0.04115084951819775,
+                "Cumulative_RMSD": 0.1936853482340512,
+                "Cumulative_CosineSim": 0.8628101293847101,
+                "Error_Cumulative_HRV_RMSSD": 114.23654986405425,
+                "Error_Cumulative_QRS_ms": 66.7827216375376,
+                "Error_Cumulative_PR_ms": 59.43994171767096,
+                "Error_Cumulative_QT_ms": 35.45862859881555
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "metrics": {
+                "MAE_10s": 0.20806423454397482,
+                "Pearson_10s": -0.05787547281735572,
+                "Wasserstein_10s": 0.17249621017149327,
+                "SampEn_Error_10s": 0.1639115733940962,
+                "LZ_Complexity_Error_10s": 0.11522237865095383,
+                "Cumulative_RMSD": 0.23001540493325576,
+                "Cumulative_CosineSim": 0.8235303140964563,
+                "Error_Cumulative_HRV_RMSSD": 105.11428923807252,
+                "Error_Cumulative_QRS_ms": 56.01747458040725,
+                "Error_Cumulative_PR_ms": 54.6250152140676,
+                "Error_Cumulative_QT_ms": 32.20979757442876
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "metrics": {
+                "MAE_10s": 0.2645217849659408,
+                "Pearson_10s": -0.19707467025979125,
+                "Wasserstein_10s": 0.20987643512997278,
+                "SampEn_Error_10s": 0.11313037608055207,
+                "LZ_Complexity_Error_10s": 0.14814305826551208,
+                "Cumulative_RMSD": 0.2472698110747789,
+                "Cumulative_CosineSim": 0.7684153469451929,
+                "Error_Cumulative_HRV_RMSSD": 99.05768976469808,
+                "Error_Cumulative_QRS_ms": 66.07395583931896,
+                "Error_Cumulative_PR_ms": 61.1418136790805,
+                "Error_Cumulative_QT_ms": 14.79896117616579
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "metrics": {
+                "MAE_10s": 0.2738000551552425,
+                "Pearson_10s": 0.04752260650278366,
+                "Wasserstein_10s": 0.26486687553862326,
+                "SampEn_Error_10s": 0.36237670961977914,
+                "LZ_Complexity_Error_10s": 0.21398441749462854,
+                "Cumulative_RMSD": 0.27064842257466115,
+                "Cumulative_CosineSim": 0.844396621790782,
+                "Error_Cumulative_HRV_RMSSD": 353.07364328457857,
+                "Error_Cumulative_QRS_ms": 43.41976881870572,
+                "Error_Cumulative_PR_ms": 48.77563647524123,
+                "Error_Cumulative_QT_ms": 13.239561339720922
+            }
+        }
+    ],
+    "1h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.20963165268934345,
+                "Pearson_10s": 0.013439479129607624,
+                "Wasserstein_10s": 0.18387299008757718,
+                "SampEn_Error_10s": 0.053975124363493,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.12340039607604823,
+                "Cumulative_CosineSim": 0.9454572831737604,
+                "Error_Cumulative_HRV_RMSSD": 54.41084732201416,
+                "Error_Cumulative_QRS_ms": 20.719792454194362,
+                "Error_Cumulative_PR_ms": 2.639467571822422,
+                "Error_Cumulative_QT_ms": 132.14340753158297
+            }
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "metrics": {
+                "MAE_10s": 0.18447763607718629,
+                "Pearson_10s": -0.06877664482988514,
+                "Wasserstein_10s": 0.1252589251294271,
+                "SampEn_Error_10s": 0.10818546421979303,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.20801594907865986,
+                "Cumulative_CosineSim": 0.9378763736487203,
+                "Error_Cumulative_HRV_RMSSD": 147.92228514711425,
+                "Error_Cumulative_QRS_ms": 49.1679947311881,
+                "Error_Cumulative_PR_ms": 9.373347451365447,
+                "Error_Cumulative_QT_ms": 41.6868447626627
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "metrics": {
+                "MAE_10s": 0.20495475457140347,
+                "Pearson_10s": -0.2212743043800677,
+                "Wasserstein_10s": 0.1485680369052435,
+                "SampEn_Error_10s": 0.11158449432667639,
+                "LZ_Complexity_Error_10s": 0.13168271845823293,
+                "Cumulative_RMSD": 0.15854057225222964,
+                "Cumulative_CosineSim": 0.914060469043389,
+                "Error_Cumulative_HRV_RMSSD": 249.7907375522953,
+                "Error_Cumulative_QRS_ms": 67.51606412219206,
+                "Error_Cumulative_PR_ms": 29.260559976782872,
+                "Error_Cumulative_QT_ms": 26.31773328857281
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "metrics": {
+                "MAE_10s": 0.20335946860339618,
+                "Pearson_10s": 0.1404247654741188,
+                "Wasserstein_10s": 0.18330501116023132,
+                "SampEn_Error_10s": 0.15365050729732094,
+                "LZ_Complexity_Error_10s": 0.0,
+                "Cumulative_RMSD": 0.14691339591387548,
+                "Cumulative_CosineSim": 0.9395859847945253,
+                "Error_Cumulative_HRV_RMSSD": 278.0828069057948,
+                "Error_Cumulative_QRS_ms": 61.19360578295144,
+                "Error_Cumulative_PR_ms": 26.50034807998351,
+                "Error_Cumulative_QT_ms": 29.56243282231145
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.15905112262668195,
+                "Pearson_10s": -0.22818537456192894,
+                "Wasserstein_10s": 0.08302853120626352,
+                "SampEn_Error_10s": 0.11138984260448431,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.1933147651900179,
+                "Cumulative_CosineSim": 0.8711757121156745,
+                "Error_Cumulative_HRV_RMSSD": 32.171949469819765,
+                "Error_Cumulative_QRS_ms": 87.63733511622118,
+                "Error_Cumulative_PR_ms": 15.932270415510573,
+                "Error_Cumulative_QT_ms": 57.353582026430445
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "metrics": {
+                "MAE_10s": 0.18655604593230704,
+                "Pearson_10s": 0.030262352291387493,
+                "Wasserstein_10s": 0.13633599101132,
+                "SampEn_Error_10s": 0.020253825353455657,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.14659218863448095,
+                "Cumulative_CosineSim": 0.9195033446007045,
+                "Error_Cumulative_HRV_RMSSD": 145.6071251224025,
+                "Error_Cumulative_QRS_ms": 24.602872010300857,
+                "Error_Cumulative_PR_ms": 1.2421573527485634,
+                "Error_Cumulative_QT_ms": 5.866921849305982
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "metrics": {
+                "MAE_10s": 0.22557534062799442,
+                "Pearson_10s": -0.28058197988733286,
+                "Wasserstein_10s": 0.13823548056913507,
+                "SampEn_Error_10s": 0.010839341345574988,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.18927144244824937,
+                "Cumulative_CosineSim": 0.863789236640146,
+                "Error_Cumulative_HRV_RMSSD": 136.76640079788027,
+                "Error_Cumulative_QRS_ms": 57.486626579771084,
+                "Error_Cumulative_PR_ms": 24.70239718518235,
+                "Error_Cumulative_QT_ms": 2.851661387296531
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "metrics": {
+                "MAE_10s": 0.22473794769269484,
+                "Pearson_10s": 0.14060985248855962,
+                "Wasserstein_10s": 0.1780023569741605,
+                "SampEn_Error_10s": 0.14125634940384874,
+                "LZ_Complexity_Error_10s": 0.14814305826551208,
+                "Cumulative_RMSD": 0.23599015864796277,
+                "Cumulative_CosineSim": 0.9302845540840569,
+                "Error_Cumulative_HRV_RMSSD": 238.79525096428432,
+                "Error_Cumulative_QRS_ms": 15.63506185295671,
+                "Error_Cumulative_PR_ms": 9.820154493323216,
+                "Error_Cumulative_QT_ms": 52.425448224121226
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "metrics": {
+                "MAE_10s": 0.2502540859934099,
+                "Pearson_10s": 0.12423216973171897,
+                "Wasserstein_10s": 0.2277224020229984,
+                "SampEn_Error_10s": 0.15873726878796585,
+                "LZ_Complexity_Error_10s": 0.1563732281691516,
+                "Cumulative_RMSD": 0.10922617770089182,
+                "Cumulative_CosineSim": 0.9786382061085007,
+                "Error_Cumulative_HRV_RMSSD": 323.8975316588659,
+                "Error_Cumulative_QRS_ms": 0.04802754424474642,
+                "Error_Cumulative_PR_ms": 3.9128594180908607,
+                "Error_Cumulative_QT_ms": 86.66296073669781
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "metrics": {
+                "MAE_10s": 0.16174103881371424,
+                "Pearson_10s": 0.4864808895560573,
+                "Wasserstein_10s": 0.13847257082580616,
+                "SampEn_Error_10s": 0.025209921016198233,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.14343437761376956,
+                "Cumulative_CosineSim": 0.9319270723457025,
+                "Error_Cumulative_HRV_RMSSD": 178.32052245957357,
+                "Error_Cumulative_QRS_ms": 19.611178895361235,
+                "Error_Cumulative_PR_ms": 6.371586004765518,
+                "Error_Cumulative_QT_ms": 24.399564891783882
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "metrics": {
+                "MAE_10s": 0.19936756597126837,
+                "Pearson_10s": -0.03191575554639488,
+                "Wasserstein_10s": 0.16058790060937034,
+                "SampEn_Error_10s": 0.0251163412640813,
+                "LZ_Complexity_Error_10s": 0.05761118932547693,
+                "Cumulative_RMSD": 0.20695733130589153,
+                "Cumulative_CosineSim": 0.9052036925361462,
+                "Error_Cumulative_HRV_RMSSD": 251.6356144114097,
+                "Error_Cumulative_QRS_ms": 2.5130155025208865,
+                "Error_Cumulative_PR_ms": 9.41827315569222,
+                "Error_Cumulative_QT_ms": 20.682837949488146
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "metrics": {
+                "MAE_10s": 0.15885355420311226,
+                "Pearson_10s": 0.6102530844005496,
+                "Wasserstein_10s": 0.14064601849639702,
+                "SampEn_Error_10s": 0.011397953020091806,
+                "LZ_Complexity_Error_10s": 0.05761118932547693,
+                "Cumulative_RMSD": 0.21590859498731566,
+                "Cumulative_CosineSim": 0.8073237419087602,
+                "Error_Cumulative_HRV_RMSSD": 93.54498221067472,
+                "Error_Cumulative_QRS_ms": 65.88831492595338,
+                "Error_Cumulative_PR_ms": 21.88004363606393,
+                "Error_Cumulative_QT_ms": 10.514091553052708
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "metrics": {
+                "MAE_10s": 0.34125650737733176,
+                "Pearson_10s": 0.2297243118161178,
+                "Wasserstein_10s": 0.33154003785750197,
+                "SampEn_Error_10s": 0.09484870576433074,
+                "LZ_Complexity_Error_10s": 0.09053186894003518,
+                "Cumulative_RMSD": 0.14656620614729474,
+                "Cumulative_CosineSim": 0.9327545946805836,
+                "Error_Cumulative_HRV_RMSSD": 214.22659393838026,
+                "Error_Cumulative_QRS_ms": 33.36702943595533,
+                "Error_Cumulative_PR_ms": 11.56501343434789,
+                "Error_Cumulative_QT_ms": 8.212383290204173
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "metrics": {
+                "MAE_10s": 0.1251079237291209,
+                "Pearson_10s": 0.13557252600016956,
+                "Wasserstein_10s": 0.0728340873488299,
+                "SampEn_Error_10s": 0.0494967836721551,
+                "LZ_Complexity_Error_10s": 0.22221458739826813,
+                "Cumulative_RMSD": 0.13617592727601271,
+                "Cumulative_CosineSim": 0.937801726715747,
+                "Error_Cumulative_HRV_RMSSD": 302.9454897666119,
+                "Error_Cumulative_QRS_ms": 13.061433638706717,
+                "Error_Cumulative_PR_ms": 11.65017369691499,
+                "Error_Cumulative_QT_ms": 43.68068631676084
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "metrics": {
+                "MAE_10s": 0.2544375595775128,
+                "Pearson_10s": -0.05317145831682564,
+                "Wasserstein_10s": 0.23347315832158277,
+                "SampEn_Error_10s": 0.16266130559717148,
+                "LZ_Complexity_Error_10s": 0.11522237865095386,
+                "Cumulative_RMSD": 0.17795581303303146,
+                "Cumulative_CosineSim": 0.892579646389704,
+                "Error_Cumulative_HRV_RMSSD": 117.71544613077066,
+                "Error_Cumulative_QRS_ms": 2.4264657399131124,
+                "Error_Cumulative_PR_ms": 16.48156834460451,
+                "Error_Cumulative_QT_ms": 57.00090950172245
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "metrics": {
+                "MAE_10s": 0.26156667334135664,
+                "Pearson_10s": -0.01231733530508215,
+                "Wasserstein_10s": 0.25179689055267657,
+                "SampEn_Error_10s": 0.3565638657595782,
+                "LZ_Complexity_Error_10s": 0.14814305826551205,
+                "Cumulative_RMSD": 0.10851792245936172,
+                "Cumulative_CosineSim": 0.9588606047177628,
+                "Error_Cumulative_HRV_RMSSD": 262.9590617457819,
+                "Error_Cumulative_QRS_ms": 33.763884062619724,
+                "Error_Cumulative_PR_ms": 10.462150725802573,
+                "Error_Cumulative_QT_ms": 125.95872110709513
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "metrics": {
+                "MAE_10s": 0.38247575720568955,
+                "Pearson_10s": -0.10304615411668695,
+                "Wasserstein_10s": 0.3683521090525443,
+                "SampEn_Error_10s": 0.29987920743836416,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.14328838426702528,
+                "Cumulative_CosineSim": 0.9452090730271594,
+                "Error_Cumulative_HRV_RMSSD": 231.62637952279883,
+                "Error_Cumulative_QRS_ms": 20.379827601938786,
+                "Error_Cumulative_PR_ms": 17.143187429918655,
+                "Error_Cumulative_QT_ms": 108.03681121372261
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "metrics": {
+                "MAE_10s": 0.26073836667216566,
+                "Pearson_10s": 0.030990874444029398,
+                "Wasserstein_10s": 0.24172791185141163,
+                "SampEn_Error_10s": 0.16062113294101474,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.18269467372498283,
+                "Cumulative_CosineSim": 0.9182937241613359,
+                "Error_Cumulative_HRV_RMSSD": 205.68977387859834,
+                "Error_Cumulative_QRS_ms": 23.75686868006281,
+                "Error_Cumulative_PR_ms": 13.172509730392349,
+                "Error_Cumulative_QT_ms": 74.84029553290696
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "metrics": {
+                "MAE_10s": 0.09446493838143374,
+                "Pearson_10s": 0.09790628458422784,
+                "Wasserstein_10s": 0.03911431042439617,
+                "SampEn_Error_10s": 0.11398635998081519,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.15105021255949336,
+                "Cumulative_CosineSim": 0.9584772817974618,
+                "Error_Cumulative_HRV_RMSSD": 183.02270292192821,
+                "Error_Cumulative_QRS_ms": 68.82455019036269,
+                "Error_Cumulative_PR_ms": 42.40772086503071,
+                "Error_Cumulative_QT_ms": 24.350971914866705
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "metrics": {
+                "MAE_10s": 0.15044429637089976,
+                "Pearson_10s": -0.08282196632966446,
+                "Wasserstein_10s": 0.12096943707400772,
+                "SampEn_Error_10s": 0.2829433652675698,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.12013253277584454,
+                "Cumulative_CosineSim": 0.9727564419227238,
+                "Error_Cumulative_HRV_RMSSD": 228.05356952702707,
+                "Error_Cumulative_QRS_ms": 58.82777318000193,
+                "Error_Cumulative_PR_ms": 39.78358093794391,
+                "Error_Cumulative_QT_ms": 47.41472975946448
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "metrics": {
+                "MAE_10s": 0.28559323774502193,
+                "Pearson_10s": -0.13107231352764442,
+                "Wasserstein_10s": 0.28000775399447053,
+                "SampEn_Error_10s": 0.20447557688424195,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.15840317848606822,
+                "Cumulative_CosineSim": 0.9584202378110582,
+                "Error_Cumulative_HRV_RMSSD": 119.6781854392097,
+                "Error_Cumulative_QRS_ms": 55.968502495078525,
+                "Error_Cumulative_PR_ms": 43.97173510692562,
+                "Error_Cumulative_QT_ms": 80.26155662403391
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "metrics": {
+                "MAE_10s": 0.10467654175907451,
+                "Pearson_10s": -0.03005553811516076,
+                "Wasserstein_10s": 0.022539092362204187,
+                "SampEn_Error_10s": 0.7308653315634013,
+                "LZ_Complexity_Error_10s": 0.4608895146038153,
+                "Cumulative_RMSD": 0.13872078812832178,
+                "Cumulative_CosineSim": 0.9613893330832433,
+                "Error_Cumulative_HRV_RMSSD": 157.42574944853357,
+                "Error_Cumulative_QRS_ms": 27.16738087177707,
+                "Error_Cumulative_PR_ms": 6.457990454571288,
+                "Error_Cumulative_QT_ms": 111.74494487071274
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "metrics": {
+                "MAE_10s": 0.10121136730045857,
+                "Pearson_10s": 0.18825478376704757,
+                "Wasserstein_10s": 0.05264042695993749,
+                "SampEn_Error_10s": 0.07423831890046412,
+                "LZ_Complexity_Error_10s": 0.1481430582655121,
+                "Cumulative_RMSD": 0.17078461292307065,
+                "Cumulative_CosineSim": 0.9603268485364249,
+                "Error_Cumulative_HRV_RMSSD": 136.71353580898923,
+                "Error_Cumulative_QRS_ms": 34.21891168043402,
+                "Error_Cumulative_PR_ms": 11.99130335472681,
+                "Error_Cumulative_QT_ms": 131.01809502372288
+            }
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "metrics": {
+                "MAE_10s": 0.0991413673550172,
+                "Pearson_10s": -0.10812800174847935,
+                "Wasserstein_10s": 0.06653616190676903,
+                "SampEn_Error_10s": 0.23618385762340083,
+                "LZ_Complexity_Error_10s": 0.3209766262419428,
+                "Cumulative_RMSD": 0.1071352564705875,
+                "Cumulative_CosineSim": 0.9631651956911881,
+                "Error_Cumulative_HRV_RMSSD": 244.4789134301324,
+                "Error_Cumulative_QRS_ms": 33.49241781906106,
+                "Error_Cumulative_PR_ms": 3.4588853448114207,
+                "Error_Cumulative_QT_ms": 122.52948840288079
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "metrics": {
+                "MAE_10s": 0.24544282285028454,
+                "Pearson_10s": 0.021556743281283604,
+                "Wasserstein_10s": 0.23809029282354435,
+                "SampEn_Error_10s": 0.2597128350010787,
+                "LZ_Complexity_Error_10s": 0.04115084951819781,
+                "Cumulative_RMSD": 0.16965243091406917,
+                "Cumulative_CosineSim": 0.8758487340707267,
+                "Error_Cumulative_HRV_RMSSD": 133.47411579757502,
+                "Error_Cumulative_QRS_ms": 22.591348262620244,
+                "Error_Cumulative_PR_ms": 32.89998791929526,
+                "Error_Cumulative_QT_ms": 62.8463007480284
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "metrics": {
+                "MAE_10s": 0.26293838257042346,
+                "Pearson_10s": -0.1941672133477721,
+                "Wasserstein_10s": 0.2310169748232363,
+                "SampEn_Error_10s": 0.09186462830807018,
+                "LZ_Complexity_Error_10s": 0.08230169903639561,
+                "Cumulative_RMSD": 0.15993599548600335,
+                "Cumulative_CosineSim": 0.9284796049647384,
+                "Error_Cumulative_HRV_RMSSD": 256.5659265178219,
+                "Error_Cumulative_QRS_ms": 23.00037032285489,
+                "Error_Cumulative_PR_ms": 28.14959508107472,
+                "Error_Cumulative_QT_ms": 58.243341109124856
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "metrics": {
+                "MAE_10s": 0.16636733328844133,
+                "Pearson_10s": -0.13731391238299032,
+                "Wasserstein_10s": 0.09732692187065438,
+                "SampEn_Error_10s": 0.015934789994423465,
+                "LZ_Complexity_Error_10s": 0.08230169903639556,
+                "Cumulative_RMSD": 0.20809616547773083,
+                "Cumulative_CosineSim": 0.8599092719623173,
+                "Error_Cumulative_HRV_RMSSD": 107.24388796806645,
+                "Error_Cumulative_QRS_ms": 44.86975509286685,
+                "Error_Cumulative_PR_ms": 24.14148156547678,
+                "Error_Cumulative_QT_ms": 31.252244850177476
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "metrics": {
+                "MAE_10s": 0.23158784322813916,
+                "Pearson_10s": -0.13617325128894495,
+                "Wasserstein_10s": 0.18498383768061571,
+                "SampEn_Error_10s": 0.0539813013539914,
+                "LZ_Complexity_Error_10s": 0.05761118932547693,
+                "Cumulative_RMSD": 0.23756396523123738,
+                "Cumulative_CosineSim": 0.7866624876525309,
+                "Error_Cumulative_HRV_RMSSD": 103.76619973380568,
+                "Error_Cumulative_QRS_ms": 32.06801360843954,
+                "Error_Cumulative_PR_ms": 25.45045090722263,
+                "Error_Cumulative_QT_ms": 62.30256262974592
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "metrics": {
+                "MAE_10s": 0.44175731067905516,
+                "Pearson_10s": -0.23693758130618364,
+                "Wasserstein_10s": 0.42559418807443034,
+                "SampEn_Error_10s": 0.15086870770704996,
+                "LZ_Complexity_Error_10s": 0.09876203884367474,
+                "Cumulative_RMSD": 0.17695703650262617,
+                "Cumulative_CosineSim": 0.9151825177844605,
+                "Error_Cumulative_HRV_RMSSD": 73.9673504440488,
+                "Error_Cumulative_QRS_ms": 44.42512637884499,
+                "Error_Cumulative_PR_ms": 13.050409665324253,
+                "Error_Cumulative_QT_ms": 52.8696695652817
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "metrics": {
+                "MAE_10s": 0.17921435610278733,
+                "Pearson_10s": -0.18243103550098314,
+                "Wasserstein_10s": 0.07613316002552575,
+                "SampEn_Error_10s": 0.02934665193992317,
+                "LZ_Complexity_Error_10s": 0.02469050971091863,
+                "Cumulative_RMSD": 0.19093898867944437,
+                "Cumulative_CosineSim": 0.8401799650277818,
+                "Error_Cumulative_HRV_RMSSD": 40.696300082475446,
+                "Error_Cumulative_QRS_ms": 25.97976384236597,
+                "Error_Cumulative_PR_ms": 3.8301260758499183,
+                "Error_Cumulative_QT_ms": 4.595756236604814
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "metrics": {
+                "MAE_10s": 0.24672970235432976,
+                "Pearson_10s": -0.05334183161410405,
+                "Wasserstein_10s": 0.2215693153909751,
+                "SampEn_Error_10s": 0.01791729400785602,
+                "LZ_Complexity_Error_10s": 0.16460339807279123,
+                "Cumulative_RMSD": 0.19441970976392625,
+                "Cumulative_CosineSim": 0.919289264987678,
+                "Error_Cumulative_HRV_RMSSD": 284.6225537531958,
+                "Error_Cumulative_QRS_ms": 21.173655769748834,
+                "Error_Cumulative_PR_ms": 24.308941462312248,
+                "Error_Cumulative_QT_ms": 6.410985727989555
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "metrics": {
+                "MAE_10s": 0.17087475700145707,
+                "Pearson_10s": -0.10951625967443457,
+                "Wasserstein_10s": 0.10379399887718196,
+                "SampEn_Error_10s": 0.018480818273629518,
+                "LZ_Complexity_Error_10s": 0.024690509710918684,
+                "Cumulative_RMSD": 0.2277381014270846,
+                "Cumulative_CosineSim": 0.7312063763314689,
+                "Error_Cumulative_HRV_RMSSD": 125.83409041767868,
+                "Error_Cumulative_QRS_ms": 49.212655828533926,
+                "Error_Cumulative_PR_ms": 10.297876678773079,
+                "Error_Cumulative_QT_ms": 46.565948892926315
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "metrics": {
+                "MAE_10s": 0.1951609965799059,
+                "Pearson_10s": -0.13458611248317537,
+                "Wasserstein_10s": 0.14295264058781687,
+                "SampEn_Error_10s": 0.0019496546998750697,
+                "LZ_Complexity_Error_10s": 0.04938101942183737,
+                "Cumulative_RMSD": 0.19268868376371334,
+                "Cumulative_CosineSim": 0.9084600903895177,
+                "Error_Cumulative_HRV_RMSSD": 193.3114313053077,
+                "Error_Cumulative_QRS_ms": 13.137979068295977,
+                "Error_Cumulative_PR_ms": 29.433536603525333,
+                "Error_Cumulative_QT_ms": 0.027612768963365397
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "metrics": {
+                "MAE_10s": 0.18020492838135116,
+                "Pearson_10s": -0.18409328335233094,
+                "Wasserstein_10s": 0.08620830449020922,
+                "SampEn_Error_10s": 0.07066997691859717,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.1490660334158812,
+                "Cumulative_CosineSim": 0.9335172711273321,
+                "Error_Cumulative_HRV_RMSSD": 81.69252329925641,
+                "Error_Cumulative_QRS_ms": 24.492588044553287,
+                "Error_Cumulative_PR_ms": 5.6434936293592415,
+                "Error_Cumulative_QT_ms": 25.351456336092667
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "metrics": {
+                "MAE_10s": 0.26100423343678947,
+                "Pearson_10s": -0.19828672374164974,
+                "Wasserstein_10s": 0.23851334817363828,
+                "SampEn_Error_10s": 0.1749193650445306,
+                "LZ_Complexity_Error_10s": 0.04938101942183731,
+                "Cumulative_RMSD": 0.2238497305186555,
+                "Cumulative_CosineSim": 0.8296428136866553,
+                "Error_Cumulative_HRV_RMSSD": 174.94765350612153,
+                "Error_Cumulative_QRS_ms": 23.52948935685177,
+                "Error_Cumulative_PR_ms": 25.42324382772246,
+                "Error_Cumulative_QT_ms": 95.67107803360796
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "metrics": {
+                "MAE_10s": 0.4367975381637927,
+                "Pearson_10s": -0.04796794514921565,
+                "Wasserstein_10s": 0.43106036244297774,
+                "SampEn_Error_10s": 0.31627267455387187,
+                "LZ_Complexity_Error_10s": 0.13168271845823296,
+                "Cumulative_RMSD": 0.13038315747511314,
+                "Cumulative_CosineSim": 0.9651291246612801,
+                "Error_Cumulative_HRV_RMSSD": 83.04886530082331,
+                "Error_Cumulative_QRS_ms": 3.8035165261581767,
+                "Error_Cumulative_PR_ms": 19.24294131178918,
+                "Error_Cumulative_QT_ms": 87.19349906629321
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "metrics": {
+                "MAE_10s": 0.21485203279466294,
+                "Pearson_10s": -0.22360856537628226,
+                "Wasserstein_10s": 0.10168885160739052,
+                "SampEn_Error_10s": 0.061215349600771046,
+                "LZ_Complexity_Error_10s": 0.10699220874731427,
+                "Cumulative_RMSD": 0.16914973640551773,
+                "Cumulative_CosineSim": 0.9080324214179927,
+                "Error_Cumulative_HRV_RMSSD": 220.671381396052,
+                "Error_Cumulative_QRS_ms": 56.799800352477575,
+                "Error_Cumulative_PR_ms": 24.453376838535988,
+                "Error_Cumulative_QT_ms": 12.902164178370015
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "metrics": {
+                "MAE_10s": 0.15492436530773457,
+                "Pearson_10s": -0.12861045019134543,
+                "Wasserstein_10s": 0.039322322159259473,
+                "SampEn_Error_10s": 0.09626680452003009,
+                "LZ_Complexity_Error_10s": 0.1481430582655121,
+                "Cumulative_RMSD": 0.2045466282786173,
+                "Cumulative_CosineSim": 0.8502269300257652,
+                "Error_Cumulative_HRV_RMSSD": 128.7404166813758,
+                "Error_Cumulative_QRS_ms": 30.860364961329765,
+                "Error_Cumulative_PR_ms": 22.941572757192688,
+                "Error_Cumulative_QT_ms": 16.628687972621037
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "metrics": {
+                "MAE_10s": 0.26950721707620706,
+                "Pearson_10s": -0.2847734066203322,
+                "Wasserstein_10s": 0.15811360574117078,
+                "SampEn_Error_10s": 0.14362625524072442,
+                "LZ_Complexity_Error_10s": 0.17283356797643074,
+                "Cumulative_RMSD": 0.1512091964067461,
+                "Cumulative_CosineSim": 0.9276043835559005,
+                "Error_Cumulative_HRV_RMSSD": 1563.05625267219,
+                "Error_Cumulative_QRS_ms": 49.434473970978544,
+                "Error_Cumulative_PR_ms": 17.184418721664827,
+                "Error_Cumulative_QT_ms": 2.110341823663134
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "metrics": {
+                "MAE_10s": 0.2494303367354589,
+                "Pearson_10s": 0.12572604404989896,
+                "Wasserstein_10s": 0.23810686652864152,
+                "SampEn_Error_10s": 0.3515689438134109,
+                "LZ_Complexity_Error_10s": 0.10699220874731427,
+                "Cumulative_RMSD": 0.24891700600178987,
+                "Cumulative_CosineSim": 0.842624153696848,
+                "Error_Cumulative_HRV_RMSSD": 277.0376737904781,
+                "Error_Cumulative_QRS_ms": 61.456390382004415,
+                "Error_Cumulative_PR_ms": 64.05112485999636,
+                "Error_Cumulative_QT_ms": 23.34762003838847
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "metrics": {
+                "MAE_10s": 0.2595093628173374,
+                "Pearson_10s": -0.17123972735066215,
+                "Wasserstein_10s": 0.21500875838964462,
+                "SampEn_Error_10s": 0.1374921321410385,
+                "LZ_Complexity_Error_10s": 0.049381019421837424,
+                "Cumulative_RMSD": 0.1941631880091137,
+                "Cumulative_CosineSim": 0.8612890925339896,
+                "Error_Cumulative_HRV_RMSSD": 94.90934942274833,
+                "Error_Cumulative_QRS_ms": 67.06464478564382,
+                "Error_Cumulative_PR_ms": 59.92880433564544,
+                "Error_Cumulative_QT_ms": 32.01759704834046
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "metrics": {
+                "MAE_10s": 0.15772986012657103,
+                "Pearson_10s": -0.14707627153083336,
+                "Wasserstein_10s": 0.10107479368155985,
+                "SampEn_Error_10s": 0.0852950309869353,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.18051994267433663,
+                "Cumulative_CosineSim": 0.8827200272883208,
+                "Error_Cumulative_HRV_RMSSD": 105.03285444119938,
+                "Error_Cumulative_QRS_ms": 57.87600362937674,
+                "Error_Cumulative_PR_ms": 54.51731338944981,
+                "Error_Cumulative_QT_ms": 34.952465242636265
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "metrics": {
+                "MAE_10s": 0.25980475461895275,
+                "Pearson_10s": -0.1694918381595355,
+                "Wasserstein_10s": 0.20999436084058148,
+                "SampEn_Error_10s": 0.14350716381865605,
+                "LZ_Complexity_Error_10s": 0.1069922087473143,
+                "Cumulative_RMSD": 0.23953158437971653,
+                "Cumulative_CosineSim": 0.7903897891299728,
+                "Error_Cumulative_HRV_RMSSD": 110.23414245308317,
+                "Error_Cumulative_QRS_ms": 64.85140277139638,
+                "Error_Cumulative_PR_ms": 59.48587966956087,
+                "Error_Cumulative_QT_ms": 20.118373760777274
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "metrics": {
+                "MAE_10s": 0.2488350711571621,
+                "Pearson_10s": -0.08021600103718493,
+                "Wasserstein_10s": 0.2259837783764205,
+                "SampEn_Error_10s": 0.1593430038523226,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.2568806848038813,
+                "Cumulative_CosineSim": 0.8497958890001349,
+                "Error_Cumulative_HRV_RMSSD": 286.8621923742015,
+                "Error_Cumulative_QRS_ms": 56.11500366057393,
+                "Error_Cumulative_PR_ms": 60.30345963561233,
+                "Error_Cumulative_QT_ms": 6.385546125951635
+            }
+        }
+    ],
+    "6h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.201181641502751,
+                "Pearson_10s": -0.2833008589906705,
+                "Wasserstein_10s": 0.1474714612970922,
+                "SampEn_Error_10s": 0.13545696241954672,
+                "LZ_Complexity_Error_10s": 0.06584135922911649,
+                "Cumulative_RMSD": 0.2205114242400157,
+                "Cumulative_CosineSim": 0.9231126074121783,
+                "Error_Cumulative_HRV_RMSSD": 50.047165991528146,
+                "Error_Cumulative_QRS_ms": 14.268250092848945,
+                "Error_Cumulative_PR_ms": 20.51870305482788,
+                "Error_Cumulative_QT_ms": 107.72733799566544
+            }
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "metrics": {
+                "MAE_10s": 0.2248255394522612,
+                "Pearson_10s": -0.02194686911940539,
+                "Wasserstein_10s": 0.17808142576728692,
+                "SampEn_Error_10s": 0.03164560964009355,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.22356514054561802,
+                "Cumulative_CosineSim": 0.9112627909718051,
+                "Error_Cumulative_HRV_RMSSD": 619.5000264219635,
+                "Error_Cumulative_QRS_ms": 43.528983817772954,
+                "Error_Cumulative_PR_ms": 10.306504222619836,
+                "Error_Cumulative_QT_ms": 35.97236034897469
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.20306897626538142,
+                "Pearson_10s": -0.06069072629918836,
+                "Wasserstein_10s": 0.18882000127134638,
+                "SampEn_Error_10s": 0.3251588267393091,
+                "LZ_Complexity_Error_10s": 0.18929390778370989,
+                "Cumulative_RMSD": 0.16623164491220419,
+                "Cumulative_CosineSim": 0.9288733613614346,
+                "Error_Cumulative_HRV_RMSSD": 127.99922651684348,
+                "Error_Cumulative_QRS_ms": 82.02174068161271,
+                "Error_Cumulative_PR_ms": 28.974286810232954,
+                "Error_Cumulative_QT_ms": 62.28775844856568
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "metrics": {
+                "MAE_10s": 0.10579957188476433,
+                "Pearson_10s": -0.11177754220423852,
+                "Wasserstein_10s": 0.03315330316924958,
+                "SampEn_Error_10s": 0.24500373383526447,
+                "LZ_Complexity_Error_10s": 0.19752407768734942,
+                "Cumulative_RMSD": 0.12984565983725646,
+                "Cumulative_CosineSim": 0.9416567517164844,
+                "Error_Cumulative_HRV_RMSSD": 206.38529835549966,
+                "Error_Cumulative_QRS_ms": 34.826440461076416,
+                "Error_Cumulative_PR_ms": 13.396532138007785,
+                "Error_Cumulative_QT_ms": 13.602236260417442
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "metrics": {
+                "MAE_10s": 0.31507529758287467,
+                "Pearson_10s": 0.019062296049740187,
+                "Wasserstein_10s": 0.30792984135865553,
+                "SampEn_Error_10s": 0.3496115459085356,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.13743385990239373,
+                "Cumulative_CosineSim": 0.9429461424899973,
+                "Error_Cumulative_HRV_RMSSD": 198.0175249306148,
+                "Error_Cumulative_QRS_ms": 25.35707367335428,
+                "Error_Cumulative_PR_ms": 22.08177394953441,
+                "Error_Cumulative_QT_ms": 105.44480230293794
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "metrics": {
+                "MAE_10s": 0.09188662540839157,
+                "Pearson_10s": 0.1717907868314682,
+                "Wasserstein_10s": 0.04342856308700269,
+                "SampEn_Error_10s": 0.04174693420660358,
+                "LZ_Complexity_Error_10s": 0.1152223786509538,
+                "Cumulative_RMSD": 0.17627907103134907,
+                "Cumulative_CosineSim": 0.9535907274512115,
+                "Error_Cumulative_HRV_RMSSD": 185.96904546591452,
+                "Error_Cumulative_QRS_ms": 72.98289573571832,
+                "Error_Cumulative_PR_ms": 45.112003958329254,
+                "Error_Cumulative_QT_ms": 29.285932841184092
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "metrics": {
+                "MAE_10s": 0.14711678410016768,
+                "Pearson_10s": -0.3345484356877826,
+                "Wasserstein_10s": 0.029332228669547426,
+                "SampEn_Error_10s": 0.05325543266195065,
+                "LZ_Complexity_Error_10s": 0.09053186894003512,
+                "Cumulative_RMSD": 0.1680967747688468,
+                "Cumulative_CosineSim": 0.9559037729446878,
+                "Error_Cumulative_HRV_RMSSD": 84.48461644932624,
+                "Error_Cumulative_QRS_ms": 54.940220446436825,
+                "Error_Cumulative_PR_ms": 35.61066885855162,
+                "Error_Cumulative_QT_ms": 63.5278495319277
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "metrics": {
+                "MAE_10s": 0.15203440410726451,
+                "Pearson_10s": -0.29018469605686337,
+                "Wasserstein_10s": 0.07533235119978589,
+                "SampEn_Error_10s": 0.18216620390122787,
+                "LZ_Complexity_Error_10s": 0.06584135922911644,
+                "Cumulative_RMSD": 0.18249925978963763,
+                "Cumulative_CosineSim": 0.908120723015164,
+                "Error_Cumulative_HRV_RMSSD": 112.2369087406456,
+                "Error_Cumulative_QRS_ms": 14.647167129147022,
+                "Error_Cumulative_PR_ms": 11.415141245107492,
+                "Error_Cumulative_QT_ms": 47.94727061543392
+            }
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "metrics": {
+                "MAE_10s": 0.21635220152280107,
+                "Pearson_10s": -0.14290149244260764,
+                "Wasserstein_10s": 0.15809250123808152,
+                "SampEn_Error_10s": 0.022130278749920074,
+                "LZ_Complexity_Error_10s": 0.15637322816915164,
+                "Cumulative_RMSD": 0.17817201095621055,
+                "Cumulative_CosineSim": 0.9041618200254713,
+                "Error_Cumulative_HRV_RMSSD": 16.25791860778706,
+                "Error_Cumulative_QRS_ms": 42.7043213429221,
+                "Error_Cumulative_PR_ms": 4.400643551044098,
+                "Error_Cumulative_QT_ms": 27.798003553398132
+            }
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "metrics": {
+                "MAE_10s": 0.17374767334655206,
+                "Pearson_10s": -0.13706681742166316,
+                "Wasserstein_10s": 0.08129260022632254,
+                "SampEn_Error_10s": 0.17038873360236037,
+                "LZ_Complexity_Error_10s": 0.11522237865095386,
+                "Cumulative_RMSD": 0.16512189674469802,
+                "Cumulative_CosineSim": 0.9054429432392378,
+                "Error_Cumulative_HRV_RMSSD": 580.6935726514546,
+                "Error_Cumulative_QRS_ms": 62.44617903761814,
+                "Error_Cumulative_PR_ms": 19.34485635833235,
+                "Error_Cumulative_QT_ms": 22.004059276643602
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "metrics": {
+                "MAE_10s": 0.21008013115355034,
+                "Pearson_10s": -0.15392053593841246,
+                "Wasserstein_10s": 0.17102899770428648,
+                "SampEn_Error_10s": 0.073215557357832,
+                "LZ_Complexity_Error_10s": 0.1234525485545934,
+                "Cumulative_RMSD": 0.18304565524485805,
+                "Cumulative_CosineSim": 0.8698607983018725,
+                "Error_Cumulative_HRV_RMSSD": 100.96030476158202,
+                "Error_Cumulative_QRS_ms": 64.44197674357912,
+                "Error_Cumulative_PR_ms": 55.644707067644504,
+                "Error_Cumulative_QT_ms": 33.455565869779036
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "metrics": {
+                "MAE_10s": 0.07591951086363395,
+                "Pearson_10s": -0.0028703694655655607,
+                "Wasserstein_10s": 0.03592121148586505,
+                "SampEn_Error_10s": 0.24077702282434288,
+                "LZ_Complexity_Error_10s": 0.032920679614558274,
+                "Cumulative_RMSD": 0.17442002603229442,
+                "Cumulative_CosineSim": 0.9235895859451411,
+                "Error_Cumulative_HRV_RMSSD": 87.28046288564965,
+                "Error_Cumulative_QRS_ms": 68.22967003578867,
+                "Error_Cumulative_PR_ms": 63.92832529831486,
+                "Error_Cumulative_QT_ms": 41.491346783518566
+            }
+        }
+    ],
+    "12h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.1784488308880833,
+                "Pearson_10s": -0.18494632620046508,
+                "Wasserstein_10s": 0.12846584806970934,
+                "SampEn_Error_10s": 0.007105686725631166,
+                "LZ_Complexity_Error_10s": 0.05761118932547693,
+                "Cumulative_RMSD": 0.2150646498875139,
+                "Cumulative_CosineSim": 0.9255261624018506,
+                "Error_Cumulative_HRV_RMSSD": 24.000329065910307,
+                "Error_Cumulative_QRS_ms": 10.049135668944388,
+                "Error_Cumulative_PR_ms": 27.14776827049863,
+                "Error_Cumulative_QT_ms": 91.69120929873833
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.25192337312657503,
+                "Pearson_10s": 0.2903424383996741,
+                "Wasserstein_10s": 0.2436528414233547,
+                "SampEn_Error_10s": 0.24462591336661682,
+                "LZ_Complexity_Error_10s": 0.16460339807279117,
+                "Cumulative_RMSD": 0.18403941514771377,
+                "Cumulative_CosineSim": 0.929876221739722,
+                "Error_Cumulative_HRV_RMSSD": 61.74760150693912,
+                "Error_Cumulative_QRS_ms": 79.95358592255883,
+                "Error_Cumulative_PR_ms": 33.75240175658162,
+                "Error_Cumulative_QT_ms": 59.301884395804734
+            }
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "metrics": {
+                "MAE_10s": 0.15300244349218278,
+                "Pearson_10s": 0.27144310830613994,
+                "Wasserstein_10s": 0.08199803029822869,
+                "SampEn_Error_10s": 0.0028991205290293254,
+                "LZ_Complexity_Error_10s": 0.13991288836187252,
+                "Cumulative_RMSD": 0.12695197946216555,
+                "Cumulative_CosineSim": 0.9419279075951852,
+                "Error_Cumulative_HRV_RMSSD": 207.16471409753473,
+                "Error_Cumulative_QRS_ms": 29.88016700581923,
+                "Error_Cumulative_PR_ms": 1.6109560325439531,
+                "Error_Cumulative_QT_ms": 19.835109404462003
+            }
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "metrics": {
+                "MAE_10s": 0.2976307514318417,
+                "Pearson_10s": 0.15321873929035162,
+                "Wasserstein_10s": 0.29082824705281396,
+                "SampEn_Error_10s": 0.36019627612696536,
+                "LZ_Complexity_Error_10s": 0.12345254855459342,
+                "Cumulative_RMSD": 0.12092547572008817,
+                "Cumulative_CosineSim": 0.9540720847465873,
+                "Error_Cumulative_HRV_RMSSD": 103.26309430823679,
+                "Error_Cumulative_QRS_ms": 14.327884549957332,
+                "Error_Cumulative_PR_ms": 11.57626311695607,
+                "Error_Cumulative_QT_ms": 86.28263469716529
+            }
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "metrics": {
+                "MAE_10s": 0.19307267843130138,
+                "Pearson_10s": -0.38651965721356063,
+                "Wasserstein_10s": 0.12187899946799922,
+                "SampEn_Error_10s": 0.043949795614840526,
+                "LZ_Complexity_Error_10s": 0.04115084951819781,
+                "Cumulative_RMSD": 0.15514075176920833,
+                "Cumulative_CosineSim": 0.957980452072049,
+                "Error_Cumulative_HRV_RMSSD": 90.74305412620024,
+                "Error_Cumulative_QRS_ms": 71.94772857267269,
+                "Error_Cumulative_PR_ms": 43.75483014936812,
+                "Error_Cumulative_QT_ms": 31.83683986028086
+            }
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "metrics": {
+                "MAE_10s": 0.23157720447558833,
+                "Pearson_10s": -0.10371384122084168,
+                "Wasserstein_10s": 0.19981260607912127,
+                "SampEn_Error_10s": 0.1435268813935825,
+                "LZ_Complexity_Error_10s": 0.08230169903639559,
+                "Cumulative_RMSD": 0.1707493530328609,
+                "Cumulative_CosineSim": 0.9218610145456716,
+                "Error_Cumulative_HRV_RMSSD": 116.61083317215892,
+                "Error_Cumulative_QRS_ms": 57.823171776454586,
+                "Error_Cumulative_PR_ms": 53.53490652188937,
+                "Error_Cumulative_QT_ms": 35.41473207131003
+            }
+        }
+    ],
+    "24h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "metrics": {
+                "MAE_10s": 0.17050573066537333,
+                "Pearson_10s": -0.21554603847262602,
+                "Wasserstein_10s": 0.11061030604468029,
+                "SampEn_Error_10s": 0.128564504232213,
+                "LZ_Complexity_Error_10s": 0.12345254855459337,
+                "Cumulative_RMSD": 0.21459414243487254,
+                "Cumulative_CosineSim": 0.9285094041093042,
+                "Error_Cumulative_HRV_RMSSD": 13.304447716380778,
+                "Error_Cumulative_QRS_ms": 11.69023327438478,
+                "Error_Cumulative_PR_ms": 29.826376006600967,
+                "Error_Cumulative_QT_ms": 104.16719783555419
+            }
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "metrics": {
+                "MAE_10s": 0.14913331023942908,
+                "Pearson_10s": -0.08990909246555609,
+                "Wasserstein_10s": 0.08035784193279956,
+                "SampEn_Error_10s": 0.15326496795118746,
+                "LZ_Complexity_Error_10s": 0.10699220874731424,
+                "Cumulative_RMSD": 0.16883202407806724,
+                "Cumulative_CosineSim": 0.9282846405255394,
+                "Error_Cumulative_HRV_RMSSD": 63.595319636865796,
+                "Error_Cumulative_QRS_ms": 76.84830799027183,
+                "Error_Cumulative_PR_ms": 30.055725557185866,
+                "Error_Cumulative_QT_ms": 43.96276225169646
+            }
+        }
+    ]
+}

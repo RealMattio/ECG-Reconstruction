@@ -1,0 +1,1281 @@
+{
+    "1m": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0018",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0035",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0036",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0029",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0030",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0021",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0026",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0046",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0034",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0016",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0037",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3976189_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3939643_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 66.0
+        }
+    ],
+    "30m": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0030",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0021",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0026",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0034",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0016",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3939643_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 1806.0
+        }
+    ],
+    "1h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0016",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0031",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0011",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0033",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p031015",
+            "record_path": "p03/p031015/3741651_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0052",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0043",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0049",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0019",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0025",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0055",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0013",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0014",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0028",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3202663_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3659721_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3302948_0009",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 3606.0
+        }
+    ],
+    "6h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p019309",
+            "record_path": "p01/p019309/3527691_0004",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0007",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0008",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p040068",
+            "record_path": "p04/p040068/3427249_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p040950",
+            "record_path": "p04/p040950/3382924_0002",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0003",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 21606.0
+        }
+    ],
+    "12h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        },
+        {
+            "subject_id": "p023875",
+            "record_path": "p02/p023875/3153224_0001",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        },
+        {
+            "subject_id": "p023913",
+            "record_path": "p02/p023913/3389262_0023",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        },
+        {
+            "subject_id": "p030789",
+            "record_path": "p03/p030789/3202329_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        },
+        {
+            "subject_id": "p042696",
+            "record_path": "p04/p042696/3543157_0005",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 43206.0
+        }
+    ],
+    "24h": [
+        {
+            "subject_id": "p007979",
+            "record_path": "p00/p007979/3659863_0006",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 86406.0
+        },
+        {
+            "subject_id": "p019608",
+            "record_path": "p01/p019608/3693290_0010",
+            "fs_original": 125,
+            "start_sec": 0.0,
+            "end_sec": 86406.0
+        }
+    ]
+}
