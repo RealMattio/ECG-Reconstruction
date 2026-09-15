@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "checkpoint": "/home/mmerone/mattia/ecg_generation/src/experiments/final_mimic_pinn_results/MAE_loss/lightweight_hybrid_20260608_192241/final_full_model/best_lightweight_hybrid.pth",
+    "model": "LightweightHybrid",
+    "device": "cpu",
+    "device_name": "AMD EPYC 7413 24-Core Processor",
+    "host": "slurmsrv.e4-cluster.lan",
+    "torch_version": "2.6.0+cu124",
+    "timestamp": "2026-07-30 11:13:13",
+    "input_shape": [
+      3,
+      875
+    ],
+    "output_shape": [
+      1,
+      125
+    ],
+    "target_fs": 125,
+    "context_sec": 7,
+    "generated_sec": 1,
+    "flop_convention": "1 MAC = 2 FLOPs; element-wise ops = 1 FLOP/element"
+  },
+  "params": {
+    "trainable": 107169,
+    "frozen": 0,
+    "buffers": 194,
+    "wst_filter_elems": 11776,
+    "trainable_mb": 0.4088172912597656,
+    "by_block": {
+      "cnn_encoder": 15904,
+      "lstm": 66560,
+      "upsample": 0,
+      "decoder": 24705
+    },
+    "per_module": [
+      {
+        "name": "cnn_encoder.0",
+        "type": "Conv1d",
+        "trainable": 5408,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "cnn_encoder.1",
+        "type": "BatchNorm1d",
+        "trainable": 64,
+        "frozen": 0,
+        "buffers": 65
+      },
+      {
+        "name": "cnn_encoder.2",
+        "type": "LeakyReLU",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "cnn_encoder.3",
+        "type": "MaxPool1d",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "cnn_encoder.4",
+        "type": "Conv1d",
+        "trainable": 10304,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "cnn_encoder.5",
+        "type": "BatchNorm1d",
+        "trainable": 128,
+        "frozen": 0,
+        "buffers": 129
+      },
+      {
+        "name": "cnn_encoder.6",
+        "type": "LeakyReLU",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "cnn_encoder.7",
+        "type": "MaxPool1d",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "lstm",
+        "type": "LSTM",
+        "trainable": 66560,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "upsample",
+        "type": "Upsample",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "decoder.0",
+        "type": "Dropout",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "decoder.1",
+        "type": "Conv1d",
+        "trainable": 24640,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "decoder.2",
+        "type": "LeakyReLU",
+        "trainable": 0,
+        "frozen": 0,
+        "buffers": 0
+      },
+      {
+        "name": "decoder.3",
+        "type": "Conv1d",
+        "trainable": 65,
+        "frozen": 0,
+        "buffers": 0
+      }
+    ]
+  },
+  "flops": {
+    "total": 19586973.0,
+    "network": 18069405,
+    "total_macs": 8912448,
+    "by_block": {
+      "cnn_encoder": 4649888,
+      "lstm": 7195392,
+      "upsample": 48000,
+      "decoder": 6176125
+    },
+    "wst": {
+      "per_channel": 505856.0,
+      "total": 1517568.0,
+      "breakdown_per_channel": {
+        "fft_input": 51200.0,
+        "order0_lowpass": 13824.0,
+        "order1_wavelets": 440832.0,
+        "order2_wavelets": 0.0
+      },
+      "n_padded": 1024,
+      "n_psi1": 7,
+      "n_psi2": 3,
+      "log2_T": 2,
+      "n_channels": 3
+    },
+    "per_layer": [
+      {
+        "name": "cnn_encoder.0",
+        "type": "Conv1d",
+        "out_shape": [
+          1,
+          32,
+          219
+        ],
+        "trainable": 5408,
+        "act_bytes": 28032,
+        "macs": 1177344,
+        "flops": 2361696
+      },
+      {
+        "name": "cnn_encoder.1",
+        "type": "BatchNorm1d",
+        "out_shape": [
+          1,
+          32,
+          219
+        ],
+        "trainable": 64,
+        "act_bytes": 28032,
+        "macs": 0,
+        "flops": 14016
+      },
+      {
+        "name": "cnn_encoder.2",
+        "type": "LeakyReLU",
+        "out_shape": [
+          1,
+          32,
+          219
+        ],
+        "trainable": 0,
+        "act_bytes": 28032,
+        "macs": 0,
+        "flops": 7008
+      },
+      {
+        "name": "cnn_encoder.3",
+        "type": "MaxPool1d",
+        "out_shape": [
+          1,
+          32,
+          109
+        ],
+        "trainable": 0,
+        "act_bytes": 13952,
+        "macs": 0,
+        "flops": 3488
+      },
+      {
+        "name": "cnn_encoder.4",
+        "type": "Conv1d",
+        "out_shape": [
+          1,
+          64,
+          109
+        ],
+        "trainable": 10304,
+        "act_bytes": 27904,
+        "macs": 1116160,
+        "flops": 2239296
+      },
+      {
+        "name": "cnn_encoder.5",
+        "type": "BatchNorm1d",
+        "out_shape": [
+          1,
+          64,
+          109
+        ],
+        "trainable": 128,
+        "act_bytes": 27904,
+        "macs": 0,
+        "flops": 13952
+      },
+      {
+        "name": "cnn_encoder.6",
+        "type": "LeakyReLU",
+        "out_shape": [
+          1,
+          64,
+          109
+        ],
+        "trainable": 0,
+        "act_bytes": 27904,
+        "macs": 0,
+        "flops": 6976
+      },
+      {
+        "name": "cnn_encoder.7",
+        "type": "MaxPool1d",
+        "out_shape": [
+          1,
+          64,
+          54
+        ],
+        "trainable": 0,
+        "act_bytes": 13824,
+        "macs": 0,
+        "flops": 3456
+      },
+      {
+        "name": "lstm",
+        "type": "LSTM",
+        "out_shape": [
+          1,
+          54,
+          128
+        ],
+        "trainable": 66560,
+        "act_bytes": 27648,
+        "macs": 3538944,
+        "flops": 7195392
+      },
+      {
+        "name": "upsample",
+        "type": "Upsample",
+        "out_shape": [
+          1,
+          128,
+          125
+        ],
+        "trainable": 0,
+        "act_bytes": 64000,
+        "macs": 0,
+        "flops": 48000
+      },
+      {
+        "name": "decoder.0",
+        "type": "Dropout",
+        "out_shape": [
+          1,
+          128,
+          125
+        ],
+        "trainable": 0,
+        "act_bytes": 64000,
+        "macs": 0,
+        "flops": 0
+      },
+      {
+        "name": "decoder.1",
+        "type": "Conv1d",
+        "out_shape": [
+          1,
+          64,
+          125
+        ],
+        "trainable": 24640,
+        "act_bytes": 32000,
+        "macs": 3072000,
+        "flops": 6152000
+      },
+      {
+        "name": "decoder.2",
+        "type": "LeakyReLU",
+        "out_shape": [
+          1,
+          64,
+          125
+        ],
+        "trainable": 0,
+        "act_bytes": 32000,
+        "macs": 0,
+        "flops": 8000
+      },
+      {
+        "name": "decoder.3",
+        "type": "Conv1d",
+        "out_shape": [
+          1,
+          1,
+          125
+        ],
+        "trainable": 65,
+        "act_bytes": 500,
+        "macs": 8000,
+        "flops": 16125
+      }
+    ]
+  },
+  "memory": {
+    "static_bytes": 476556,
+    "static_mb": 0.4544792175292969,
+    "training_mb": 1.6352691650390625,
+    "process_rss_mb": 657.9140625,
+    "per_batch": [
+      {
+        "batch_size": 1,
+        "peak_dynamic_bytes": 2311988,
+        "peak_backbone_bytes": 1418544,
+        "latency_ms_mean": 9.15023572742939,
+        "latency_ms_std": 1.331517365241449,
+        "latency_ms_median": 8.665202185511589,
+        "latency_ms_per_window": 8.665202185511589,
+        "peak_dynamic_mb": 2.204883575439453,
+        "peak_backbone_mb": 1.3528289794921875,
+        "analytic_activation_mb": 0.4655570983886719,
+        "total_mb": 2.65936279296875
+      },
+      {
+        "batch_size": 8,
+        "peak_dynamic_bytes": 14727812,
+        "peak_backbone_bytes": 7342776,
+        "latency_ms_mean": 19.755538180470467,
+        "latency_ms_std": 4.090988741289419,
+        "latency_ms_median": 18.781043589115143,
+        "latency_ms_per_window": 2.347630448639393,
+        "peak_dynamic_mb": 14.045536041259766,
+        "peak_backbone_mb": 7.002616882324219,
+        "analytic_activation_mb": 3.724456787109375,
+        "total_mb": 14.500015258789062
+      },
+      {
+        "batch_size": 32,
+        "peak_dynamic_bytes": 58891700,
+        "peak_backbone_bytes": 29337272,
+        "latency_ms_mean": 45.853466168046,
+        "latency_ms_std": 1.9813057925777684,
+        "latency_ms_median": 44.98152621090412,
+        "latency_ms_per_window": 1.4056726940907538,
+        "peak_dynamic_mb": 56.16350173950195,
+        "peak_backbone_mb": 27.97820281982422,
+        "analytic_activation_mb": 14.8978271484375,
+        "total_mb": 56.61798095703125
+      },
+      {
+        "batch_size": 64,
+        "peak_dynamic_bytes": 117760924,
+        "peak_backbone_bytes": 58701496,
+        "latency_ms_mean": 60.179463773965836,
+        "latency_ms_std": 7.173052932169716,
+        "latency_ms_median": 59.76778082549572,
+        "latency_ms_per_window": 0.9338715753983706,
+        "peak_dynamic_mb": 112.30556869506836,
+        "peak_backbone_mb": 55.98210906982422,
+        "analytic_activation_mb": 29.795654296875,
+        "total_mb": 112.76004791259766
+      },
+      {
+        "batch_size": 128,
+        "peak_dynamic_bytes": 235548452,
+        "peak_backbone_bytes": 117397048,
+        "latency_ms_mean": 67.3280755057931,
+        "latency_ms_std": 11.25755152345074,
+        "latency_ms_median": 63.821326941251755,
+        "latency_ms_per_window": 0.49860411672852933,
+        "peak_dynamic_mb": 224.6365089416504,
+        "peak_backbone_mb": 111.95854949951172,
+        "analytic_activation_mb": 59.59130859375,
+        "total_mb": 225.0909881591797
+      },
+      {
+        "batch_size": 256,
+        "peak_dynamic_bytes": 471089720,
+        "peak_backbone_bytes": 234788536,
+        "latency_ms_mean": 92.86063574254513,
+        "latency_ms_std": 9.456931373449747,
+        "latency_ms_median": 89.40954506397247,
+        "latency_ms_per_window": 0.3492560354061425,
+        "peak_dynamic_mb": 449.2661666870117,
+        "peak_backbone_mb": 223.91179656982422,
+        "analytic_activation_mb": 119.1826171875,
+        "total_mb": 449.720645904541
+      }
+    ]
+  },
+  "latency": {
+    "device_name": "AMD EPYC 7413 24-Core Processor",
+    "runs": 20,
+    "per_batch": [
+      {
+        "batch_size": 1,
+        "latency_ms_mean": 9.15023572742939,
+        "latency_ms_std": 1.331517365241449,
+        "latency_ms_median": 8.665202185511589,
+        "latency_ms_per_window": 8.665202185511589
+      },
+      {
+        "batch_size": 8,
+        "latency_ms_mean": 19.755538180470467,
+        "latency_ms_std": 4.090988741289419,
+        "latency_ms_median": 18.781043589115143,
+        "latency_ms_per_window": 2.347630448639393
+      },
+      {
+        "batch_size": 32,
+        "latency_ms_mean": 45.853466168046,
+        "latency_ms_std": 1.9813057925777684,
+        "latency_ms_median": 44.98152621090412,
+        "latency_ms_per_window": 1.4056726940907538
+      },
+      {
+        "batch_size": 64,
+        "latency_ms_mean": 60.179463773965836,
+        "latency_ms_std": 7.173052932169716,
+        "latency_ms_median": 59.76778082549572,
+        "latency_ms_per_window": 0.9338715753983706
+      },
+      {
+        "batch_size": 128,
+        "latency_ms_mean": 67.3280755057931,
+        "latency_ms_std": 11.25755152345074,
+        "latency_ms_median": 63.821326941251755,
+        "latency_ms_per_window": 0.49860411672852933
+      },
+      {
+        "batch_size": 256,
+        "latency_ms_mean": 92.86063574254513,
+        "latency_ms_std": 9.456931373449747,
+        "latency_ms_median": 89.40954506397247,
+        "latency_ms_per_window": 0.3492560354061425
+      }
+    ]
+  }
+}

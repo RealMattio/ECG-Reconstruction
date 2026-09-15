@@ -34,6 +34,9 @@ def main():
     parser.add_argument('--use_raw', action='store_true', help="Se attivo, usa i dati RAW invece di quelli preprocessati.")
     parser.add_argument('--val_step', type=int, default=500, help="Esegui validazione ogni N batch (step)")
     
+    # --- NUOVO PARAMETRO PER LA LOSS AVANZATA (PAT + Cosine + Focal) ---
+    parser.add_argument('--use_advanced_loss', action='store_true', help="Se attivo, usa la Loss avanzata con penalità sul PAT e Cosine Similarity.")
+
     # --- ARGOMENTO PER SLURM RESUME ---
     parser.add_argument('--start_fold', type=int, default=1, help="Specifica la fold da cui ripartire (es. 3)")
 
@@ -101,6 +104,8 @@ def main():
         'aug_context_noise': 0.02,      
         'apply_context_augmentation': True, 
         
+        'use_advanced_loss': args.use_advanced_loss,
+
         'base_loss_type': BASE_LOSS,       
         'use_morphological_loss': True, 
         'morph_loss_weight': 0.4,        
@@ -135,6 +140,7 @@ def main():
         print(f"Cache Path: {configs['preprocessed_data']}")
     print(f"Modello: {configs['model_type'].upper()}") 
     print(f"Epoche massime per Fold: {configs['epochs']} | Batch Size: {configs['batch_size']}")
+    print(f"Modalità Loss: {'AVANZATA (PAT + Cosine)' if configs['use_advanced_loss'] else 'STANDARD (Pearson)'}")
     print(f"Device: {configs['device']}")
     print(f"Output dir: {model_save_path}")
     if args.start_fold > 1:

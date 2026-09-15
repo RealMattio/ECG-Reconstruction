@@ -1,0 +1,16 @@
+block,layer,type,output_shape,trainable_params,flops
+WST front-end,scattering,Scattering1D,1x24x219,0,1517568
+CNN encoder,cnn_encoder.0,Conv1d,1x32x219,5408,2361696
+CNN encoder,cnn_encoder.1,BatchNorm1d,1x32x219,64,14016
+CNN encoder,cnn_encoder.2,LeakyReLU,1x32x219,0,7008
+CNN encoder,cnn_encoder.3,MaxPool1d,1x32x109,0,3488
+CNN encoder,cnn_encoder.4,Conv1d,1x64x109,10304,2239296
+CNN encoder,cnn_encoder.5,BatchNorm1d,1x64x109,128,13952
+CNN encoder,cnn_encoder.6,LeakyReLU,1x64x109,0,6976
+CNN encoder,cnn_encoder.7,MaxPool1d,1x64x54,0,3456
+BiLSTM,lstm,LSTM,1x54x128,66560,7195392
+Upsampling,upsample,Upsample,1x128x125,0,48000
+Decoder head,decoder.0,Dropout,1x128x125,0,0
+Decoder head,decoder.1,Conv1d,1x64x125,24640,6152000
+Decoder head,decoder.2,LeakyReLU,1x64x125,0,8000
+Decoder head,decoder.3,Conv1d,1x1x125,65,16125

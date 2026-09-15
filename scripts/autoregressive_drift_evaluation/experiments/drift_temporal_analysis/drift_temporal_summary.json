@@ -1,0 +1,30 @@
+{
+  "window_sec": 2.0,
+  "quality_window_threshold": 0.8,
+  "n_records_analyzed": 783,
+  "n_records_by_horizon": {
+    "1m": 309,
+    "1h": 267,
+    "30m": 95,
+    "6h": 63,
+    "12h": 44,
+    "24h": 5
+  },
+  "n_windows_total": 2424519,
+  "n_windows_excluded_low_quality_ground_truth": 433316,
+  "frac_windows_excluded_low_quality_ground_truth": 0.1787224600013446,
+  "aggregate_first_crossing_below_r0.90_sec": 8.135,
+  "aggregate_first_crossing_below_r0.70_sec": 8.135,
+  "aggregate_first_crossing_below_r0.90_sec_RAW_unfiltered": 8.135,
+  "aggregate_first_crossing_below_r0.70_sec_RAW_unfiltered": 8.135,
+  "per_record_onset_sec_mean": 20.559139784946236,
+  "per_record_onset_sec_median": 9.0,
+  "per_record_onset_sec_std": 70.54594512410743,
+  "visual_drift_onsets": {
+    "p031013_3929245_0022": 7.0,
+    "p071739_3630317_0011": 7.0,
+    "p073398_3869602_0010": 7.0,
+    "p093472_3458468_0007": 23.0
+  },
+  "draft_text_it": "Poiche' una parte del ground truth ECG estratto direttamente dai tracciati WFDB grezzi e' di qualita' insufficiente (disconnessioni, artefatti da movimento, saturazione \u2014 non filtrata dalla pipeline di generazione, a differenza dei dati usati per allenare il modello), la curva di drift viene calcolata solo sulle finestre che superano lo stesso controllo SQI (kurtosi ECG, skewness PPG) usato per costruire i dataset di training: 433316/2424519 finestre (17.9%) sono state escluse perche' il ground truth non superava il controllo di qualita'. Come si evince in Figura X, il modello mantiene una correlazione r > 0.9 solo durante i primi 6 secondi, corrispondenti al contesto reale (seed) fornito in input. Non appena la generazione passa in modalita' puramente autoregressiva, l'errore di drifting inizia a dominare: la correlazione (calcolata solo su ground truth affidabile) crolla sotto 0.7 entro ~8s e si stabilizza in un regime rumoroso e scorrelato (r prossimo a 0 o negativo) che persiste per l'intera durata della generazione, senza segni di recupero, indicando un forte exposure bias dovuto alla ridotta finestra di contesto reale e al passo di generazione a singolo step."
+}

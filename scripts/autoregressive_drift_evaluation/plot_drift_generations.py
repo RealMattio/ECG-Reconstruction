@@ -75,20 +75,29 @@ def get_patient_record_path(subj_id, all_results):
                     return entry["record_path"]
     return None
 
+HORIZON_SEC = {"1m": 60, "30m": 1800, "1h": 3600, "6h": 21600, "12h": 43200, "24h": 86400}
+SEED_SEC = 6
+
+
 def load_signal_data(horizon, record_path):
-    file_name = os.path.basename(record_path) + ".npz"
-    dir_path = os.path.dirname(record_path)
-    npz_path = os.path.join(GENERATION_DIR, horizon, dir_path, file_name)
-    
+    """Ogni record e' generato UNA SOLA VOLTA fino al suo orizzonte massimo
+    (run_autoregressive_drift_test.py); qui ricaviamo la finestra relativa
+    a un dato orizzonte come slice di quell'unica generazione."""
+    npz_path = os.path.join(GENERATION_DIR, record_path + ".npz")
+
     if not os.path.exists(npz_path):
         return None
-        
+
     try:
         data = np.load(npz_path)
+        end_sample = int((HORIZON_SEC[horizon] + SEED_SEC) * FS)
+        if end_sample > len(data["ecg_generated"]):
+            return None  # questo record non raggiunge questo orizzonte
+        start_sample = max(0, end_sample - PLOT_SAMPLES)
         return {
-            "ppg": data["ppg_input"][-PLOT_SAMPLES:],
-            "ecg_true": data["ecg_target"][-PLOT_SAMPLES:],
-            "ecg_gen": data["ecg_generated"][-PLOT_SAMPLES:]
+            "ppg": data["ppg_input"][start_sample:end_sample],
+            "ecg_true": data["ecg_target"][start_sample:end_sample],
+            "ecg_gen": data["ecg_generated"][start_sample:end_sample]
         }
     except Exception as e:
         print(f"Errore nel caricamento di {npz_path}: {e}")

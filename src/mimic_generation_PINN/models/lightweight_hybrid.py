@@ -3,6 +3,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 from kymatio.torch import Scattering1D
 
+# =========================================================================
+# FIX MULTI-GPU: Cache globale per aggirare il bug di Kymatio
+# Salverà un'istanza esatta della WST per ogni singola GPU del cluster.
+# =========================================================================
+_SCATTERING_CACHE = {}
+
 class LightweightHybrid(nn.Module):
     def __init__(self, configs, seq_len=125):
         super(LightweightHybrid, self).__init__()
@@ -11,22 +17,21 @@ class LightweightHybrid(nn.Module):
         self.apply_wst = configs.get('apply_wst', False)
         self.target_len = configs.get('target_len', seq_len)
         self.normalize_01 = configs.get('normalize_01', False)
-        self.raw_input_channels = configs.get('input_channels', 3) # Reso Dinamico
+        self.raw_input_channels = configs.get('input_channels', 3) 
+        self.expected_len = configs.get('actual_seq_len', 875)
         
         if self.apply_wst:
-            input_size = configs.get('actual_seq_len', 875)
-            self.scattering = Scattering1D(J=2, shape=(input_size,), Q=8)
-            
+            # Istanziamo temporaneamente su CPU solo per capire le dimensioni in uscita
+            temp_scattering = Scattering1D(J=2, shape=(self.expected_len,), Q=8)
             with torch.no_grad():
-                dummy_input = torch.zeros(1, input_size)
-                dummy_output = self.scattering(dummy_input)
+                dummy_input = torch.zeros(1, self.expected_len)
+                dummy_output = temp_scattering(dummy_input)
                 coeffs_per_sig = dummy_output.shape[1]
             
             # Dinamico
             self.input_dim = coeffs_per_sig * self.raw_input_channels
-            print(f"[MODEL] LightweightHybrid con WST: {self.input_dim} canali")
+            print(f"[MODEL] LightweightHybrid con WST: {self.input_dim} canali in ingresso")
         else:
-            self.scattering = None
             self.input_dim = self.raw_input_channels
             print(f"[MODEL] LightweightHybrid in Time Domain: {self.input_dim} canali")
 
@@ -69,20 +74,27 @@ class LightweightHybrid(nn.Module):
             self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-        # x shape: (Batch, Channels, Time)
+        # x shape: (Batch_diviso, Channels, Time)
         
-        # --- FIX DI SICUREZZA PER KYMATIO ---
-        if self.apply_wst and self.scattering is not None:
-            expected_len = self.scattering.shape[0]
+        if self.apply_wst:
             actual_len = x.shape[-1]
+            if actual_len != self.expected_len:
+                x = F.interpolate(x, size=self.expected_len, mode='linear', align_corners=True)
             
-            if actual_len != expected_len:
-                x = F.interpolate(x, size=expected_len, mode='linear', align_corners=True)
+            # --- FIX DEFINITIVO PER MULTI-GPU ---
+            # Identifichiamo su quale GPU si trova questo specifico frammento di Dati
+            device_str = str(x.device)
             
-            # Dinamico per N canali
+            # Se la trasformata non è mai stata creata per questa GPU, la creiamo ORA!
+            if device_str not in _SCATTERING_CACHE:
+                _SCATTERING_CACHE[device_str] = Scattering1D(J=2, shape=(self.expected_len,), Q=8).to(x.device)
+            
+            # Peschiamo la WST locale specifica per questa scheda video
+            local_scattering = _SCATTERING_CACHE[device_str]
+            
             wst_channels = []
             for i in range(x.shape[1]):
-                wst_channels.append(self.scattering(x[:, i, :].contiguous()))
+                wst_channels.append(local_scattering(x[:, i, :].contiguous()))
             
             x = torch.cat(wst_channels, dim=1)
             x = torch.nan_to_num(x, nan=0.0)

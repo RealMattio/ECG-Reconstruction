@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/home/mmerone/.conda/envs/ecg_gen_env/bin/python3 -c ' *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\({k:v for k,v in d.items\\(\\) if k not in \\('val_subjects','held_out_subjects'\\)}\\)\")",
+      "Bash(/home/mmerone/.conda/envs/ecg_gen_env/bin/python --version)",
+      "Bash(/home/mmerone/.conda/envs/ecg_gen_env/bin/python -u paper_utils/script_for_paper/fig4a_qualitative_reconstruction.py --no-single-image)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(/home/mmerone/.conda/envs/ecg_gen_env/bin/python -u paper_utils/script_for_paper/fig_drift_stability.py --no-single-image)",
+      "Bash(/home/mmerone/.conda/envs/ecg_gen_env/bin/python -u paper_utils/script_for_paper/fig_rpeak_examples.py --no-single-image)"
+    ]
+  }
+}

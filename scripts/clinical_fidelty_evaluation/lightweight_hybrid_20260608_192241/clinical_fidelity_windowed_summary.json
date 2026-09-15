@@ -1,0 +1,79 @@
+{
+  "config": {
+    "chunk_sec": 10,
+    "seed_sec": 6,
+    "min_r_peaks": 3,
+    "r_peak_tolerance_ms": 50,
+    "fs": 125
+  },
+  "generation_source": "/home/mmerone/mattia/ecg_generation/scripts/autoregressive_drift_evaluation/experiments/drift_generation_windowed/lightweight_hybrid_20260608_192241",
+  "n_subjects": 68,
+  "n_chunks_retained": 61519,
+  "n_chunks_dropped": {
+    "flat_signal": 3,
+    "lt_min_peaks_generated": 1,
+    "lt_min_peaks_real": 1
+  },
+  "n_chunks_dropped_total": 5,
+  "retention_rate": 0.9999187309017619,
+  "hr": {
+    "mae": 3.6394628181099775,
+    "mae_std": 6.842670249540687,
+    "mae_median": 0.42348955392432686,
+    "n": 61519
+  },
+  "bland_altman": {
+    "bias": -2.528672207266721,
+    "sd": 7.326229768206227,
+    "loa_lower": -16.888082552950927,
+    "loa_upper": 11.830738138417484,
+    "within_5_bpm_pct": 76.66574554202766,
+    "within_10_bpm_pct": 86.47409743331329,
+    "n": 61519
+  },
+  "r_peaks": {
+    "precision_micro": 0.5257885712385829,
+    "recall_micro": 0.5061867832385273,
+    "f1_micro": 0.5158015148020529,
+    "tp": 442796,
+    "fp": 399360,
+    "fn": 431972,
+    "f1_macro": 0.5002328328388636,
+    "f1_macro_std": 0.3919456757638058
+  },
+  "intervals": {
+    "PR_ms": {
+      "mean": 36.18892607651647,
+      "std": 27.866629942211446,
+      "median": 29.866666666666674,
+      "n": 61512
+    },
+    "QRS_ms": {
+      "mean": 55.96829816545222,
+      "std": 41.33568193473083,
+      "median": 48.5,
+      "n": 59805
+    },
+    "QT_ms": {
+      "mean": 73.95207995340468,
+      "std": 57.2165989306023,
+      "median": 61.333333333333314,
+      "n": 59845
+    }
+  },
+  "elapsed_seconds": 2110.5,
+  "n_records": 546,
+  "errors": [],
+  "split_check": {
+    "n_test_patients_in_split": 71,
+    "subjects_analysed": 68,
+    "all_subjects_in_test_split": true,
+    "leaked_from_cv": [],
+    "test_subjects_absent": [
+      "p046528",
+      "p093850",
+      "p098589"
+    ]
+  },
+  "model_id": "lightweight_hybrid_20260608_192241"
+}

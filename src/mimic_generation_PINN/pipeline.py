@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset, Dataset
 import numpy as np
 import os
@@ -22,10 +23,6 @@ from src.evaluation.evaluation import save_training_history, evaluate_test_set_p
 # ─────────────────────────────────────────────────────────────
 
 def _extract_physics_signals(ecg_np, fs=125):
-    """
-    Calcola theta (fase cardiaca) e omega (freq. angolare) dall'ECG.
-    Identico a extract_physics_signals in scripts/create_pinn_dataset.py.
-    """
     sig_norm = (ecg_np - np.mean(ecg_np)) / (np.std(ecg_np) + 1e-8)
     peaks, _ = find_peaks(sig_norm, distance=int(fs * 0.4), height=1.0)
     N = len(ecg_np)
@@ -53,16 +50,8 @@ def _extract_physics_signals(ecg_np, fs=125):
         theta = (t_arr * omega) % (2 * np.pi)
     return theta, omega
 
-
 def _load_wfdb_segments(entry, target_fs):
-    """
-    Carica un record WFDB dal path originale, lo ricampiona, filtra e restituisce
-    i segmenti validi come lista di dict pronti per MimicSmartDataset.file_cache.
-
-    Chiamato solo per manifest entries con chiave 'wfdb_path' (formato no-cache).
-    """
     import wfdb
-
     wfdb_path = entry['wfdb_path']
     subject_id = entry['subject_id']
     results = []
@@ -84,7 +73,6 @@ def _load_wfdb_segments(entry, target_fs):
         ecg_raw = ecg_raw[:n_samples]
         ppg_raw = ppg_raw[:n_samples]
 
-        # Filtro bandpass (identico a preprocess_mimic_smart.py)
         nyq = 0.5 * target_fs
         sos_ppg = butter(4, [0.5 / nyq, 5.0 / nyq], btype='band', output='sos')
         sos_ecg = butter(4, [0.5 / nyq, 40.0 / nyq], btype='band', output='sos')
@@ -114,8 +102,6 @@ def _load_wfdb_segments(entry, target_fs):
 
     return results
 
-
-# --- UTILS ---
 def get_ram_usage():
     process = psutil.Process(os.getpid())
     return process.memory_info().rss / (1024 ** 3)
@@ -131,11 +117,16 @@ def set_reproducibility(seed):
         torch.backends.cudnn.benchmark = False
     print(f"[INFO] Seed globale impostato a: {seed}")
 
-# --- NUOVA CLASSE DATASET PER DATI PINN (GIA' PREPROCESSATI) ---
+
+# =========================================================================
+# DATASET IN RAM (VELOCISSIMO) CON ANTI-EXPOSURE BIAS INTEGRATO
+# =========================================================================
 class MimicSmartDataset(Dataset):
-    def __init__(self, manifest_subset, data_root, configs):
+    def __init__(self, manifest_subset, data_root, configs, is_training=True):
         self.data_root = data_root
         self.configs = configs
+        self.is_training = is_training
+        
         self.samples_map = [] 
         self.file_cache = []  
         
@@ -143,11 +134,10 @@ class MimicSmartDataset(Dataset):
         self.gen_samples = int(configs['target_fs'] * configs['gen_sec']) 
         step_size = self.gen_samples 
         
-        print(f"   [SmartDataset] Caricamento in RAM di {len(manifest_subset)} entry...")
+        print(f"   [SmartDataset] Caricamento massivo in RAM ({'Train' if is_training else 'Val/Test'})...")
 
         for entry in manifest_subset:
             if 'wfdb_path' in entry:
-                # ── Formato no-cache: carica direttamente da WFDB ──
                 segments = _load_wfdb_segments(entry, configs['target_fs'])
                 for data in segments:
                     cache_idx = len(self.file_cache)
@@ -156,8 +146,7 @@ class MimicSmartDataset(Dataset):
                     for start_idx in range(0, total_len - self.win_samples + 1, step_size):
                         self.samples_map.append((cache_idx, start_idx))
             else:
-                # ── Formato legacy: carica da file .pt ──
-                rel_path = os.path.join(entry['subject_id'], os.path.basename(entry['file_path']))
+                rel_path = os.path.join(str(entry['subject_id']), os.path.basename(entry['file_path']))
                 full_path = os.path.join(self.data_root, rel_path)
                 try:
                     data = torch.load(full_path, map_location='cpu')
@@ -170,7 +159,7 @@ class MimicSmartDataset(Dataset):
                 except Exception:
                     pass
 
-        print(f"   [SmartDataset] Pronto. {len(self.samples_map)} finestre in memoria.")
+        print(f"   [SmartDataset] Pronto. {len(self.samples_map)} finestre in memoria RAM.")
 
     def __len__(self):
         return len(self.samples_map)
@@ -182,11 +171,9 @@ class MimicSmartDataset(Dataset):
         target_start = start_idx + self.win_samples - self.gen_samples
         target_end   = start_idx + self.win_samples
 
-        # 1. PPG — correzione polarità poi normalizzazione [0,1] per finestra
-        ppg_win = data['ppg'][start_idx : start_idx + self.win_samples].float()
+        # Usiamo .clone() per staccare il tensore ed evitare che i calcoli modifichino la cache in RAM
+        ppg_win = data['ppg'][start_idx : start_idx + self.win_samples].float().clone()
 
-        # Asimmetria di ampiezza: il picco sistolico è la deviazione POSITIVA dominante.
-        # Se la deviazione negativa massima supera quella positiva, il segnale è invertito.
         ppg_centered = ppg_win - ppg_win.mean()
         if ppg_centered.max() < -ppg_centered.min():
             ppg_win = ppg_win * -1.0
@@ -195,10 +182,7 @@ class MimicSmartDataset(Dataset):
         ppg_max = ppg_win.max()
         ppg_win = (ppg_win - ppg_min) / (ppg_max - ppg_min + 1e-8)
 
-        # 2. ECG — normalizzazione [0,1] sull'intera finestra di 7s (past + target insieme)
-        #    così past e target condividono la stessa scala e il modello non vede
-        #    discontinuità artificiali al confine.
-        ecg_full = data['ecg'][start_idx : target_end].float()
+        ecg_full = data['ecg'][start_idx : target_end].float().clone()
         ecg_min  = ecg_full.min()
         ecg_max  = ecg_full.max()
         ecg_full_norm = (ecg_full - ecg_min) / (ecg_max - ecg_min + 1e-8)
@@ -206,23 +190,40 @@ class MimicSmartDataset(Dataset):
         ecg_real_part = ecg_full_norm[: self.win_samples - self.gen_samples]
         target        = ecg_full_norm[self.win_samples - self.gen_samples :]
 
+        # ========================================================
+        #  ANTI-EXPOSURE BIAS: SIMULATED AUTOREGRESSIVE DRIFT
+        # ========================================================
+        # Applichiamo il drift randomicamente solo in training per addestrare il modello
+        # a correggere gli errori di sfasamento/drifting.
+        if self.is_training and random.random() < 0.60:
+            shift = random.randint(-4, 4)
+            if shift != 0:
+                ecg_real_part = torch.roll(ecg_real_part, shifts=shift, dims=0)
+                
+            attenuation = random.uniform(0.85, 1.0)
+            ecg_real_part = ecg_real_part * attenuation
+            
+            baseline_drift = torch.linspace(0, random.uniform(-0.1, 0.1), steps=len(ecg_real_part))
+            ecg_real_part = ecg_real_part + baseline_drift
+
+        ecg_real_part = torch.clamp(ecg_real_part, 0.0, 1.0)
+        
         last_val  = ecg_real_part[-1]
         padding   = torch.full((self.gen_samples,), last_val)
         ecg_past  = torch.cat([ecg_real_part, padding], dim=0)
 
-        # 3. Target Fisici (theta/omega NON normalizzati: codificano grandezze fisiche)
-        theta_target = data['theta'][target_start : target_end].float()
-        omega_target = data['omega'][target_start : target_end].float()
+        theta_target = data['theta'][target_start : target_end].float().clone()
+        omega_target = data['omega'][target_start : target_end].float().clone()
 
-        # 4. Derivata PPG (calcolata dopo normalizzazione e correzione polarità)
         ppg_diff = torch.zeros_like(ppg_win)
         ppg_diff[1:] = ppg_win[1:] - ppg_win[:-1]
 
         X = torch.stack([ppg_win, ppg_diff, ecg_past], dim=0)
         Y = target.unsqueeze(0)
 
-        info_string = f"{data['file_info']} | Pos: {start_idx}"
+        info_string = f"{data.get('file_info', 'Unknown')} | Pos: {start_idx}"
         return X, Y, theta_target, omega_target, info_string
+
 
 # --- VECCHIA FUNZIONE (LEGACY/FALLBACK) ---
 def _prepare_data_legacy(subject_keys, raw_data, preprocessor, configs):
@@ -271,7 +272,7 @@ def _prepare_data_legacy(subject_keys, raw_data, preprocessor, configs):
     except MemoryError:
         return None, 0
 
-# --- PIPELINE PRINCIPALE MODIFICATA PER SLURM RESUME E FINAL TRAINING CON TEST SET ---
+# --- PIPELINE PRINCIPALE ---
 def run_k_fold_pipeline(base_path_unused, configs):
     main_save_dir = configs['model_save_path'] 
     os.makedirs(main_save_dir, exist_ok=True)
@@ -308,7 +309,6 @@ def run_k_fold_pipeline(base_path_unused, configs):
     current_patients_set = set(patient_ids_arr)
     use_existing_split = False
 
-    # 1. Controllo se esiste già uno split salvato
     if os.path.exists(split_file_path):
         with open(split_file_path, 'r') as f:
             saved_split = json.load(f)
@@ -317,17 +317,15 @@ def run_k_fold_pipeline(base_path_unused, configs):
         saved_test = set(saved_split.get("test_patients", []))
         saved_total = saved_cv.union(saved_test)
         
-        # 2. Controllo di Coerenza: i pazienti salvati sono ESATTAMENTE quelli caricati oggi?
         if saved_total == current_patients_set:
             print(f"[PIPELINE] Trovato file di split coerente! Caricamento da: {split_file_path}")
             cv_patients = np.array(saved_split["cv_patients"])
             test_patients = np.array(saved_split["test_patients"])
             use_existing_split = True
         else:
-            print("[WARN] Il file di split esistente NON coincide con i pazienti attuali (forse hai scaricato nuovi dati).")
+            print("[WARN] Il file di split esistente NON coincide con i pazienti attuali.")
             print("[WARN] Verrà generato e sovrascritto un nuovo split per mantenere la coerenza.")
 
-    # 3. Generazione e Salvataggio (se non esiste o non è coerente)
     if not use_existing_split:
         print("[PIPELINE] Generazione nuovo split 85/15 e salvataggio su file...")
         cv_patients, test_patients = train_test_split(patient_ids_arr, test_size=0.15, random_state=seed)
@@ -351,7 +349,6 @@ def run_k_fold_pipeline(base_path_unused, configs):
             fold_results = json.load(f)
         print(f"[INFO] Ripresa da Fold {start_fold}. Trovati risultati delle {len(fold_results)} fold precedenti.")
     
-    # --- SPLIT (Usa solo i cv_patients) ---
     if k_folds <= 1:
         print("[INFO] k_folds impostato a 1. Split singolo Train/Val (80/20) sui dati CV.")
         indices = np.arange(len(cv_patients))
@@ -386,21 +383,38 @@ def run_k_fold_pipeline(base_path_unused, configs):
         else:
             train_subset = [m for m in full_manifest if m['subject_id'] in train_patients]
             val_subset = [m for m in full_manifest if m['subject_id'] in val_patients]
-            train_ds = MimicSmartDataset(train_subset, configs['preprocessed_data'], configs)
-            val_ds = MimicSmartDataset(val_subset, configs['preprocessed_data'], configs)
+            train_ds = MimicSmartDataset(train_subset, configs['preprocessed_data'], configs, is_training=True)
+            val_ds = MimicSmartDataset(val_subset, configs['preprocessed_data'], configs, is_training=False)
             n_train, n_val = len(train_ds), len(val_ds)
 
-        num_cpus = os.cpu_count()
-        workers = min(num_cpus, 8) if device.type == 'cuda' else 0
-        train_loader = DataLoader(train_ds, batch_size=configs['batch_size'], shuffle=True, num_workers=workers, pin_memory=True, persistent_workers=True if workers > 0 else False)
-        val_loader = DataLoader(val_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True, persistent_workers=True if workers > 0 else False)
+        # =====================================================================
+        # GESTIONE BATCH SIZE E WORKERS
+        # =====================================================================
+        gpu_count = torch.cuda.device_count()
+        eff_batch_size = configs['batch_size'] * max(1, gpu_count)
+        if gpu_count > 1:
+            print(f"[INFO] Moltiplicato Batch Size per {gpu_count} GPU. Nuovo Batch Effettivo: {eff_batch_size}")
+
+        # workers = 0 garantisce nessun Memory Leak OOM (il dataset è in RAM)
+        workers = 0 
+        
+        train_loader = DataLoader(train_ds, batch_size=eff_batch_size, shuffle=True, num_workers=workers, pin_memory=True)
+        val_loader = DataLoader(val_ds, batch_size=eff_batch_size, shuffle=False, num_workers=workers, pin_memory=True)
         
         try:
-            sample_x, sample_y, _, _, _ = train_ds[0] 
-            configs['input_channels'] = sample_x.shape[0] 
+            sample_batch = next(iter(train_loader))
+            sample_x, sample_y = sample_batch[0], sample_batch[1]
+            
+            configs['input_channels'] = sample_x.shape[1] 
             configs['actual_seq_len'] = sample_x.shape[-1]
             configs['target_len'] = sample_y.shape[-1]
             model = ModelFactory.get_model(configs).to(device)
+            
+            # --- MODIFICA MULTI-GPU ---
+            if gpu_count > 1:
+                print(f"🔥 MULTI-GPU RILEVATO: Parallelizzazione su {gpu_count} GPU!")
+                model = nn.DataParallel(model)
+                
         except Exception as e:
             print(f"[ERROR] Init Modello Fallita: {e}"); continue
 
@@ -412,7 +426,10 @@ def run_k_fold_pipeline(base_path_unused, configs):
         
         best_path = os.path.join(fold_dir, f'best_{configs.get("model_type", "model")}.pth')
         if os.path.exists(best_path):
-            model.load_state_dict(torch.load(best_path, map_location=device))
+            if isinstance(model, nn.DataParallel):
+                model.module.load_state_dict(torch.load(best_path, map_location=device))
+            else:
+                model.load_state_dict(torch.load(best_path, map_location=device))
             
         metrics = evaluate_test_set_performance(model, val_loader, device, fold_dir, configs)
         best_epoch_reached = history.get('best_epoch', configs['epochs'])
@@ -446,20 +463,26 @@ def run_k_fold_pipeline(base_path_unused, configs):
         configs['model_save_path'] = final_dir
         
         print(" -> Caricamento dei dati di sviluppo...")
+        
         if configs['apply_preprocessing']:
             all_keys = [k for k,v in raw_data['subjects_data'].items() if v['subject_id'] in cv_patients]
             final_ds, n_final = _prepare_data_legacy(all_keys, raw_data, preprocessor, configs)
         else:
             final_subset = [m for m in full_manifest if m['subject_id'] in cv_patients]
-            final_ds = MimicSmartDataset(final_subset, configs['preprocessed_data'], configs)
+            final_ds = MimicSmartDataset(final_subset, configs['preprocessed_data'], configs, is_training=True)
             n_final = len(final_ds)
         
-        num_cpus = os.cpu_count()
-        workers = min(num_cpus, 8) if device.type == 'cuda' else 0
-        final_loader = DataLoader(final_ds, batch_size=configs['batch_size'], shuffle=True, num_workers=workers, pin_memory=True)
+        workers = 0 
+        gpu_count = torch.cuda.device_count()
+        eff_batch_size = configs['batch_size'] * max(1, gpu_count)
+        
+        final_loader = DataLoader(final_ds, batch_size=eff_batch_size, shuffle=True, num_workers=workers, pin_memory=True)
         
         try:
             model_final = ModelFactory.get_model(configs).to(device)
+            if gpu_count > 1:
+                model_final = nn.DataParallel(model_final)
+                
             configs['use_early_stopping'] = False 
             
             trainer_final = Trainer(model_final, device, configs, preprocessor=preprocessor)
@@ -489,27 +512,20 @@ def run_k_fold_pipeline(base_path_unused, configs):
             test_ds, n_test = _prepare_data_legacy(test_keys, raw_data, preprocessor, configs)
         else:
             test_subset = [m for m in full_manifest if m['subject_id'] in test_patients]
-            test_ds = MimicSmartDataset(test_subset, configs['preprocessed_data'], configs)
+            test_ds = MimicSmartDataset(test_subset, configs['preprocessed_data'], configs, is_training=False)
             n_test = len(test_ds)
             
-        test_loader = DataLoader(test_ds, batch_size=configs['batch_size'], shuffle=False, num_workers=workers, pin_memory=True) # pyright: ignore[reportArgumentType]
+        test_loader = DataLoader(test_ds, batch_size=eff_batch_size, shuffle=False, num_workers=workers, pin_memory=True) 
         
-        # 1. Metriche Generali
         print(" -> Calcolo metriche globali...")
         metrics = evaluate_test_set_performance(model_final, test_loader, device, final_dir, configs)
         
-        # 2. Generazione delle 6 Immagini
         print(" -> Generazione Immagini sul Test Set...")
         for i in range(1, 4):
-            # 3 Plot Snapshot
             plot_validation_snapshot(model_final, test_loader, device, final_dir, epoch="TEST", step=i, prefix=f'test_inference')
-            # 3 Plot Autoregressivi
             if preprocessor:
                 plot_autoregressive_epoch(model_final, test_ds, preprocessor, device, configs, epoch=f"TEST_{i}", save_dir=final_dir)
         
-        # ==========================================
-        #  Salvataggio Report Modello Finale
-        # ==========================================
         final_report = {
             "model_type": configs.get("model_type", "Unknown"),
             "total_epochs_trained": avg_epochs,

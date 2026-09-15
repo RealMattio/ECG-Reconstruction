@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Computational footprint of the deployed PPG$\rightarrow$ECG generator. Input: $7$~s of context at $125$~Hz ($3\times875$); output: $1$~s of ECG ($1\times125$). FLOPs are reported per inference window ($1$~MAC $=2$~FLOPs).}
+\label{tab:complexity}
+\begin{tabular}{lrrr}
+\toprule
+Block & Trainable params & Share (\%) & FLOPs (M) \\
+\midrule
+WST front-end (J{=}2, Q{=}8) & 0 & 0.0 & 1.52 \\
+CNN encoder & 15,904 & 14.8 & 4.65 \\
+BiLSTM & 66,560 & 62.1 & 7.20 \\
+Upsampling & 0 & 0.0 & 0.05 \\
+Decoder head & 24,705 & 23.1 & 6.18 \\
+\midrule
+\textbf{Total} & \textbf{107,169} & \textbf{100.0} & \textbf{19.59} \\
+\bottomrule
+\end{tabular}
+\end{table}

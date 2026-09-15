@@ -39,3 +39,13 @@ data/processed/
 paper_utils/
 requirements-local.txt
 scripts/autoregressive_drift_evaluation/experiments/drift_generation/
+scripts/autoregressive_drift_evaluation/experiments/drift_generation_windowed/
+
+# Lock files
+*.lock
+
+# File di grandi dimensioni / cache (>50MB / >100MB)
+*.npz
+scripts/clinical_fidelty_evaluation/clinical_fidelity_results.json
+**/drift_windowed_results.json
+scripts/autoregressive_drift_evaluation/experiments/drift_temporal_analysis/windowed_drift_metrics_cache.csv.gz

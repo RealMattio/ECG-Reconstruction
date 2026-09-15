@@ -21,6 +21,7 @@ decord==0.6.0
 einops==0.8.1
 exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1763918002538/work
 executing @ file:///home/conda/feedstock_root/build_artifacts/executing_1756729339227/work
+fastdtw==0.3.4
 filelock==3.18.0
 fonttools==4.57.0
 frozenlist==1.8.0
@@ -50,6 +51,7 @@ mmcv==2.1.0
 mmengine==0.10.7
 mpmath==1.3.0
 multidict==6.7.1
+neurokit2==0.2.13
 nest_asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1733325553580/work
 networkx==3.4.2
 nltk==3.9.3

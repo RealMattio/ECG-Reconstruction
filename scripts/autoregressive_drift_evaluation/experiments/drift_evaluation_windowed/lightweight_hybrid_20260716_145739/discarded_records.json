@@ -1,0 +1,1954 @@
+{
+  "p01/p016640/3483012_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p02/p023875/3153224_0018": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p03/p031013/3929245_0062": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3373623_0117": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3023009_0164": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3023009_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3023009_0180": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3023009_0013": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3373623_0008": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3373623_0087": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0038": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0125": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0108": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0069": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0106": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0072": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0111": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0143": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0135": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0020": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p043116/3987518_0045": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p043116/3987518_0056": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 15,
+    "n_ppg_intervals": 5,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 3,
+    "n_segments": 0
+  },
+  "p04/p043116/3987518_0032": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 37,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 3,
+    "n_segments": 0
+  },
+  "p04/p043447/3911355_0002": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 13,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p04/p043447/3891727_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 26,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0021": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0001": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p047477/3004281_0002": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p047477/3354253_0023": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048480/3876369_0095": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048480/3876369_0061": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 10,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p04/p048480/3876369_0097": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048480/3876369_0037": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048935/3636195_0003": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p049545/3905772_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p052207/3922999_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p052207/3922999_0009": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p052478/3837170_0010": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0094": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0166": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0064": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0178": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 10,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0261": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0412": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 13,
+    "n_ppg_intervals": 5,
+    "n_seg_too_short": 5,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0454": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0276": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 12,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 6,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0288": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 9,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 6,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0169": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0507": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0222": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0282": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0474": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0160": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0240": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0103": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0154": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0172": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0192": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0121": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 6,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0255": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0463": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0213": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0469": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0234": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0483": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0142": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 6,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0151": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0252": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0130": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0498": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0258": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0246": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0052": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 9,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0216": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0127": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0010": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0243": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0201": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0270": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0360": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 9,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 6,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0504": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0136": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0163": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0037": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0198": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0471": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0133": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0085": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0460": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0175": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0249": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0124": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0055": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0231": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0264": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0489": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0486": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0501": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0357": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 6,
+    "n_ppg_intervals": 5,
+    "n_seg_too_short": 5,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p053609/3924929_0157": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 7,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p056878/3155789_0001": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p058740/3082095_0005": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0018": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0016": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0070": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0024": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0029": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0038": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p063660/3143592_0012": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0064": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0035": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0098": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0095": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0053": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0047": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0070": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0086": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0076": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0079": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0085": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0026": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0089": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064771/3634433_0003": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064771/3413778_0003": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064771/3734028_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p067853/3043901_0009": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p067853/3458377_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p067853/3458377_0004": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 15,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p06/p069006/3677214_0019": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p069006/3428244_0039": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 11,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0019": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0025": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0065": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0013": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0028": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p071735/3786822_0022": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p073048/3412287_0012": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0320": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0145": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0224": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0329": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0314": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0126": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0206": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0323": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0185": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0060": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0097": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0090": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0176": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0242": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0069": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 35,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0170": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p078195/3055549_0017": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p078195/3055549_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 27,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p078293/3995104_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 45,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p078293/3212996_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 12,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p07/p078293/3212996_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 21,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p07/p079096/3332946_0005": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p079423/3835102_0003": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p079875/3139806_0001": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p079875/3611936_0003": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p079875/3635230_0049": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0004": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0024": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0064": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0033": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0040": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0037": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0018": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0027": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 29,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 2,
+    "n_segments": 0
+  },
+  "p08/p083892/3134175_0010": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p083892/3232427_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p083892/3134175_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p085755/3353383_0002": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p090436/3310706_0014": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p091038/3791358_0011": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 9,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p09/p091038/3791358_0045": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p091038/3791358_0023": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 14,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p09/p091038/3791358_0037": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 7,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p09/p093850/3677458_0012": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p099380/3602321_0025": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p096147/3088273_0002": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 23,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p00/p006299/3057029_0038": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p03/p031013/3929245_0049": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 7,
+    "n_seg_too_short": 7,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3023009_0161": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0023": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p045768/3918157_0004": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048480/3876369_0091": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 7,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 6,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p056878/3655517_0011": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061809/3600058_0080": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p063660/3143592_0016": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0101": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0092": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0082": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p069006/3428244_0029": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 138,
+    "n_ppg_intervals": 32,
+    "n_seg_too_short": 22,
+    "n_seg_bad_ecg_seed": 10,
+    "n_segments": 0
+  },
+  "p07/p073048/3412287_0020": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p073048/3412287_0004": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 15,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p073398/3869602_0008": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0158": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p078293/3995104_0032": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p078293/3995104_0044": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p091038/3791358_0016": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0063": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p00/p006299/3098733_0002": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 16,
+    "n_ppg_intervals": 11,
+    "n_seg_too_short": 11,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040724/3373623_0031": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0028": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0018": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 5,
+    "n_seg_too_short": 5,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p043447/3891727_0011": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1689,
+    "n_ppg_intervals": 131,
+    "n_seg_too_short": 21,
+    "n_seg_bad_ecg_seed": 110,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0010": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0012": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0025": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 4,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p046528/3220449_0017": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048935/3636195_0016": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p048935/3636195_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p058297/3563773_0012": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p058297/3563773_0004": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p05/p058297/3563773_0015": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p061182/3728148_0022": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2088,
+    "n_ppg_intervals": 127,
+    "n_seg_too_short": 30,
+    "n_seg_bad_ecg_seed": 97,
+    "n_segments": 0
+  },
+  "p06/p063660/3143592_0017": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064089/3190062_0009": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p064771/3413778_0008": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p068645/3403629_0008": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 8,
+    "n_ppg_intervals": 6,
+    "n_seg_too_short": 6,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p068645/3403629_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p069006/3677214_0021": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 1727,
+    "n_ppg_intervals": 71,
+    "n_seg_too_short": 23,
+    "n_seg_bad_ecg_seed": 48,
+    "n_segments": 0
+  },
+  "p07/p073048/3412287_0013": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p073048/3412287_0018": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 11,
+    "n_ppg_intervals": 4,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 1,
+    "n_segments": 0
+  },
+  "p07/p073398/3869602_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 1,
+    "n_seg_too_short": 1,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076109/3832741_0167": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 19,
+    "n_ppg_intervals": 12,
+    "n_seg_too_short": 12,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p076397/3736760_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 5,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p07/p079096/3332946_0007": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 14,
+    "n_ppg_intervals": 12,
+    "n_seg_too_short": 12,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0065": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p08/p081354/3361831_0054": {
+    "reason": "read_error",
+    "error": "cannot reshape array of size 1572864 into shape (5)"
+  },
+  "p09/p091038/3791358_0054": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 21,
+    "n_ppg_intervals": 14,
+    "n_seg_too_short": 14,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p093016/3412912_0005": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 2,
+    "n_ppg_intervals": 2,
+    "n_seg_too_short": 2,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p093850/3677458_0008": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 0,
+    "n_ppg_intervals": 0,
+    "n_seg_too_short": 0,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p04/p040929/3549511_0005": {
+    "reason": "read_error",
+    "error": "Samples were not loaded correctly"
+  },
+  "p04/p046528/3220449_0027": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 3,
+    "n_ppg_intervals": 3,
+    "n_seg_too_short": 3,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p06/p067853/3043901_0006": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 84,
+    "n_ppg_intervals": 63,
+    "n_seg_too_short": 63,
+    "n_seg_bad_ecg_seed": 0,
+    "n_segments": 0
+  },
+  "p09/p099380/3602321_0005": {
+    "reason": "no_valid_segments",
+    "n_ppg_windows_ok": 4334,
+    "n_ppg_intervals": 771,
+    "n_seg_too_short": 394,
+    "n_seg_bad_ecg_seed": 377,
+    "n_segments": 0
+  }
+}

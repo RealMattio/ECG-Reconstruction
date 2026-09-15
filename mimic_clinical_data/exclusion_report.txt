@@ -1,0 +1,25 @@
+========================================================================
+  MIMIC-III ECG COHORT SELECTION — EXCLUSION REPORT
+  Generated: 2026-06-30 13:36:43
+========================================================================
+
+  PIPELINE SUMMARY
+------------------------------------------------------------------------
+  Total patients in MIMIC-III database:              46,517
+  Excluded — Phase 1 (ICD-9 code ranges + V-codes):   35,482
+  Excluded — Phase 2 (keyword matching only):           556
+  Total excluded patients:                           36,038
+  Retained (healthy ECG cohort):                     10,479
+
+  BREAKDOWN BY EXCLUSION CATEGORY
+  (a patient may appear in multiple categories)
+------------------------------------------------------------------------
+
+  Circulatory System Diseases (ICD-9: 390-459)            32,503 patients
+  Congenital Cardiac Anomalies (ICD-9: 745-747)            1,827 patients
+  Electrolytic Disorders (ICD-9: 276)                     12,645 patients
+  Cardiovascular Signs & Symptoms (ICD-9: 785)             4,984 patients
+  Cardiac Interventions & Devices (V-codes)                2,469 patients
+  Other Cardiac Keyword Matches (text-based)               4,303 patients
+
+========================================================================

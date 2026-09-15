@@ -1,29 +1,19 @@
 """
-Preprocessing MIMIC-III zero-copia per PINN.
-
-Sostituisce il vecchio flusso a 3 step (preprocess_mimic_smart → create_pinn_dataset →
-filter_healty_manifest), ognuno dei quali creava copie fisiche dei segnali su disco.
-
+Preprocessing MIMIC-III zero-copia per PINN (Ottimizzato per SLURM HPC).
 
 Questo script:
   1. Legge i file WFDB direttamente da --input_dir
-  2. Applica il filtro bandpass (PPG 0.5-5 Hz, ECG 0.5-40 Hz)
-  3. Esegue i controlli di qualità di create_pinn_dataset.py
-       - PPG: SQI spettrale (Welch), morfologia (Pearson sui battiti), polarità
-       - ECG: kurtosis ≥ 5, morfologia (Pearson sui complessi QRS)
-  4. Salva SOLO il manifest JSON (nessuna copia dei segnali)
-
-Il manifest risultante viene letto da MimicSmartDataset (pipeline PINN) che carica
-i segnali WFDB in RAM al momento dell'addestramento senza mai scrivere nulla su disco.
-
-Output:
-  <output_dir>/dataset_manifest.json
+  2. Applica filtri e controlli di qualità clinica
+  3. Salva SOLO il manifest JSON (dataset_manifest.json)
+  4. Esegue salvataggi intermedi (checkpointing) atomici ogni N iterazioni
+     per permettere il ripristino sicuro dopo i timeout di SLURM.
 """
 
 import os
 import sys
 import json
 import argparse
+import errno
 
 import wfdb
 import numpy as np
@@ -37,8 +27,29 @@ if PROJECT_ROOT not in sys.path:
 
 
 # ─────────────────────────────────────────────────────────────
-# FUNZIONI DI QUALITÀ  (riprese da create_pinn_dataset.py)
+# FUNZIONI DI UTILITÀ E QUALITÀ
 # ─────────────────────────────────────────────────────────────
+
+def _save_manifest_atomically(data, filepath):
+    """
+    Salvataggio atomico con gestione degli errori I/O (es. disco pieno).
+    """
+    tmp_path = filepath + ".tmp"
+    try:
+        with open(tmp_path, 'w') as f:
+            json.dump(data, f, indent=2)
+        os.replace(tmp_path, filepath)
+    except OSError as e:
+        if e.errno == errno.ENOSPC: # Codice di errore 28: No space left on device
+            print(f"\n[ERRORE CRITICO HPC] Spazio su disco esaurito!")
+            print(f"Impossibile scrivere il file temporaneo: {tmp_path}")
+            print("L'ultimo checkpoint valido (dataset_manifest.json) è stato preservato.")
+            print("Interruzione forzata dell'elaborazione. Libera spazio o cambia --output_dir e usa il restore.")
+            # Esce con codice 1 così SLURM sa che il job è fallito e non fa il resubmit infinito
+            sys.exit(1)
+        else:
+            raise e
+
 
 def _bandpass(signal, lowcut, highcut, fs, order=4):
     nyq = 0.5 * fs
@@ -47,14 +58,6 @@ def _bandpass(signal, lowcut, highcut, fs, order=4):
 
 
 def _check_polarity(ppg_signal):
-    """
-    True se il PPG è invertito.
-    Criterio: skewness percentile.
-    In un PPG normale i picchi sistolici sono brevi e positivi → distribuzione
-    right-skewed → p90 - p50 > p50 - p10.
-    In un PPG invertito i picchi diventano dip brevi e negativi, mentre la
-    baseline (larga) è in alto → distribuzione left-skewed → p50 - p10 > p90 - p50.
-    """
     p10 = float(np.percentile(ppg_signal, 10))
     p50 = float(np.percentile(ppg_signal, 50))
     p90 = float(np.percentile(ppg_signal, 90))
@@ -73,10 +76,6 @@ def _spectral_sqi(ppg_signal, fs):
 
 
 def _ppg_quality(ppg_signal, fs, spectral_thr=0.5):
-    """
-    Ritorna (score, is_inverted).
-    score = 0.0 se il segmento non supera i controlli di qualità.
-    """
     if np.std(ppg_signal) < 1e-6:
         return 0.0, False
     is_inverted = _check_polarity(ppg_signal)
@@ -103,7 +102,6 @@ def _ppg_quality(ppg_signal, fs, spectral_thr=0.5):
 
 
 def _ecg_quality(ecg_signal, fs, kurtosis_thr=5.0):
-    """Ritorna uno score di qualità ECG ∈ [0, 1]."""
     if np.std(ecg_signal) < 1e-4:
         return 0.0
     if kurtosis(ecg_signal, fisher=False) < kurtosis_thr:
@@ -137,17 +135,9 @@ def _merge_intervals(intervals):
     return [tuple(iv) for iv in merged]
 
 
-# ─────────────────────────────────────────────────────────────
-# SCAN WFDB
-# ─────────────────────────────────────────────────────────────
-
 def _find_records(data_dir):
-    """Restituisce tutti i path base di record WFDB validi (coppia .hea + .dat)."""
     if not os.path.isdir(data_dir):
-        raise FileNotFoundError(
-            f"Directory non trovata: {data_dir}\n"
-            "Controlla il parametro --input_dir o il path di default."
-        )
+        raise FileNotFoundError(f"Directory non trovata: {data_dir}")
     records = []
     for root, _, files in os.walk(data_dir):
         for f in files:
@@ -164,50 +154,53 @@ def _find_records(data_dir):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Crea dataset_manifest.json PINN senza copiare i segnali su disco."
+        description="Crea dataset_manifest.json PINN ottimizzato per cluster HPC (SLURM)."
     )
-    parser.add_argument(
-        '--input_dir', type=str,
-        default=os.path.join(PROJECT_ROOT, '..', 'mimic3wdb-matched_healthy_data'),
-        help="Cartella radice con i file WFDB (default: ../mimic3wdb-matched_healthy_data)"
-    )
-    parser.add_argument(
-        '--output_dir', type=str, default=None,
-        help="Dove salvare dataset_manifest.json (default: uguale a --input_dir)"
-    )
-    parser.add_argument('--target_fs', type=int, default=125,
-                        help="Frequenza di campionamento target (default: 125 Hz)")
-    parser.add_argument('--win_sec', type=float, default=4.0,
-                        help="Finestra di valutazione qualità in secondi (default: 4)")
-    parser.add_argument('--step_sec', type=float, default=1.0,
-                        help="Passo dello sliding window di qualità (default: 1)")
-    parser.add_argument('--min_size_sec', type=float, default=7.0,
-                        help="Lunghezza minima segmento valido in secondi (default: 7)")
-    parser.add_argument('--ppg_thr', type=float, default=0.9,
-                        help="Soglia Pearson PPG (default: 0.9)")
-    parser.add_argument('--ecg_thr', type=float, default=0.9,
-                        help="Soglia Pearson ECG (default: 0.9)")
+    parser.add_argument('--input_dir', type=str,
+                        default=os.path.join(PROJECT_ROOT, '..', 'mimic3wdb-matched_healthy_data'),
+                        help="Cartella radice con i file WFDB")
+    parser.add_argument('--output_dir', type=str, default=None,
+                        help="Dove salvare dataset_manifest.json (default: uguale a --input_dir)")
+    parser.add_argument('--target_fs', type=int, default=125)
+    parser.add_argument('--win_sec', type=float, default=4.0)
+    parser.add_argument('--step_sec', type=float, default=1.0)
+    parser.add_argument('--min_size_sec', type=float, default=7.0)
+    parser.add_argument('--ppg_thr', type=float, default=0.9)
+    parser.add_argument('--ecg_thr', type=float, default=0.9)
+    
+    # Parametri per l'HPC (Restore e Checkpointing)
+    parser.add_argument('--restore', action='store_true',
+                        help="Se attivato, riprende l'elaborazione da un manifest preesistente.")
+    parser.add_argument('--resume_idx', type=int, default=0,
+                        help="Ultimo numero stampato dalla barra tqdm da cui riprendere.")
+    parser.add_argument('--prev_manifest_path', type=str, default=None,
+                        help="Path del file dataset_manifest.json da cui caricare i dati precedenti.")
+    parser.add_argument('--save_every', type=int, default=50,
+                        help="Frequenza di aggiornamento del manifest su disco (default: ogni 50 record).")
+    
     args = parser.parse_args()
 
     input_dir = os.path.abspath(args.input_dir)
     output_dir = os.path.abspath(args.output_dir) if args.output_dir else input_dir
+    os.makedirs(output_dir, exist_ok=True)
+    manifest_path = os.path.join(output_dir, 'dataset_manifest.json')
+    
     fs = args.target_fs
     win_samples = int(args.win_sec * fs)
     step_samples = int(args.step_sec * fs)
     min_samples = int(args.min_size_sec * fs)
 
     print("=" * 60)
-    print("PREPROCESSING PINN — MANIFEST ONLY (zero copie su disco)")
+    print("PREPROCESSING PINN — HPC READY (Zero-copia + Checkpointing)")
     print("=" * 60)
     print(f"Input WFDB : {input_dir}")
-    print(f"Output     : {output_dir}/dataset_manifest.json")
-    print(f"fs={fs} Hz | finestra qualità={args.win_sec}s | "
-          f"min segmento={args.min_size_sec}s")
-    print(f"Soglie: PPG Pearson≥{args.ppg_thr} | ECG Pearson≥{args.ecg_thr}")
+    print(f"Output     : {manifest_path}")
+    print(f"Soglie: PPG>={args.ppg_thr} | ECG>={args.ecg_thr} | Autosave ogni {args.save_every} iter.")
     print("=" * 60)
 
     records = _find_records(input_dir)
-    print(f"Record WFDB trovati: {len(records)}\n")
+    total_records_count = len(records)
+    print(f"Record WFDB totali trovati: {total_records_count}\n")
 
     manifest = []
     total_segments = 0
@@ -215,9 +208,43 @@ def main():
     skipped_too_short = 0
     skipped_no_valid = 0
 
-    for rec_path in tqdm(records, desc="Analisi record"):
+    # ── Gestione Restore da iterazione precedente ──
+    if args.restore:
+        load_path = args.prev_manifest_path if args.prev_manifest_path else manifest_path
+        if not os.path.isfile(load_path):
+            raise FileNotFoundError(f"ERRORE CRITICO: Manifest non trovato al percorso: {load_path}")
+        
+        with open(load_path, 'r') as f:
+            manifest = json.load(f)
+            
+        # Trova l'indice REALE basato sull'ultimo file salvato fisicamente nel JSON
+        if len(manifest) > 0:
+            last_saved_path = manifest[-1]['wfdb_path']
+            try:
+                # Cerca la posizione dell'ultimo file salvato nella lista globale
+                last_idx = records.index(last_saved_path)
+                args.resume_idx = last_idx + 1
+            except ValueError:
+                args.resume_idx = 0
+        else:
+            args.resume_idx = 0
+            
+        total_segments = sum(item.get('num_segments', 0) for item in manifest)
+        
+        # Taglia i record per riprendere dal punto esatto
+        records = records[args.resume_idx:]
+        
+        print(f"[*] Fase di Restore attivata.")
+        if len(manifest) > 0:
+            print(f"[*] Ultimo record valido in JSON: {os.path.basename(last_saved_path)}")
+        print(f"[*] Indice reale di ripresa nella coda: {args.resume_idx}")
+        print(f"[*] {len(manifest)} record pregressi caricati ({total_segments} segmenti pronti).")
+        print(f"[*] Ripresa elaborazione per i rimanenti {len(records)} record.\n")
+    # ───────────────────────────────────────────────
+    
+    # Utilizziamo enumerate per tracciare le iterazioni effettive della sessione corrente
+    for current_i, rec_path in enumerate(tqdm(records, desc="Analisi record", initial=args.resume_idx, total=total_records_count)):
         try:
-            # ── Controllo header (veloce, senza caricare i segnali) ──
             header = wfdb.rdheader(rec_path)
             if 'II' not in header.sig_name or 'PLETH' not in header.sig_name:
                 skipped_no_channels += 1
@@ -225,14 +252,12 @@ def main():
 
             subject_id = os.path.basename(os.path.dirname(rec_path))
 
-            # ── Caricamento segnali ──
             record = wfdb.rdrecord(rec_path)
             idx_ecg = record.sig_name.index('II')
             idx_ppg = record.sig_name.index('PLETH')
             ecg_raw = np.nan_to_num(record.p_signal[:, idx_ecg]).astype(np.float32)
             ppg_raw = np.nan_to_num(record.p_signal[:, idx_ppg]).astype(np.float32)
 
-            # ── Ricampionamento ──
             orig_fs = record.fs
             if orig_fs != fs:
                 n = int(len(ecg_raw) / orig_fs * fs)
@@ -247,11 +272,9 @@ def main():
                 skipped_too_short += 1
                 continue
 
-            # ── Filtro bandpass ──
             ppg_filt = _bandpass(ppg_raw, 0.5, 5.0, fs)
             ecg_filt = _bandpass(ecg_raw, 0.5, 40.0, fs)
 
-            # ── Sliding window quality scan ──
             ppg_intervals = []
             ecg_intervals = []
             inversions_map = np.zeros(n_samples, dtype=bool)
@@ -266,7 +289,6 @@ def main():
                 if _ecg_quality(ecg_filt[start:end], fs) >= args.ecg_thr:
                     ecg_intervals.append((start, end))
 
-            # ── Intersezione intervalli PPG ∩ ECG ──
             ppg_merged = _merge_intervals(ppg_intervals)
             ecg_merged = _merge_intervals(ecg_intervals)
 
@@ -282,7 +304,6 @@ def main():
                 skipped_no_valid += 1
                 continue
 
-            # ── Estrazione segmenti contigui ──
             d = np.diff(combined.astype(np.int8))
             seg_starts = np.where(d == 1)[0] + 1
             seg_ends = np.where(d == -1)[0] + 1
@@ -309,34 +330,33 @@ def main():
 
             manifest.append({
                 'subject_id': subject_id,
-                'wfdb_path': rec_path,          # path assoluto al record WFDB originale
+                'wfdb_path': rec_path,
                 'segments': segments,
                 'num_segments': len(segments)
             })
 
         except Exception as e:
             continue
+        
+        # ── Checkpointing Periodico ──
+        if (current_i + 1) % args.save_every == 0:
+            _save_manifest_atomically(manifest, manifest_path)
 
-    # ── Salvataggio manifest ──
-    os.makedirs(output_dir, exist_ok=True)
-    manifest_path = os.path.join(output_dir, 'dataset_manifest.json')
-    with open(manifest_path, 'w') as f:
-        json.dump(manifest, f, indent=2)
-
+    # ── Salvataggio Finale ──
+    _save_manifest_atomically(manifest, manifest_path)
     manifest_kb = os.path.getsize(manifest_path) / 1024
 
     print("\n" + "=" * 60)
-    print("PREPROCESSING COMPLETATO")
+    print("PREPROCESSING COMPLETATO O INTERROTTO VOLONTARIAMENTE")
     print("=" * 60)
     print(f"Record processati con successo : {len(manifest)}")
     print(f"Segmenti puliti totali         : {total_segments}")
-    print(f"Scartati (no canali II/PLETH)  : {skipped_no_channels}")
-    print(f"Scartati (troppo corti)        : {skipped_too_short}")
-    print(f"Scartati (nessuna finestra ok) : {skipped_no_valid}")
-    print(f"Manifest salvato in            : {manifest_path}")
-    print(f"Spazio occupato                : {manifest_kb:.1f} KB  (zero copie segnali)")
+    print(f"Scartati (no canali II/PLETH)  : {skipped_no_channels} (in questa run)")
+    print(f"Scartati (troppo corti)        : {skipped_too_short} (in questa run)")
+    print(f"Scartati (nessuna finestra ok) : {skipped_no_valid} (in questa run)")
+    print(f"Manifest finale salvato in     : {manifest_path}")
+    print(f"Spazio occupato                : {manifest_kb:.1f} KB")
     print("=" * 60)
-
 
 if __name__ == "__main__":
     main()
